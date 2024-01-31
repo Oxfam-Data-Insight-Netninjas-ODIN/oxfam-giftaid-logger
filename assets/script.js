@@ -1,22 +1,42 @@
-// Back-end branch
+var userCode = "F1234";
+var firstName = "Martin";
 
-// bring data from dayjs using API
-var currentDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
-// create a variable referencing the html element with ID "currentDay"
-var dateElem = $('#currentDay');
-// add the date to html element
-dateElem.text(currentDate);
+// // bring data from dayjs using API
+// // var currentDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
+// // create a variable referencing the html element with ID "currentDay"
+// var dateElem = $('#currentDay');
+// // // add the date to html element
+// dateElem.text(currentDate);
 
 // creating varaible for weather API address and API key
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=";
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=";
 var key = "7093b5895d7dff871294e9d20a842e17";
-// creating variables for current and 5days ahead dates
-var currentDay = dayjs().format("D/M/YYYY");
-// create variable coordinates referencing the localization of the user computer
-var coordinates
-// create a variable for the name of location representing the user computer
-var currentLocalization
+// // creating variables for current and 5days ahead dates
+// var currentDay = dayjs().format("D/M/YYYY");
+// // create variable coordinates referencing the localization of the user computer
+// var coordinates
+// // create a variable for the name of location representing the user computer
+// var currentLocalization
 
+// 3rd API ?
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+  
+  function success(position) {
+    var latitude = position.coords.latitude.toFixed(2);
+    var longitude = position.coords.longitude.toFixed(2);
+    console.log("Latitude: " + latitude);
+    console.log("Longitude: " + longitude);
+  }
+  
+  function error() {
+    console.log("Unable to retrieve your location.");
+  }
+
+var coordinates = `{latitude}&lon={longitude}`;
 // display weather for default city - London and add weather icon - to be updated with lo
 var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
 fetch(cityQueryURL)
@@ -37,7 +57,7 @@ fetch(cityQueryURL)
 
 
 
-
+console.log("Test");
 var isFullscreen = false;
 
 // create a function for toggle fullscreen view
@@ -72,7 +92,7 @@ function incrementCounter(buttonType) {
         console.log("data : " +data);
         // check if "currentDate" key exist in the saved "data" object ; if not, create a default value of 0
         if (!data[currentDate]) {
-            data[currentDate] = { 'giftAid': 0, 'not': 0 };
+            data[currentDate] = { 'user': userCode, 'firstName': "Martin", 'giftAid': 0, 'not': 0 , 'date': currentDate};
         }
         // increase/update the value of the "data""currentDate" value of the button pressed
         data[currentDate][buttonType]++;
@@ -109,4 +129,14 @@ function incrementCounter(buttonType) {
         // save the data in local storage
         localStorage.setItem('clickData', JSON.stringify(data));
         }
+    }
+
+    // open another page to display the previous days results
+    function sendDataToPage2() {
+      // take input userCode, add data to local storage and open page 2 with data from previous days
+      var inputData = userCode.value;
+      localStorage.setItem("userCode", inputData);
+      // open the page with highscore
+      var otherPage = window.open('highscores.html');
+      otherPage.onload = scoresOnOtherPage() ;
     }
