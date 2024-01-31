@@ -6,7 +6,28 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+    <img id="logo" src="images/OXFAM.webp">
+    <h1 style="color: azure; text-decoration: double;">Gift Aid Counter</h1>
+    <div id="buttoncontainer">
+        <button id="giftAid" onclick="incrementCounter('giftAid'); playSound('pickupCoinSound')">Gift Aid</button>
+        <button id="not" onclick="incrementCounter('not'); playSound('hitHurtSound')">Not Gift Aid</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Gift Aided</th>
+                <th>Not Gift Aided</th>
+                <th>Date</th>
+                <th>Percentage</th>
+            </tr>
+        </thead>
+        <tbody id="dataTableBody"></tbody>
+    </table>
     <div id="username"></div>
     <script src="script.js"></script>
+    <script
+     src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
 </body>
 </html>
