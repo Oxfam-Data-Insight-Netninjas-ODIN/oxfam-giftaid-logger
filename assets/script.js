@@ -7,6 +7,35 @@ var dateElem = $('#currentDay');
 // add the date to html element
 dateElem.text(currentDate);
 
+// creating varaible for weather API address and API key
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=";
+var key = "7093b5895d7dff871294e9d20a842e17";
+// creating variables for current and 5days ahead dates
+var currentDay = dayjs().format("D/M/YYYY");
+// create variable coordinates referencing the localization of the user computer
+var coordinates
+// create a variable for the name of location representing the user computer
+var currentLocalization
+
+// display weather for default city - London and add weather icon - to be updated with lo
+var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
+fetch(cityQueryURL)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    // set a variable for wather icon addres and display it
+    var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    var iconElement = $("<img>").attr("src", iconURL);
+    // display current weather data
+    $("#span1").text(currentLocalization + " (" + currentDay + ")");
+    $("#span2").empty();
+    $("#span2").append(iconElement);
+    // call the function and use API to populate weather data and display it
+    weatherCity("coordinates");
+  });
+
+
 
 
 var isFullscreen = false;
