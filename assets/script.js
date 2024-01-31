@@ -24,36 +24,57 @@ if (navigator.geolocation) {
   } else {
     console.log("Geolocation is not supported by this browser.");
   }
-  
+  // find the coordonates (long and lat) of user (need one time acceptance)
   function success(position) {
     var latitude = position.coords.latitude.toFixed(2);
     var longitude = position.coords.longitude.toFixed(2);
     console.log("Latitude: " + latitude);
     console.log("Longitude: " + longitude);
+
+    // find location (as in city) from the coordonates
+  var url = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" + latitude + "&lon=" + longitude;
+  $.ajax({
+    url: url,
+    method: "GET",
+    success: function(response) {
+      var city = response.address.city;
+      console.log("City: " + city);
+    },
+    error: function() {
+      console.log("Error retrieving city location.");
+    }
+  });
+  
+  var coordinates = `${latitude}&lon=${longitude}`;
+  // display weather for default city - London and add weather icon - to be updated with lo
+  var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
+  console.log(cityQueryURL);
+  fetch(cityQueryURL)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log("weather : " + data);
+      // set a variable for wather icon addres and display it
+      var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+      var iconElement = $("<img>").attr("src", iconURL);
+      // display current weather data
+      $("#span1").text(currentLocalization + " (" + currentDay + ")");
+      $("#span2").empty();
+      $("#span2").append(iconElement);
+      // call the function and use API to populate weather data and display it
+      weatherCity("coordinates");
+  });
+
+
+  
   }
   
   function error() {
     console.log("Unable to retrieve your location.");
   }
 
-var coordinates = `{latitude}&lon={longitude}`;
-// display weather for default city - London and add weather icon - to be updated with lo
-var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
-fetch(cityQueryURL)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    // set a variable for wather icon addres and display it
-    var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-    var iconElement = $("<img>").attr("src", iconURL);
-    // display current weather data
-    $("#span1").text(currentLocalization + " (" + currentDay + ")");
-    $("#span2").empty();
-    $("#span2").append(iconElement);
-    // call the function and use API to populate weather data and display it
-    weatherCity("coordinates");
-  });
+
 
 
 
