@@ -42,3 +42,32 @@ function incrementCounter(buttonType) {
         localStorage.setItem('clickData', JSON.stringify(data));
         updateTable();
     }
+
+    // create function to create / update table with data introduced
+    function updateTable() {
+        // call data from local storage
+        const data = JSON.parse(localStorage.getItem('clickData')) || {}
+        // create variable referencing the element with ID "dataTableBody"
+        const tableBody = document.getElementById('dataTableBody');
+        // setup initial value to empty
+        tableBody.innerHTML = ''
+        // create a for loop to take every key in "data" object 
+        for (const date in data) {
+            // object destructuring syntax is used to extract the values of the properties giftAid and not from the data objec
+            const { giftAid, not } = data[date];
+            // create a variable for the total number of both buttons pressed
+            const total = giftAid + not;
+            // ternary operator is used to calculate the percentage value of giftAid button
+            const percentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
+            // round a percentage to the nearest whole for display purpose 
+            const roundPercentage = Math.round(percentage);
+            // create a new variable for a new table row
+            const newRow = document.createElement('tr');
+            // insert the table data with the values
+            newRow.innerHTML = `<td>${giftAid}</td><td>${not}</td><td>${date}</td><td>${roundPercentage}%</td>`;
+            tableBody.appendChild(newRow);
+            data[date].percentage = percentage;
+        // save the data in local storage
+        localStorage.setItem('clickData', JSON.stringify(data));
+        }
+    }
