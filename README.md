@@ -1,14 +1,23 @@
-# giftaid-logger
+# Giftaid-logger
 
-Gift Aid is a simple way to increase the value of your gift to Oxfam – at no extra cost to you. If you pay tax in the UK, Oxfam can reclaim the basic rate of tax you have paid on your gift, which increases the value of your donations by 25%. So, if you donate £100, it is worth £125 to Oxfam. A gift aid provider signs up with oxfam, and when they donate goods, barcode labels are attached to those goods, with the intention of being scanned via the EPOS system.
+Gift Aid is a simple way to increase the value of your gift to Oxfam – at no extra cost to you. If you pay tax in the UK, Oxfam can reclaim the basic rate of tax you have paid on your gift, which increases the value of your donations by 25%. So, if you donate £100, it is worth £125 to Oxfam. A gift aid provider signs up with Oxfam, and when they donate goods, barcode labels are attached to those goods, to be scanned via the EPOS system.
 
-A current problem, that the Oxfam GB shops face is that currently, certain shops, seem to be lagging behind in gift aid sales. Analysis of the problem indicates that this could be due to either till operator error, donation sorter error, or just base anomilies in the amount of gift aid donations that are provided. In order to remedy this situation, instructions were given to record the amount of gift aid sales compared to non gift aid sales. In order to home in on the problem and remedy it. This, could be due to the fact that the till scanner hardware that recieves this data, are infact insufficient. which in turn causes the till operators, under pressure with big ques to not 'punch the data in manually' usually because of big ques.
-to provide a solution to this, given hardware sources that can be provided, we will produce an application that will:
+A current problem, that the Oxfam GB shops face is that currently, certain shops, seem to be lagging in gift aid sales. Analysis of the problem indicates that this could be due to either till operator error, donation sorter error, or just base anomalies in the amount of gift aid donations that are provided. In order to remedy this situation, instructions were given to record the amount of gift aid sales compared to non-gift aid sales. In order to home in on the problem and remedy it. This could be because the till scanner hardware that receives this data is, in fact insufficient. which in turn causes the till operators, whom then, under pressure, with big ques to meet, dont't 'punch the data in manually'.
+To provide a solution to this, given hardware sources that can be provided, we will produce an application that will:
 
 - record gift aid sales per till operator
-- identify potential anomolies
-- encourage particiapation through gamification
+- identify potential anomalies
+- encourage participation through gamification
 - provide feedback to area managers, to compare till data to app data
+
+APIS we are considering using are:
+
+- Day.js for tracking the date
+- openweathermap API - for displaying the weather -perhaps on a marquee
+- navigator.geolocation.API - to diplay where the user is based
+- a giff APi - as part of the gamification element - 'happy pictures' on a gift aid sale
+- a sound API - as part of the gamification process.
+  
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
