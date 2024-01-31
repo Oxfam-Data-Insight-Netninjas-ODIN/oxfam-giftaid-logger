@@ -1,22 +1,23 @@
 var userCode = "F1234";
 var firstName = "Martin";
 
-// // bring data from dayjs using API
-// // var currentDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
-// // create a variable referencing the html element with ID "currentDay"
-// var dateElem = $('#currentDay');
-// // // add the date to html element
-// dateElem.text(currentDate);
+// bring data from dayjs using API
+var currentDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
+// create a variable referencing the html element with ID "currentDay"
+var dateElem = $('#currentDay');
+// // add the date to html element
+dateElem.text(currentDate);
+console.log(currentDate);
 
 // creating varaible for weather API address and API key
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=";
 var key = "7093b5895d7dff871294e9d20a842e17";
 // // creating variables for current and 5days ahead dates
-// var currentDay = dayjs().format("D/M/YYYY");
+var currentDay = dayjs().format("D/M/YYYY");
 // // create variable coordinates referencing the localization of the user computer
-// var coordinates
+var coordinates
 // // create a variable for the name of location representing the user computer
-// var currentLocalization
+var currentLocalization
 
 // 3rd API ?
 if (navigator.geolocation) {
@@ -32,43 +33,49 @@ if (navigator.geolocation) {
     console.log("Longitude: " + longitude);
 
     // find location (as in city) from the coordonates
-  var url = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" + latitude + "&lon=" + longitude;
-  $.ajax({
-    url: url,
-    method: "GET",
-    success: function(response) {
-      var city = response.address.city;
-      console.log("City: " + city);
-    },
-    error: function() {
-      console.log("Error retrieving city location.");
-    }
-  });
-  
-  var coordinates = `${latitude}&lon=${longitude}`;
-  // display weather for default city - London and add weather icon - to be updated with lo
-  var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
-  console.log(cityQueryURL);
-  fetch(cityQueryURL)
-    .then(function (response) {
-      return response.json();
+   
+    fetch(`https://nominatim.openstreetmap.org/reverse?format=geojson&lat=${latitude}&lon=${longitude}`)
+    .then(response => response.json())
+    .then(data => {
+      // Do something with the response data
+      console.log(data);
     })
-    .then(function (data) {
-      console.log("weather : " + data);
-      // set a variable for wather icon addres and display it
-      var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-      var iconElement = $("<img>").attr("src", iconURL);
-      // display current weather data
-      $("#span1").text(currentLocalization + " (" + currentDay + ")");
-      $("#span2").empty();
-      $("#span2").append(iconElement);
-      // call the function and use API to populate weather data and display it
-      weatherCity("coordinates");
-  });
+    .catch(error => {
+      // Handle any errors
+      console.error(error);
+    });
+    // .fail(function(xhr, status, error) {
+    //   // Handle any errors
+    //   console.error(error);
+    // });
+    // const city = response.data.results[0].components.city;
+    // log("city :" + city)
 
 
+
+
+    console.log("lat : " +latitude);
+    var coordinates = `${latitude}&lon=${longitude}`;
+
+    // display weather for default city - London and add weather icon - to be updated with lo
+    var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
+    console.log(cityQueryURL);
+    fetch(cityQueryURL)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log("weather : " + data.main.temp);
+        // set a variable for wather icon addres and display it
+        var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+        var iconElement = $("<img>").attr("src", iconURL);
+        // display current weather data
+        $("#currentTemperature").text(" Temp: " + data.main.temp + "°C");
   
-  }
+  
+  })}
+  
+  
   
   function error() {
     console.log("Unable to retrieve your location.");
