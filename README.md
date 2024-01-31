@@ -1,5 +1,43 @@
-# giftaid-logger
-An idea to help encourage the data input accuracy of till operators ( will fill in use case / why and what is needed on the morrow and why it is important and useful to Oxfam to gather this data - Tez)
+# Giftaid-logger
+
+Gift Aid is a simple way to increase the value of your gift to Oxfam – at no extra cost to you. If you pay tax in the UK, Oxfam can reclaim the basic rate of tax you have paid on your gift, which increases the value of your donations by 25%. So, if you donate £100, it is worth £125 to Oxfam. A gift aid provider signs up with Oxfam, and when they donate goods, barcode labels are attached to those goods, to be scanned via the EPOS system.
+
+A current problem, that the Oxfam GB shops face is that currently, certain shops, seem to be lagging in gift aid sales. Analysis of the problem indicates that this could be due to either till operator error, donation sorter error, or just base anomalies in the amount of gift aid donations that are provided. In order to remedy this situation, instructions were given to record the amount of gift aid sales compared to non-gift aid sales. In order to home in on the problem and remedy it. This could be because the till scanner hardware that receives this data is, in fact insufficient. which in turn causes the till operators, whom then, under pressure, with big ques to meet, dont't 'punch the data in manually'.
+To provide a solution to this, given hardware sources that can be provided, we will produce an application that will:
+
+- record gift aid sales per till operator
+- identify potential anomalies
+- encourage participation through gamification
+- provide feedback to area managers, to compare till data to app data
+
+APIS we are considering using are:
+
+- Day.js for tracking the date
+- openweathermap API - for displaying the weather -perhaps on a marquee
+- navigator.geolocation.API - to diplay where the user is based
+- a giff APi - as part of the gamification element - 'happy pictures' on a gift aid sale
+- a sound API - as part of the gamification process.
+  
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+chat gpts effort:
+
+
+Gift Aid Enhancement Strategy for Oxfam GB
+Gift Aid presents an opportunity to amplify the impact of contributions to Oxfam without incurring additional costs for donors. For UK taxpayers, Oxfam can reclaim 25% of the basic tax paid on their gifts, transforming a £100 donation into a £125 value. Gift Aid providers partnering with Oxfam affix barcode labels to donated goods, facilitating seamless integration with the Electronic Point of Sale (EPOS) system for efficient tracking.
+
+However, a current challenge faced by Oxfam GB shops involves certain outlets lagging in Gift Aid sales. Analysis reveals potential issues such as till operator errors, discrepancies in donation sorting, and anomalies in Gift Aid donations. To address this, a systematic approach has been initiated, instructing the recording of Gift Aid sales versus non-Gift Aid sales to pinpoint and rectify the problem.
+
+One contributing factor may be insufficient hardware in the till scanners receiving this data, leading operators to forgo manual input during peak times. To address this issue, we propose the development of an application utilizing suitable hardware sources. The application aims to:
+
+Record Gift Aid sales per till operator.
+Identify potential anomalies in Gift Aid transactions.
+Foster participation through gamification strategies.
+Provide feedback to area managers, enabling a comparison between till data and app-generated data.
+Implementation of this solution is poised to enhance data input accuracy, encouraging a seamless and efficient Gift Aid process while providing valuable insights for management.
+
+Therefore, an idea to help encourage the data input accuracy of till operators and provide feedback to managers and area managers is to be implemented
 
 ## basic structure
 
