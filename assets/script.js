@@ -1,4 +1,14 @@
 // Back-end branch
+
+// bring data from dayjs using API
+var currentDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
+// create a variable referencing the html element with ID "currentDay"
+var dateElem = $('#currentDay');
+// add the date to html element
+dateElem.text(currentDate);
+
+
+
 var isFullscreen = false;
 
 // create a function for toggle fullscreen view
