@@ -174,11 +174,11 @@ function sendDataToPage2() {
 // click event to open table html
 $('#myButtonHistory').click(function() {
   // Open the other webpage
-  window.open('table.html', '_blank');
+  window.location.href = 'assets/table.html'
 });
 
 // click event to open table html
 $('#myButtonScores').click(function() {
   // Open the other webpage
-  window.open('scores.html', '_blank');
+  window.location.href = 'assets/scores.html'
 });
