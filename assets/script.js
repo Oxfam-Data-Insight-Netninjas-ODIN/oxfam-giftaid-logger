@@ -5,6 +5,11 @@ var firstName = "Martin";
 var currentDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
 // create a variable referencing the html element with ID "currentDay"
 var dateElem = $('#currentDay');
+// Moved these two here to allow for scope access
+var currentCityElem = $('#currentLocation');
+var tempElem = $('#locationTemp');
+// Create a variable referencing the html element with ID "currentLocationData"
+var locationElem = $("#currentLocationData");
 // // add the date to html element
 dateElem.text(currentDate);
 console.log(currentDate);
@@ -42,8 +47,9 @@ function success(position) {
 
             var currentCity = data.features[0].properties.address.town;
             console.log("current location =" + currentCity);
-            var currentCityElem = $('#currentLocation');
             currentCityElem.text(currentCity);
+            // Meant to fetch data but undefined
+            locationElem.text(`${currentCityElem.text()} | ${tempElem.text()}`);
         })
         .catch(error => {
             // Handle any errors
@@ -67,9 +73,7 @@ function success(position) {
             var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
             var iconElement = $("<img>").attr("src", iconURL);
             // display current weather data
-            $("#currentTemperature").text(" Temp: " + data.main.temp + "°C");
-
-
+            tempElem.text(" Temp: " + data.main.temp + "°C");
         })
 }
 
