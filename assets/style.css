@@ -20,9 +20,4 @@
 .nav-link:hover {
     color: #006543;
 }
-
-/* Changes the last link (logout) to red */ 
-li:last-child a:last-child {
-    color: #FD5757;
-}
 /* End of navigation bar styling */
