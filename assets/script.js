@@ -169,3 +169,10 @@ function sendDataToPage2() {
     var otherPage = window.open('highscores.html');
     otherPage.onload = scoresOnOtherPage();
 }
+
+
+// click event to open table html
+$('#myButton1').click(function() {
+  // Open the other webpage
+  window.open('table.html', '_blank');
+});
