@@ -1,1 +1,28 @@
-/* Front-end branch */
+/* Start of navigation bar styling */
+.container-fluid {
+    margin: 10px;
+}
+/* Positions the welcome message under the logo */
+.welcome-message {
+    position: absolute;
+    bottom: 5;
+    left: 115; 
+    color: #458532;
+    font-weight: bold;
+}
+
+.nav-link {
+    font-weight: bold;
+    color: rgb(36, 39, 69);
+    margin-right: 20px;
+}
+
+.nav-link:hover {
+    color: #006543;
+}
+
+/* Changes the last link (logout) to red */ 
+li:last-child a:last-child {
+    color: #FD5757;
+}
+/* End of navigation bar styling */
