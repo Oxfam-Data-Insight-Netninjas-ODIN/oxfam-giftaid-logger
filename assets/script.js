@@ -102,11 +102,11 @@ var fullscreenButton = document.getElementById("fullscreen-button");
 // add event listener for clicking the fullscreen button
 fullscreenButton.addEventListener("click", toggleFullscreen);
 
-// // add sound effect when pressing buttons
-// function playSound(soundId) {
-//     const sound = document.getElementById(soundId);
-//     sound.play();
-// }
+// add sound effect when pressing buttons
+function playSound(soundId) {
+    const sound = document.getElementById(soundId);
+    sound.play();
+}
 
 // create a function to increment the values according to which is button pressed
 function incrementCounter(buttonType) {
@@ -172,7 +172,13 @@ function sendDataToPage2() {
 
 
 // click event to open table html
-$('#myButton1').click(function() {
+$('#myButtonHistory').click(function() {
   // Open the other webpage
-  window.open('table.html', '_blank');
+  window.location.href = 'assets/table.html'
+});
+
+// click event to open table html
+$('#myButtonScores').click(function() {
+  // Open the other webpage
+  window.location.href = 'assets/scores.html'
 });
