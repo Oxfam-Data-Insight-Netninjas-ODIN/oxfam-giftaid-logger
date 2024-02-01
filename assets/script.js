@@ -33,7 +33,6 @@ function success(position) {
     console.log("Longitude: " + longitude);
 
     // find location (as in city) from the coordonates
-
     fetch(`https://nominatim.openstreetmap.org/reverse?format=geojson&lat=${latitude}&lon=${longitude}`)
         .then(response => response.json())
         .then(data => {
@@ -104,7 +103,8 @@ fullscreenButton.addEventListener("click", toggleFullscreen);
 
 // add sound effect when pressing buttons
 function playSound(soundId) {
-    const sound = document.getElementById(soundId);
+    const sound = new Audio(`assets/sound/${soundId}.wav`);
+
     sound.play();
 }
 
