@@ -102,11 +102,11 @@ var fullscreenButton = document.getElementById("fullscreen-button");
 // add event listener for clicking the fullscreen button
 fullscreenButton.addEventListener("click", toggleFullscreen);
 
-// // add sound effect when pressing buttons
-// function playSound(soundId) {
-//     const sound = document.getElementById(soundId);
-//     sound.play();
-// }
+// add sound effect when pressing buttons
+function playSound(soundId) {
+    const sound = document.getElementById(soundId);
+    sound.play();
+}
 
 // create a function to increment the values according to which is button pressed
 function incrementCounter(buttonType) {
