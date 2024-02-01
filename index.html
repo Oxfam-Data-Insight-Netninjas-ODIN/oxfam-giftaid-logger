@@ -1,101 +1,87 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Gift Aid Buttons</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"
     />
     <link rel="stylesheet" href="assets/style.css" />
-  </head>
-  <body>
+</head>
+<body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"
-          ><img
-            src="assets/Images/oxfam_logo.png"
-            width="200"
-            alt="Oxfam logo."
-        /></a>
-        <p class="welcome-message">Welcome, Employee</p>
-        <button
-          class="navbar-toggler navbar-light"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >Store Data</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Leaderboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Logout</a>
-            </li>
-          </ul>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="assets/Images/oxfam_logo.png" width="200" alt="Oxfam logo." />
+            </a>
+            <p class="welcome-message">Welcome, Employee</p>
+            <button
+                class="navbar-toggler navbar-light"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Store Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
     <img id="logo" src="images/OXFAM.webp" />
     <h1 style="color: azure; text-decoration: double">Gift Aid Counter</h1>
-    <div id="buttoncontainer">
-      <button
-        id="giftAid"
-        onclick="incrementCounter('giftAid'); playSound('pickupCoinSound')"
-      >
-        Gift Aid
-      </button>
-      <button
-        id="not"
-        onclick="incrementCounter('not'); playSound('hitHurtSound')"
-      >
-        Not Gift Aid
-      </button>
-    </div>
+
     <table>
-      <thead>
-        <tr>
-          <th>Gift Aided</th>
-          <th>Not Gift Aided</th>
-          <th>Date</th>
-          <th>Percentage</th>
-        </tr>
-      </thead>
-      <tbody id="dataTableBody"></tbody>
+        <thead>
+            <tr>
+                <th>Gift Aided</th>
+                <th>Not Gift Aided</th>
+                <th>Date</th>
+                <th>Percentage</th>
+            </tr>
+        </thead>
+        <tbody id="dataTableBody"></tbody>
     </table>
     <div id="username"></div>
     <p style="color: azure; text-align: center">
-      Data is stored in your browser History. If you clear your browser data,
-      the data will be lost.
+        Data is stored in your browser History. If you clear your browser data, the data will be lost.
     </p>
-    <button id="fullscreen-button" onclick="toggleFullscreen()">
-      Toggle Fullscreen
-    </button>
+    <button id="fullscreen-button" onclick="toggleFullscreen()">Toggle Fullscreen</button>
+
+    <div id="button-container" style="text-align: center; margin-top: 20px;">
+        <button id="giftAidBig" style="padding: 20px 40px; background-color: #4CAF50; color: white;">Gift Aid</button>
+        <button id="notSmall" style="padding: 15px 30px; background-color: #D9534F; color: white;">Not Gift Aided</button>
+    </div>
+
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"
     ></script>
     <script
-      src="https://code.jquery.com/jquery-3.7.1.js"
-      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-      crossorigin="anonymous"
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="assets/script.js"></script>
     <script src="assets/tabledata.js"></script>
-  </body>
+</body>
 </html>
