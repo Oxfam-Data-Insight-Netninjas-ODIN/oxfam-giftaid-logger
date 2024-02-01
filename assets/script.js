@@ -1,39 +1,15 @@
-// Back-end branch
 
 // bring data from dayjs using API
 var currentDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
 // create a variable referencing the html element with ID "currentDay"
 var dateElem = $('#currentDay');
-// add the date to html element
 dateElem.text(currentDate);
 
 // creating varaible for weather API address and API key
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=";
 var key = "7093b5895d7dff871294e9d20a842e17";
-// creating variables for current and 5days ahead dates
 var currentDay = dayjs().format("D/M/YYYY");
-// create variable coordinates referencing the localization of the user computer
 var coordinates
-// create a variable for the name of location representing the user computer
 var currentLocalization
-
-// display weather for default city - London and add weather icon - to be updated with lo
-var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
-fetch(cityQueryURL)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    // set a variable for wather icon addres and display it
-    var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-    var iconElement = $("<img>").attr("src", iconURL);
-    // display current weather data
-    $("#span1").text(currentLocalization + " (" + currentDay + ")");
-    $("#span2").empty();
-    $("#span2").append(iconElement);
-    // call the function and use API to populate weather data and display it
-    weatherCity("coordinates");
-  });
 
 
 
@@ -65,48 +41,46 @@ function playSound(soundId) {
 // create a function to increment the values according to which is button pressed
 function incrementCounter(buttonType) {
     // create a variable referencing the curent date and change it to string
-        const currentDate = new Date().toLocaleDateString(); 
-        console.log("currenDate: "+ currentDate);
-        // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
-        let data = JSON.parse(localStorage.getItem('clickData')) || {};
-        console.log("data : " +data);
-        // check if "currentDate" key exist in the saved "data" object ; if not, create a default value of 0
-        if (!data[currentDate]) {
-            data[currentDate] = { 'giftAid': 0, 'not': 0 };
-        }
-        // increase/update the value of the "data""currentDate" value of the button pressed
-        data[currentDate][buttonType]++;
-        console.log(data[currentDate]);
-        // save the updated data in local storage
-        localStorage.setItem('clickData', JSON.stringify(data));
-        updateTable();
-    }
+    const currentDate = new Date().toLocaleDateString();
+    console.log("currenDate: " + currentDate);
+    // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
+    let data = JSON.parse(localStorage.getItem('clickData')) || {};
+    console.log("data : " + data);
+    // check if "currentDate" key exist in the saved "data" object ; if not, create a default value of 0
 
-    // create function to create / update table with data introduced
-    function updateTable() {
-        // call data from local storage
-        const data = JSON.parse(localStorage.getItem('clickData')) || {}
-        // create variable referencing the element with ID "dataTableBody"
-        const tableBody = document.getElementById('dataTableBody');
-        // setup initial value to empty
-        tableBody.innerHTML = ''
-        // create a for loop to take every key in "data" object 
-        for (const date in data) {
-            // object destructuring syntax is used to extract the values of the properties giftAid and not from the data objec
-            const { giftAid, not } = data[date];
-            // create a variable for the total number of both buttons pressed
-            const total = giftAid + not;
-            // ternary operator is used to calculate the percentage value of giftAid button
-            const percentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
-            // round a percentage to the nearest whole for display purpose 
-            const roundPercentage = Math.round(percentage);
-            // create a new variable for a new table row
-            const newRow = document.createElement('tr');
-            // insert the table data with the values
-            newRow.innerHTML = `<td>${giftAid}</td><td>${not}</td><td>${date}</td><td>${roundPercentage}%</td>`;
-            tableBody.appendChild(newRow);
-            data[date].percentage = percentage;
+    // increase/update the value of the "data""currentDate" value of the button pressed
+    data[currentDate][buttonType]++;
+    console.log(data[currentDate]);
+    // save the updated data in local storage
+    localStorage.setItem('clickData', JSON.stringify(data));
+    updateTable();
+}
+
+// create function to create / update table with data introduced
+function updateTable() {
+    // call data from local storage
+    const data = JSON.parse(localStorage.getItem('clickData')) || {}
+    // create variable referencing the element with ID "dataTableBody"
+    const tableBody = document.getElementById('dataTableBody');
+    // setup initial value to empty
+    tableBody.innerHTML = ''
+    // create a for loop to take every key in "data" object 
+    for (const date in data) {
+        // object destructuring syntax is used to extract the values of the properties giftAid and not from the data objec
+        const { giftAid, not } = data[date];
+        // create a variable for the total number of both buttons pressed
+        const total = giftAid + not;
+        // ternary operator is used to calculate the percentage value of giftAid button
+        const percentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
+        // round a percentage to the nearest whole for display purpose 
+        const roundPercentage = Math.round(percentage);
+        // create a new variable for a new table row
+        const newRow = document.createElement('tr');
+        // insert the table data with the values
+        newRow.innerHTML = `<td>${giftAid}</td><td>${not}</td><td>${date}</td><td>${roundPercentage}%</td>`;
+        tableBody.appendChild(newRow);
+        data[date].percentage = percentage;
         // save the data in local storage
         localStorage.setItem('clickData', JSON.stringify(data));
-        }
     }
+}

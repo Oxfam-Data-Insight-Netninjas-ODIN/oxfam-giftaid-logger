@@ -1,5 +1,3 @@
-# giftaid-logger
-An idea to help encourage the data input accuracy of till operators ( will fill in use case / why and what is needed on the morrow and why it is important and useful to Oxfam to gather this data - Tez)
 
 ## basic structure
 
@@ -57,4 +55,3 @@ this page is similar to page 2 except it is a high-score table of users with the
 Ideally, finding a way of printing this data into a readable format on paper would be good (to be sorted by highest percentage).
 
 - a link to page 1, possibly small and discrete as well 
-- a link to page 2, also possibly small and discrete. 
