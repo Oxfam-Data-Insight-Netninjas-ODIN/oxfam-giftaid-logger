@@ -56,7 +56,7 @@ function success(position) {
 
     // display weather for default city - London and add weather icon - to be updated with lo
     var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
-    console.log(cityQueryURL);
+    // console.log(cityQueryURL);
     fetch(cityQueryURL)
         .then(function (response) {
             return response.json();
@@ -102,11 +102,11 @@ var fullscreenButton = document.getElementById("fullscreen-button");
 // add event listener for clicking the fullscreen button
 fullscreenButton.addEventListener("click", toggleFullscreen);
 
-// add sound effect when pressing buttons
-function playSound(soundId) {
-    const sound = document.getElementById(soundId);
-    sound.play();
-}
+// // add sound effect when pressing buttons
+// function playSound(soundId) {
+//     const sound = document.getElementById(soundId);
+//     sound.play();
+// }
 
 // create a function to increment the values according to which is button pressed
 function incrementCounter(buttonType) {
