@@ -37,21 +37,18 @@ function success(position) {
     fetch(`https://nominatim.openstreetmap.org/reverse?format=geojson&lat=${latitude}&lon=${longitude}`)
         .then(response => response.json())
         .then(data => {
-            // Do something with the response data
+            // take the reverse geolocation from API and display the city
             console.log(data);
+
+            var currentCity = data.features[0].properties.address.town;
+            console.log("current location =" + currentCity);
+            var currentCityElem = $('#currentLocation');
+            currentCityElem.text(currentCity);
         })
         .catch(error => {
             // Handle any errors
             console.error(error);
         });
-    // .fail(function(xhr, status, error) {
-    //   // Handle any errors
-    //   console.error(error);
-    // });
-    // const city = response.data.results[0].components.city;
-    // log("city :" + city)
-
-
 
 
     console.log("lat : " + latitude);
@@ -59,7 +56,7 @@ function success(position) {
 
     // display weather for default city - London and add weather icon - to be updated with lo
     var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
-    console.log(cityQueryURL);
+    // console.log(cityQueryURL);
     fetch(cityQueryURL)
         .then(function (response) {
             return response.json();
@@ -105,11 +102,11 @@ var fullscreenButton = document.getElementById("fullscreen-button");
 // add event listener for clicking the fullscreen button
 fullscreenButton.addEventListener("click", toggleFullscreen);
 
-// add sound effect when pressing buttons
-function playSound(soundId) {
-    const sound = document.getElementById(soundId);
-    sound.play();
-}
+// // add sound effect when pressing buttons
+// function playSound(soundId) {
+//     const sound = document.getElementById(soundId);
+//     sound.play();
+// }
 
 // create a function to increment the values according to which is button pressed
 function incrementCounter(buttonType) {
@@ -131,13 +128,8 @@ function incrementCounter(buttonType) {
     updateTable();
 }
 
-// increase/update the value of the "data""currentDate" value of the button pressed
-data[currentDate][buttonType]++;
-console.log(data[currentDate]);
-// save the updated data in local storage
-localStorage.setItem('clickData', JSON.stringify(data));
-updateTable();
-}
+
+
 
 // create function to create / update table with data introduced
 function updateTable() {
