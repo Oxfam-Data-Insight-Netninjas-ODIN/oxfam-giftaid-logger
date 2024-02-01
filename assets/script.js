@@ -1,8 +1,9 @@
 var userCode = "F1234";
 var firstName = "Martin";
 
-// bring data from dayjs using API
-var currentDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
+// bring data from dayjs using 1st API
+var todayDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
+
 // create a variable referencing the html element with ID "currentDay"
 var dateElem = $('#currentDay');
 // Moved these two here to allow for scope access
@@ -11,18 +12,13 @@ var tempElem = $('#locationTemp');
 // Create a variable referencing the html element with ID "currentLocationData"
 var locationElem = $("#currentLocationData");
 // // add the date to html element
-dateElem.text(currentDate);
-console.log(currentDate);
+dateElem.text(todayDate);
+console.log(todayDate);
 
-// creating varaible for weather API address and API key
+// creating varaible for weather 2nd API address and API key
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=";
 var key = "7093b5895d7dff871294e9d20a842e17";
-// // creating variables for current and 5days ahead dates
-var currentDay = dayjs().format("D/M/YYYY");
-// // create variable coordinates referencing the localization of the user computer
-var coordinates
-// // create a variable for the name of location representing the user computer
-var currentLocalization
+
 
 // 3rd API ?
 if (navigator.geolocation) {
@@ -38,15 +34,15 @@ function success(position) {
     console.log("Longitude: " + longitude);
 
     // find location (as in city) from the coordonates
-
     fetch(`https://nominatim.openstreetmap.org/reverse?format=geojson&lat=${latitude}&lon=${longitude}`)
         .then(response => response.json())
         .then(data => {
             // take the reverse geolocation from API and display the city
-            console.log(data);
-
             var currentCity = data.features[0].properties.address.town;
+
+
             console.log("current location =" + currentCity);
+
             currentCityElem.text(currentCity);
             // Meant to fetch data but undefined
             locationElem.text(`${currentCityElem.text()} | ${tempElem.text()}`);
@@ -56,8 +52,7 @@ function success(position) {
             console.error(error);
         });
 
-
-    console.log("lat : " + latitude);
+// // create variable coordinates referencing the localization of the user computer
     var coordinates = `${latitude}&lon=${longitude}`;
 
     // display weather for default city - London and add weather icon - to be updated with lo
@@ -73,23 +68,18 @@ function success(position) {
             var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
             var iconElement = $("<img>").attr("src", iconURL);
             // display current weather data
+
+
             tempElem.text(" Temp: " + data.main.temp + "°C");
+
         })
 }
-
-
-
 function error() {
     console.log("Unable to retrieve your location.");
 }
 
 
-
-
-
-console.log("Test");
 var isFullscreen = false;
-
 // create a function for toggle fullscreen view
 function toggleFullscreen() {
     if (isFullscreen) {
@@ -106,20 +96,16 @@ var fullscreenButton = document.getElementById("fullscreen-button");
 // add event listener for clicking the fullscreen button
 fullscreenButton.addEventListener("click", toggleFullscreen);
 
-// add sound effect when pressing buttons
-function playSound(soundId) {
-    const sound = document.getElementById(soundId);
-    sound.play();
-}
 
 // create a function to increment the values according to which is button pressed
 function incrementCounter(buttonType) {
     // create a variable referencing the curent date and change it to string
-    const currentDate = new Date().toLocaleDateString();
+    var dateForObject = dayjs().format('DD/MM/YYYY');
+    const currentDate = dateForObject;
     console.log("currenDate: " + currentDate);
     // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
     let data = JSON.parse(localStorage.getItem('clickData')) || {};
-    console.log("data : " + data);
+
     // check if "currentDate" key exist in the saved "data" object ; if not, create a default value of 0
     if (!data[currentDate]) {
         data[currentDate] = { 'user': userCode, 'firstName': "Martin", 'giftAid': 0, 'not': 0, 'date': currentDate };
@@ -131,7 +117,6 @@ function incrementCounter(buttonType) {
     localStorage.setItem('clickData', JSON.stringify(data));
     updateTable();
 }
-
 
 
 
@@ -164,15 +149,15 @@ function updateTable() {
     }
 }
 
-// open another page to display the previous days results
-function sendDataToPage2() {
-    // take input userCode, add data to local storage and open page 2 with data from previous days
-    var inputData = userCode.value;
-    localStorage.setItem("userCode", inputData);
-    // open the page with highscore
-    var otherPage = window.open('highscores.html');
-    otherPage.onload = scoresOnOtherPage();
-}
+// // open another page to display the previous days results
+// function sendDataToPage2() {
+//     // take input userCode, add data to local storage and open page 2 with data from previous days
+//     var inputData = userCode.value;
+//     localStorage.setItem("userCode", inputData);
+//     // open the page with highscore
+//     var otherPage = window.open('highscores.html');
+//     otherPage.onload = scoresOnOtherPage();
+// }
 
 
 // click event to open table html
@@ -186,3 +171,10 @@ $('#myButtonScores').click(function() {
   // Open the other webpage
   window.location.href = 'assets/scores.html'
 });
+
+// add sound effect when pressing buttons
+function playSound(soundId) {
+  const sound = new Audio(`assets/sound/${soundId}.wav`);
+
+  sound.play();
+}

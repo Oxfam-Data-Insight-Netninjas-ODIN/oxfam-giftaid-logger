@@ -11,6 +11,13 @@ var historyData = [
 console.log(historyData);
 
 
+// gett data store in storage
+let storageData = JSON.parse(localStorage.getItem('clickData'));
+console.log(storageData);
+var valuesArray = Object.values(storageData);
+// add local storage data to current object data
+historyData.push(valuesArray[0]);
+console.log(valuesArray[0]);
 
 // variable for first object length
 var historyDataObjectLength = Object.keys(historyData).length;
@@ -30,6 +37,8 @@ for (var i=0 ; i<historyDataObjectLength ; i++) {
   newRow.append(`<td>${populateDate}</td><td>${populateUser}</td><td>${populateName}</td><td>${populateGiftAid}</td><td>${populateNot}</td><td>${populatePercentage}</td>`)
   $('#tableHistoryBody').append(newRow);
 }
+
+
 
 
 // code for Scores HTML
