@@ -5,8 +5,8 @@
 /* Positions the welcome message under the logo */
 .welcome-message {
     position: absolute;
-    bottom: 5;
-    left: 115; 
+    bottom: 5px;
+    left: 115px; 
     color: #458532;
     font-weight: bold;
 }
