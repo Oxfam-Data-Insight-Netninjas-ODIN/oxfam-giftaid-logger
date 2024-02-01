@@ -172,7 +172,13 @@ function sendDataToPage2() {
 
 
 // click event to open table html
-$('#myButton1').click(function() {
+$('#myButtonHistory').click(function() {
   // Open the other webpage
   window.open('table.html', '_blank');
+});
+
+// click event to open table html
+$('#myButtonScores').click(function() {
+  // Open the other webpage
+  window.open('scores.html', '_blank');
 });
