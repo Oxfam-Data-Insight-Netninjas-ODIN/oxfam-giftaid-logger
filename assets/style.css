@@ -143,3 +143,7 @@ p.logger-desc-section-text {
     padding: 30px;
     border-radius: 50px;
 }
+
+#fullscreen-button:hover {
+    background-color: #769d01;
+}
