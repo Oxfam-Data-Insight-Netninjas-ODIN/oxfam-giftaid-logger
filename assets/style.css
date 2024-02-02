@@ -57,6 +57,9 @@ button {
 }
 /* End of navigation bar styling */
 
+#currentDay {
+    font-size: 20px;
+}
 
 /* INDEX.HTML */
 
