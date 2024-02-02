@@ -70,3 +70,87 @@ $.each(historyData, function(index, element) {
   $('#tableScoresBody').append(newRow);
 });
 
+
+// work in progress with data copied from main html to test it here !
+
+
+
+
+// bring data from dayjs using 1st API
+var todayDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
+
+// create a variable referencing the html element with ID "currentDay"
+var dateElem = $('#currentDay');
+// Moved these two here to allow for scope access
+var currentCityElem = $('#currentLocation');
+var tempElem = $('#locationTemp');
+
+
+// Create a variable referencing the html element with ID "currentLocationData"
+var locationElem = $("#currentLocationData");
+// // add the date to html element
+dateElem.text(todayDate);
+console.log(todayDate);
+
+// creating varaible for weather 2nd API address and API key
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=";
+var key = "7093b5895d7dff871294e9d20a842e17";
+
+
+// 3rd API ?
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+} else {
+    console.log("Geolocation is not supported by this browser.");
+}
+// find the coordonates (long and lat) of user (need one time acceptance)
+function success(position) {
+    var latitude = position.coords.latitude.toFixed(2);
+    var longitude = position.coords.longitude.toFixed(2);
+    console.log("Latitude: " + latitude);
+    console.log("Longitude: " + longitude);
+
+    // find location (as in city) from the coordonates
+    fetch(`https://nominatim.openstreetmap.org/reverse?format=geojson&lat=${latitude}&lon=${longitude}`)
+        .then(response => response.json())
+        .then(data => {
+            // take the reverse geolocation from API and display the city
+            var currentCity = data.features[0].properties.address.town;
+
+
+            console.log("current location =" + currentCity);
+
+            currentCityElem.text(currentCity);
+            // Meant to fetch data but undefined
+            locationElem.text(`${currentCityElem.text()} | ${tempElem.text()}`);
+        })
+        .catch(error => {
+            // Handle any errors
+            console.error(error);
+        });
+
+// // create variable coordinates referencing the localization of the user computer
+    var coordinates = `${latitude}&lon=${longitude}`;
+
+    // display weather for default city - London and add weather icon - to be updated with lo
+    var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
+    // console.log(cityQueryURL);
+    fetch(cityQueryURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log("weather : " + data.main.temp);
+            // set a variable for wather icon addres and display it
+            var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            var iconElement = $("<img>").attr("src", iconURL);
+            // display current weather data
+
+
+            tempElem.text(" Temp: " + data.main.temp + "°C");
+
+        })
+}
+function error() {
+    console.log("Unable to retrieve your location.");
+}
