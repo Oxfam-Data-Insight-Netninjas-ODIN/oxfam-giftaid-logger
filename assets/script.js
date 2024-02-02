@@ -109,6 +109,10 @@ function updateTable() {
     localdata[date].percentage = percentage;
     // save the data in local storage
     localStorage.setItem("clickData", JSON.stringify(localdata));
+    // If the amount of non-gift aided is greater than gift aided, switch the arrow colour to red
+    if (not > giftAid) {
+        $("#arrow").attr("src","red_score_arrow");
+    }
   }
 }
 
@@ -234,3 +238,9 @@ function playSound(soundId) {
 
   sound.play();
 }
+
+// If the viewport is equal to or under 575 pixels wide, remove arrow from the page
+if (window.matchMedia("(max-width: 575px)").matches) {
+    $("#arrow").remove();
+  }
+

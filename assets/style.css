@@ -1,7 +1,34 @@
+:root {
+    --link-colour: #99CC00;
+    --support-text: 0.7;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background: linear-gradient(90deg, black, green);
+    animation: gradientAnimation 20s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    margin: 0 10px;
+}
+
 /* Start of navigation bar styling */
 .container-fluid {
     margin: 10px;
 }
+
 /* Positions the welcome message under the logo */
 .welcome-message {
     position: absolute;
@@ -13,15 +40,110 @@
 
 .nav-link {
     font-weight: bold;
-    color: rgb(36, 39, 69);
+    color: white;
     margin-right: 20px;
 }
 
 .nav-link:hover {
-    color: #006543;
+    color: var(--link-colour);
+}
+
+.active {
+    color: var(--link-colour);
 }
 /* End of navigation bar styling */
 
-#currentDay {
-    font-size: 1.2em;
+
+/* INDEX.HTML */
+
+/* Start of GA/NGA button styling */
+#ga-container, #nga-container {
+    position: relative;
+}
+
+#giftAid, #not {
+    /* Scales the size of the buttons as the viewport is resized */
+    padding: 5vw;
+    margin: 0;
+    font-size: 7vw;
+    border-radius: 20px;
+    /* Adds drop shadow */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    color: white;
+}
+
+#giftAid {
+    background-color: var(--link-colour); /* Green */
+    position: relative;
+    z-index: 2;
+    top: 2vh;
+    left: 2vw;
+}
+
+#not {
+    background-color: #F35959; /* Red */
+    position: relative;
+    top: -5vh;
+    left: 35vw;
+    z-index: 1;
+}
+
+/* Switches button layout when screen size is 768px (mobile) */
+@media only screen and (max-width: 768px) {
+    #giftAid, #not {
+        position: static;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    /* Adds space between buttons */
+    #not {
+        margin-top: 100px;
+    }
+  }
+
+/* Adds enlarge effect for ga/nga buttons */
+#giftAid:hover, #not:hover {
+    transform: scale(1.05);
+  }
+/* End of GA/NGA button styling */
+
+/* Start of description section styling */
+#description {
+    background-color: #458532;
+    padding: 50px;
+}
+
+h3, h4 {
+    font-size: calc(2vw + 1rem);
+}
+
+#ga-count {
+    color: var(--link-colour);
+}
+
+#nga-count {
+    color: #F35959;
+}
+
+p.logger-desc-section-text {
+    opacity: var(--support-text);
+}
+
+#arrow {
+    max-width: 60%;
+    margin: auto;
+}
+/* End of description section styling */
+
+#fullscreen-button {
+    background-color: var(--link-colour);
+    color: white;
+    font-size: 20px;
+    padding: 30px;
+    border-radius: 50px;
+}
+
+#fullscreen-button:hover {
+    background-color: #769d01;
 }
