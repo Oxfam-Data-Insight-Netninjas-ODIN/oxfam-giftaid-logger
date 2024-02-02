@@ -11,6 +11,8 @@ var currentCityElem = $('#currentLocation');
 var tempElem = $('#locationTemp');
 // Create a variable referencing the html element with ID "currentLocationData"
 var locationElem = $("#currentLocationData");
+// Create a variable referencing the html element with ID "arrow"
+var arrowElem = $("#arrow");
 // // add the date to html element
 dateElem.text(todayDate);
 console.log(todayDate);
@@ -178,3 +180,8 @@ function playSound(soundId) {
 
   sound.play();
 }
+
+// If the viewport is equal to or under 575 pixels wide, remove arrow from the page
+if (window.matchMedia("(max-width: 575px)").matches) {
+    arrowElem.remove();
+  }
