@@ -11,13 +11,18 @@ var historyData = [
 console.log(historyData);
 
 
-// gett data store in storage
+// gett data stored in storage (is stored as object with objects inside)
 let storageData = JSON.parse(localStorage.getItem('clickData'));
 console.log(storageData);
+// create an array with the values of the keys (the key is the data when was introduced)
 var valuesArray = Object.values(storageData);
-// add local storage data to current object data
-historyData.push(valuesArray[0]);
-console.log(valuesArray[0]);
+// use a loop to add all data from local storage to the main database (the "historyData" )
+for (i=0 ; i<valuesArray.length ; i++) {
+  // add local storage data to current object data
+  historyData.push(valuesArray[i]);
+  console.log(valuesArray[i]);
+}
+
 
 // variable for first object length
 var historyDataObjectLength = Object.keys(historyData).length;
@@ -34,7 +39,7 @@ for (var i=0 ; i<historyDataObjectLength ; i++) {
   // if (populateInitials === null || populateScore === null ) {continue;}
   var newRow = $("<tr>");
   $('#tableHistoryBody').append(newRow);
-  newRow.append(`<td>${populateDate}</td><td>${populateUser}</td><td>${populateName}</td><td>${populateGiftAid}</td><td>${populateNot}</td><td>${populatePercentage}</td>`)
+  newRow.append(`<td>${populateDate}</td><td>${populateUser}</td><td>${populateName}</td><td>${populateGiftAid}</td><td>${populateNot}</td><td>${Math.round(populatePercentage)}%</td>`)
   $('#tableHistoryBody').append(newRow);
 }
 
@@ -59,7 +64,7 @@ $.each(historyData, function(index, element) {
   newRow.append('<td>' + element.firstName + '</td>');
   newRow.append('<td>' + element.giftAid + '</td>');
   newRow.append('<td>' + element.not + '</td>');
-  newRow.append('<td>' + element.percentage + '</td>');
+  newRow.append('<td>' + Math.round(element.percentage)+"%" + '</td>');
 
   // Append the new row to the table
   $('#tableScoresBody').append(newRow);
