@@ -72,17 +72,19 @@
       <h3 id="currentDay"></h3>
       <p id="currentLocationData"></p>
     </div>
-    <div id="button-container" class="container-fluid">
+    <div id="button-container" class="container-fluid mx-auto">
       <button
         id="giftAid"
         onclick="incrementCounter('giftAid'); playSound('pickupCoin')"
       >
+      <img src="assets/images/tick.svg" alt="tick icon.">
         Gift Aid
       </button>
       <button
         id="not"
         onclick="incrementCounter('not'); playSound('hitHurt')"
       >
+      <img src="assets/images/x.svg" alt="X icon.">
         Not Gift Aid
       </button>
     </div>
