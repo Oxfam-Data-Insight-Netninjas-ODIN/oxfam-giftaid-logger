@@ -47,13 +47,13 @@ button {
 /* INDEX.HTML */
 
 /* Start of GA/NGA button styling */
-#buttoncontainer {
+#button-container {
     position: relative;
 }
 
 #giftAid, #not {
-    padding: 10vw;
-    font-size: 10vw;
+    padding: 8vw;
+    font-size: 8vw;
     border-radius: 20px;
     width: auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -63,19 +63,29 @@ button {
 #giftAid {
     background-color: #99CC00; /* Green */
     position: relative;
-    z-index: 1;
-    top: 0;
-    left: 0;
+    z-index: 2;
+    top: 10vh;
+    left: 5vw;
 }
 
 #not {
     background-color: #F35959; /* Red */
     position: relative;
-    z-index: 2;
-    top: -40px;
-    left: 20px;
-    z-index: 2;
+    top: -5vh;
+    left: 35vw;
+    z-index: 1;
 }
+
+@media only screen and (max-width: 768px) {
+    #giftAid, #not {
+        position: static;
+        width: 100%;
+    }
+
+    #not {
+        margin-top: 100px;
+    }
+  }
 /* End of GA/NGA button styling */
 
 /* Start of description section styling */
