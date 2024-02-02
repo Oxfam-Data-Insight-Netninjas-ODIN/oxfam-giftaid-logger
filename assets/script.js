@@ -42,11 +42,33 @@ console.log("firstname is : " + firstName);
 console.log("userCode for first name is : " + userCode);
 
 var userCode = localStorage.getItem("currentUserCode");
+if (userCode == null) {
+    userCode = "anonymous"
+};
 console.log("usercode from storage : " + userCode);
 
 var userName = localStorage.getItem("currentUserName");
+if (userName == null) {
+    userName = "anonymous"
+}
 console.log("usercode from storage : " + userName);
 
+
+let localdata = JSON.parse(localStorage.getItem("clickData"));
+const currentDate = dayjs().format("DD/MM/YYYY");
+console.log(localdata);
+if (localdata == null) {
+    const newLocaldata = {
+      [currentDate] : {[userCode]: {
+      user: userCode,
+      firstName: userName,
+      giftAid: 0,
+      not: 0,
+      date: currentDate,}}
+    };
+    console.log(newLocaldata);
+    localStorage.setItem('clickData', JSON.stringify(newLocaldata));
+  }
 
 
 // create a function to increment the values according to which is button pressed
@@ -57,24 +79,31 @@ function incrementCounter(buttonType) {
   const currentDate = dayjs().format("DD/MM/YYYY");
   console.log("currenDate: " + currentDate);
   // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
-  let localdata = JSON.parse(localStorage.getItem("clickData")) || {};
+  let localdata = JSON.parse(localStorage.getItem("clickData"));
 
   console.log(localdata);
 
 
 
-  // check if "currentDate" key exist in the local data ; if not, create a default value of 0
-  if (!localdata.currentDate.userCode) {
-    localdata[currentDate][userCode] = {
-      user: userCode,
-      firstName: userName,
-      giftAid: 0,
-      not: 0,
-      date: currentDate,
-    };
-  }
+//   // check if "currentDate" key exist in the local data ; if not, create a default value of 0
+//   if (!localdata || (localdata == {})) {
+//     const newLocaldata = {
+//       currentDate : {userCode: {
+//       user: userCode,
+//       firstName: userName,
+//       giftAid: 0,
+//       not: 0,
+//       date: currentDate,}}
+//     };
+//     localStorage.setItem('clickData', JSON.stringify(newLocaldata));
+//   }
+
+  localdata = localStorage.getItem("clickData");
+  console.log("last local data is : "+localdata);
+  localdata = JSON.parse(localStorage.getItem("clickData"));
+  console.log("last local data is : "+localdata);
   // increase/update the value of the "data""currentDate""userCode" value of the button pressed
-  localdata[currentDate][userCode][buttonType]++;
+  localdata.currentDate.buttonType++;
   console.log(localdata[currentDate][userCode]);
   // save the updated data in local storage
   localStorage.setItem("clickData", JSON.stringify(localdata));
@@ -153,8 +182,8 @@ if (navigator.geolocation) {
 }
 // find the coordonates (long and lat) of user (need one time acceptance)
 function success(position) {
-  var latitude = position.coords.latitude.toFixed(2);
-  var longitude = position.coords.longitude.toFixed(2);
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
   console.log("Latitude: " + latitude);
   console.log("Longitude: " + longitude);
 
