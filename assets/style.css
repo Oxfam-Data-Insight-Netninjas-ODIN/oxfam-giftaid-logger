@@ -7,6 +7,13 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    margin: 0 10px;
+}
+
 /* Start of navigation bar styling */
 .container-fluid {
     margin: 10px;
@@ -40,34 +47,36 @@ body {
 /* INDEX.HTML */
 
 /* Start of GA/NGA button styling */
-#button-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
+#buttoncontainer {
+    position: relative;
 }
 
-button {
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    margin: 0 10px;
-}
-
-#giftAidBig {
-    padding: 20px 40px;
-    background-color: #4CAF50; /* Green */
+#giftAid, #not {
+    padding: 10vw;
+    font-size: 10vw;
+    border-radius: 20px;
+    width: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     color: white;
 }
 
-#notSmall {
-    padding: 50px 40px;
-    background-color: #D9534F; /* Red */
-    color: white;
+#giftAid {
+    background-color: #99CC00; /* Green */
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
 }
-/* Start of GA/NGA button styling */
+
+#not {
+    background-color: #F35959; /* Red */
+    position: relative;
+    z-index: 2;
+    top: -40px;
+    left: 20px;
+    z-index: 2;
+}
+/* End of GA/NGA button styling */
 
 /* Start of description section styling */
 #description {

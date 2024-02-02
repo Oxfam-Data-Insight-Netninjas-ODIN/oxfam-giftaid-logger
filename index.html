@@ -21,7 +21,7 @@
             width="200"
             alt="Oxfam logo."
         /></a>
-        <p class="welcome-message">Welcome, Employee</p>
+        <p class="welcome-message" id="username">Welcome, Employee</p>
         <button
           class="navbar-toggler navbar-light"
           type="button"
@@ -72,7 +72,7 @@
       <h3 id="currentDay"></h3>
       <p id="currentLocationData"></p>
     </div>
-    <div id="buttoncontainer">
+    <div id="buttoncontainer" class="container-fluid">
       <button
         id="giftAid"
         onclick="incrementCounter('giftAid'); playSound('pickupCoin')"
@@ -97,20 +97,12 @@
         </thead>
         <tbody id="dataTableBody"></tbody>
     </table>
-    <div id="username"></div>
-    <p style="color: azure; text-align: center">
-        Data is stored in your browser History. If you clear your browser data, the data will be lost.
-    </p>
-    <div id="button-container" style="text-align: center; margin-top: 20px;">
-        <button id="giftAidBig" style="padding: 20px 40px; background-color: #4CAF50; color: white;">Gift Aid</button>
-        <button id="notSmall" style="padding: 15px 30px; background-color: #D9534F; color: white;">Not Gift Aided</button>
-    </div>
     <section class="container-fluid mx-auto" id="description">
         <div class="row ">
             <div class="col-4 ms-auto my-auto">
         <h3>Giftaid Sales</h3>
         <p>Log your gift aid sales using this tracker, helping us analyse data to increase gift aid sales!</p>
-        <p>Aim for 100% gift aided donations and compete against your colleagues to earn top spot on the leaderboard.</p>
+        <p>Aim for as many gift aided donations as you can and compete against your colleagues to earn top spot on the leaderboard.</p>
         <p>Data is stored in your browser History. If you clear your browser data, the data will be lost.</p>
         </div>
         <div class="col-4 text-center mx-auto">
