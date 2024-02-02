@@ -1,3 +1,7 @@
+:root {
+    --support-text: 0.7;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -6,6 +10,7 @@ body {
 .container-fluid {
     margin: 10px;
 }
+
 /* Positions the welcome message under the logo */
 .welcome-message {
     position: absolute;
@@ -26,6 +31,10 @@ body {
 }
 /* End of navigation bar styling */
 
+
+/* INDEX.HTML */
+
+/* Start of GA/NGA button styling */
 #button-container {
     position: absolute;
     top: 50%;
@@ -53,20 +62,35 @@ button {
     background-color: #D9534F; /* Red */
     color: white;
 }
+/* Start of GA/NGA button styling */
 
 /* Start of description section styling */
 #description {
-    background-color: #0f6323c1;
+    background-color: #458532;
     padding: 50px;
     color: white;
-}
-
-#arrow {
-    max-width: 60%;
-    margin: auto;
 }
 
 h3, h4 {
     font-size: calc(2vw + 1rem);
 }
+
+#ga-count {
+    color: #99CC00;
+}
+
+#nga-count {
+    color: #F35959;
+}
+
+p.logger-desc-section-text {
+    opacity: var(--support-text);
+}
+
+#arrow {
+    max-width: 60%;
+    margin: auto;
+    fill: white;
+}
+
 /* End of description section styling */
