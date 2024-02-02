@@ -11,8 +11,6 @@ var currentCityElem = $('#currentLocation');
 var tempElem = $('#locationTemp');
 // Create a variable referencing the html element with ID "currentLocationData"
 var locationElem = $("#currentLocationData");
-// Create a variable referencing the html element with ID "arrow"
-var arrowElem = $("#arrow");
 // // add the date to html element
 dateElem.text(todayDate);
 console.log(todayDate);
@@ -148,6 +146,10 @@ function updateTable() {
         data[date].percentage = percentage;
         // save the data in local storage
         localStorage.setItem('clickData', JSON.stringify(data));
+        // If the amount of non-gift aided is greater than gift aided, switch the arrow colour to red
+        if (not > giftAid) {
+            $("#arrow").attr("src","red_score_arrow");
+        }
     }
 }
 
@@ -183,6 +185,6 @@ function playSound(soundId) {
 
 // If the viewport is equal to or under 575 pixels wide, remove arrow from the page
 if (window.matchMedia("(max-width: 575px)").matches) {
-    arrowElem.remove();
+    $("#arrow").remove();
   }
 
