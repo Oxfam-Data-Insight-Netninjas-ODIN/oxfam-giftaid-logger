@@ -11,7 +11,16 @@ var historyData = [
 console.log(historyData);
 
 
-// gett data stored in storage (is stored as object with objects inside)
+// if the local storage is empty create an empty object
+if (!localStorage.getItem('clickData')) {
+  // If it doesn't exist, create an empty object
+  var emptyObject = {};
+  // Convert the empty object to JSON format
+  var emptyObjectJSON = JSON.stringify(emptyObject);
+  // Store the empty object in local storage
+  localStorage.setItem('clickData', emptyObjectJSON);
+}
+// get data stored in storage (is stored as object with objects inside)
 let storageData = JSON.parse(localStorage.getItem('clickData'));
 
 // create an array with the values of the keys (the key is the data when was introduced)
@@ -71,6 +80,9 @@ $.each(historyData, function(index, element) {
 });
 
 
+
+
+
 // work in progress with data copied from main html to test it here !
 
 
@@ -115,10 +127,9 @@ function success(position) {
         .then(data => {
             // take the reverse geolocation from API and display the city
             var currentCity = data.features[0].properties.address.town;
-            console.log("location object : "+data.features[0]);
 
 
-            console.log("current location =" + currentCity);
+
 
             currentCityElem.text(currentCity);
             // Meant to fetch data but undefined

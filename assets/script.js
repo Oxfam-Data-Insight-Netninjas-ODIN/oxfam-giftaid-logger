@@ -1,16 +1,16 @@
 var userCode = "F1234";
 var firstName = "Martin";
 // create a list of users
-var cahiers = [
+var cashiers = [
   { firstName: "Martin", user: "M1234" },
   { firstName: "Amy", user: "D3456" },
   { firstName: "George", user: "G8976" },
 ];
 
 // create a drop down list with user names
-for (i = 0; i < cahiers.length; i++) {
+for (i = 0; i < cashiers.length; i++) {
   var newButtonUser = $("<li>");
-  newButtonUser.text(cahiers[i].firstName);
+  newButtonUser.text(cashiers[i].firstName);
 
   $("#users").append(newButtonUser);
 }
@@ -20,30 +20,107 @@ var userName = null;
 $(".dropdown-menu li").click(function () {
   userName = $(this).text();
   //   save to local storage the userName
-  localStorage.setItem('currentUserName', userName);
-  console.log("clicked username : "+userName);
+  localStorage.setItem("currentUserName", userName);
+  console.log("clicked username : " + userName);
 
-    // loop through data to identify the userCode corresponding to the firstnme
-  for (i = 0; i < cahiers.length; i++) {
-      $.each(cahiers[i], function (key, value) {
-        if (value === userName) {
-          userCode = cahiers[i].user;
-          console.log("userCode coresonding to the click name is: "+userCode);
+  // loop through data to identify the userCode corresponding to the firstnme
+  for (i = 0; i < cashiers.length; i++) {
+    $.each(cashiers[i], function (key, value) {
+      if (value === userName) {
+        userCode = cashiers[i].user;
+        console.log("userCode coresonding to the click name is: " + userCode);
         //   save to local storage the userCode
-          localStorage.setItem('currentUserCode', userCode);
-          return false; // Exit the loop once a match is found
-        }
-      });
-    };
+        localStorage.setItem("currentUserCode", userCode);
+        return false; // Exit the loop once a match is found
+      }
+    });
+  }
 });
 
 console.log("selected user is :" + userName);
 console.log("firstname is : " + firstName);
-
-
-
-//   window.globalResult = userCode;
 console.log("userCode for first name is : " + userCode);
+
+var userCode = localStorage.getItem("currentUserCode");
+console.log("usercode from storage : " + userCode);
+
+var userName = localStorage.getItem("currentUserName");
+console.log("usercode from storage : " + userName);
+
+
+
+// create a function to increment the values according to which is button pressed
+function incrementCounter(buttonType) {
+  // create a variable referencing the curent date and change it to string
+//   var dateForObject = dayjs().format("DD/MM/YYYY");
+//   const currentDate = dateForObject;
+  const currentDate = dayjs().format("DD/MM/YYYY");
+  console.log("currenDate: " + currentDate);
+  // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
+  let localdata = JSON.parse(localStorage.getItem("clickData")) || {};
+
+  console.log(localdata);
+
+
+
+  // check if "currentDate" key exist in the local data ; if not, create a default value of 0
+  if (!localdata.currentDate.userCode) {
+    localdata[currentDate][userCode] = {
+      user: userCode,
+      firstName: userName,
+      giftAid: 0,
+      not: 0,
+      date: currentDate,
+    };
+  }
+  // increase/update the value of the "data""currentDate""userCode" value of the button pressed
+  localdata[currentDate][userCode][buttonType]++;
+  console.log(localdata[currentDate][userCode]);
+  // save the updated data in local storage
+  localStorage.setItem("clickData", JSON.stringify(localdata));
+  updateTable();
+}
+
+
+
+// create function to create / update table with data introduced
+function updateTable() {
+  // call data from local storage
+  const localdata = JSON.parse(localStorage.getItem("clickData")) || {};
+  // create variable referencing the element with ID "dataTableBody"
+  const tableBody = document.getElementById("dataTableBody");
+  // setup initial value to empty
+  tableBody.innerHTML = "";
+  // create a for loop to take every key in "data" object
+  for (const date in localdata) {
+    // object destructuring syntax is used to extract the values of the properties giftAid and not from the data objec
+    const { giftAid, not } = localdata[date];
+    // create a variable for the total number of both buttons pressed
+    const total = giftAid + not;
+    // ternary operator is used to calculate the percentage value of giftAid button
+    const percentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
+    // round a percentage to the nearest whole for display purpose
+    const roundPercentage = Math.round(percentage);
+    // create a new variable for a new table row
+    const newRow = document.createElement("tr");
+    // insert the table data with the values
+    newRow.innerHTML = `<td>${giftAid}</td><td>${not}</td><td>${date}</td><td>${roundPercentage}%</td>`;
+    tableBody.appendChild(newRow);
+    localdata[date].percentage = percentage;
+    // save the data in local storage
+    localStorage.setItem("clickData", JSON.stringify(localdata));
+  }
+}
+
+// // open another page to display the previous days results
+// function sendDataToPage2() {
+//     // take input userCode, add data to local storage and open page 2 with data from previous days
+//     var inputData = userCode.value;
+//     localStorage.setItem("userCode", inputData);
+//     // open the page with highscore
+//     var otherPage = window.open('highscores.html');
+//     otherPage.onload = scoresOnOtherPage();
+// }
 
 // bring data from dayjs using 1st API
 var todayDate = dayjs().format("[Today is : ] dddd[,] DD-MM-YYYY");
@@ -138,72 +215,6 @@ var fullscreenButton = document.getElementById("fullscreen-button");
 
 // add event listener for clicking the fullscreen button
 fullscreenButton.addEventListener("click", toggleFullscreen);
-
-// create a function to increment the values according to which is button pressed
-function incrementCounter(buttonType) {
-  // create a variable referencing the curent date and change it to string
-  var dateForObject = dayjs().format("DD/MM/YYYY");
-  const currentDate = dateForObject;
-  console.log("currenDate: " + currentDate);
-  // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
-  let data = JSON.parse(localStorage.getItem("clickData")) || {};
-
-  // check if "currentDate" key exist in the saved "data" object ; if not, create a default value of 0
-  if (!data[currentDate]) {
-    data[currentDate] = {
-      user: userCode,
-      firstName: userName,
-      giftAid: 0,
-      not: 0,
-      date: currentDate,
-    };
-  }
-  // increase/update the value of the "data""currentDate" value of the button pressed
-  data[currentDate][buttonType]++;
-  console.log(data[currentDate]);
-  // save the updated data in local storage
-  localStorage.setItem("clickData", JSON.stringify(data));
-  updateTable();
-}
-
-// create function to create / update table with data introduced
-function updateTable() {
-  // call data from local storage
-  const data = JSON.parse(localStorage.getItem("clickData")) || {};
-  // create variable referencing the element with ID "dataTableBody"
-  const tableBody = document.getElementById("dataTableBody");
-  // setup initial value to empty
-  tableBody.innerHTML = "";
-  // create a for loop to take every key in "data" object
-  for (const date in data) {
-    // object destructuring syntax is used to extract the values of the properties giftAid and not from the data objec
-    const { giftAid, not } = data[date];
-    // create a variable for the total number of both buttons pressed
-    const total = giftAid + not;
-    // ternary operator is used to calculate the percentage value of giftAid button
-    const percentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
-    // round a percentage to the nearest whole for display purpose
-    const roundPercentage = Math.round(percentage);
-    // create a new variable for a new table row
-    const newRow = document.createElement("tr");
-    // insert the table data with the values
-    newRow.innerHTML = `<td>${giftAid}</td><td>${not}</td><td>${date}</td><td>${roundPercentage}%</td>`;
-    tableBody.appendChild(newRow);
-    data[date].percentage = percentage;
-    // save the data in local storage
-    localStorage.setItem("clickData", JSON.stringify(data));
-  }
-}
-
-// // open another page to display the previous days results
-// function sendDataToPage2() {
-//     // take input userCode, add data to local storage and open page 2 with data from previous days
-//     var inputData = userCode.value;
-//     localStorage.setItem("userCode", inputData);
-//     // open the page with highscore
-//     var otherPage = window.open('highscores.html');
-//     otherPage.onload = scoresOnOtherPage();
-// }
 
 // click event to open table html
 $("#myButtonHistory").click(function () {
