@@ -1,3 +1,7 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 /* Start of navigation bar styling */
 .container-fluid {
     margin: 10px;
@@ -47,5 +51,12 @@ button {
 #notSmall {
     padding: 50px 40px;
     background-color: #D9534F; /* Red */
+    color: white;
+}
+
+#description {
+    background-color: #54A53C;
+    opacity: 0.4;
+    padding: 50px;
     color: white;
 }
