@@ -1,10 +1,20 @@
 :root {
-    --link-colour: #006543;
+    --link-colour: #99CC00;
     --support-text: 0.7;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background: linear-gradient(90deg, black, green);
+    animation: gradientAnimation 20s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 button {
@@ -30,7 +40,7 @@ button {
 
 .nav-link {
     font-weight: bold;
-    color: black;
+    color: white;
     margin-right: 20px;
 }
 
@@ -52,17 +62,18 @@ button {
 }
 
 #giftAid, #not {
+    /* Scales the size of the buttons as the viewport is resized */
     padding: 5vw;
     margin: 0;
     font-size: 7vw;
     border-radius: 20px;
-    width: auto;
+    /* Adds drop shadow */
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     color: white;
 }
 
 #giftAid {
-    background-color: #99CC00; /* Green */
+    background-color: var(--link-colour); /* Green */
     position: relative;
     z-index: 2;
     top: 2vh;
@@ -77,6 +88,7 @@ button {
     z-index: 1;
 }
 
+/* Switches button layout when screen size is 768px (mobile) */
 @media only screen and (max-width: 768px) {
     #giftAid, #not {
         position: static;
@@ -84,9 +96,15 @@ button {
         border-radius: 0;
     }
 
+    /* Adds space between buttons */
     #not {
         margin-top: 100px;
     }
+  }
+
+/* Adds enlarge effect for ga/nga buttons */
+#giftAid:hover, #not:hover {
+    transform: scale(1.05);
   }
 /* End of GA/NGA button styling */
 
@@ -94,7 +112,6 @@ button {
 #description {
     background-color: #458532;
     padding: 50px;
-    color: white;
 }
 
 h3, h4 {
@@ -102,7 +119,7 @@ h3, h4 {
 }
 
 #ga-count {
-    color: #99CC00;
+    color: var(--link-colour);
 }
 
 #nga-count {
@@ -120,7 +137,7 @@ p.logger-desc-section-text {
 /* End of description section styling */
 
 #fullscreen-button {
-    background-color: #006543;
+    background-color: var(--link-colour);
     color: white;
     font-size: 20px;
     padding: 30px;
