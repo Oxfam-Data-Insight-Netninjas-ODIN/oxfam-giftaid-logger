@@ -48,7 +48,6 @@
               <a
                 class="nav-link active"
                 id="myButtonHistory"
-                aria-current="page"
                 href="assets/table.html"
                 >Store Data</a
               >
@@ -59,7 +58,7 @@
               >
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                   Change Cashier
                 </a>
                 <ul class="dropdown-menu">
@@ -110,25 +109,22 @@
     </div> -->
     <section class="container-fluid mx-auto" id="description">
         <div class="row ">
-            <div class="col-6 ms-auto">
+            <div class="col-4 ms-auto my-auto">
         <h3>Giftaid Sales</h3>
-        <p>Log your gift aid sales using this tracker, helping us 
-            <br> analyse data to increase gift aid sales!</p>
-        <p>Aim for 100% gift aided donations and compete 
-            <br> against your colleagues to earn top spot on the leaderboard.</p>
-        <p>Data is stored in your browser History. If you clear
-            <br>your browser data, the data will be lost.</p>
+        <p>Log your gift aid sales using this tracker, helping us analyse data to increase gift aid sales!</p>
+        <p>Aim for 100% gift aided donations and compete against your colleagues to earn top spot on the leaderboard.</p>
+        <p>Data is stored in your browser History. If you clear your browser data, the data will be lost.</p>
         </div>
-        <div class="col-3 text-center mx-auto">
+        <div class="col-4 text-center mx-auto">
             <h3>Today's Score</h3>
             <div class="row">
-                <div class="col-md-6 col-sm-6">
-            <h4 id="ga-count text-center" class="text-center text-nowrap">30</h4>
-            <p class="sales-section-texttext-center text-nowrap">Gift Aided</p>
+                <div class="col-xs-6 col-sm-6 col-md-6 ">
+            <h4 id="ga-count text-center">30</h4>
+            <p class="sales-section-text text-center">Gift Aided</p>
         </div>
-        <div class="col-md-6 col-sm-6">
-            <h4 id="nga-count" class="text-center text-nowrap">12</h4>
-            <p class="sales-section-text text-center text-nowrap">Not Gift Aided</p>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <h4 id="nga-count">12</h4>
+            <p class="sales-section-text text-center">Not Gift Aided</p>
         </div>
         <img src="assets/images/score_arrow.svg" alt="Green arrow." class="d-block mx-auto" id="arrow">
         <h3 class="pt-3">71%</h3>
