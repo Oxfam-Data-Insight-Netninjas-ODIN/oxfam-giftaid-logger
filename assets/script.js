@@ -9,6 +9,8 @@ var dateElem = $('#currentDay');
 // Moved these two here to allow for scope access
 var currentCityElem = $('#currentLocation');
 var tempElem = $('#locationTemp');
+
+
 // Create a variable referencing the html element with ID "currentLocationData"
 var locationElem = $("#currentLocationData");
 // // add the date to html element
