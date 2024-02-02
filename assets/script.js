@@ -185,3 +185,4 @@ function playSound(soundId) {
 if (window.matchMedia("(max-width: 575px)").matches) {
     arrowElem.remove();
   }
+

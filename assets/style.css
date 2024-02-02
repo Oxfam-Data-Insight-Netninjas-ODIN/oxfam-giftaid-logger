@@ -1,4 +1,5 @@
 :root {
+    --link-colour: #006543;
     --support-text: 0.7;
 }
 
@@ -22,12 +23,16 @@ body {
 
 .nav-link {
     font-weight: bold;
-    color: rgb(36, 39, 69);
+    color: black;
     margin-right: 20px;
 }
 
 .nav-link:hover {
-    color: #006543;
+    color: var(--link-colour);
+}
+
+.active {
+    color: var(--link-colour);
 }
 /* End of navigation bar styling */
 
