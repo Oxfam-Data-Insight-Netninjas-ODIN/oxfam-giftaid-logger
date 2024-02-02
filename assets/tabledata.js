@@ -13,14 +13,14 @@ console.log(historyData);
 
 // gett data stored in storage (is stored as object with objects inside)
 let storageData = JSON.parse(localStorage.getItem('clickData'));
-console.log(storageData);
+
 // create an array with the values of the keys (the key is the data when was introduced)
 var valuesArray = Object.values(storageData);
 // use a loop to add all data from local storage to the main database (the "historyData" )
 for (i=0 ; i<valuesArray.length ; i++) {
   // add local storage data to current object data
   historyData.push(valuesArray[i]);
-  console.log(valuesArray[i]);
+
 }
 
 
@@ -90,7 +90,7 @@ var tempElem = $('#locationTemp');
 var locationElem = $("#currentLocationData");
 // // add the date to html element
 dateElem.text(todayDate);
-console.log(todayDate);
+
 
 // creating varaible for weather 2nd API address and API key
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=";
@@ -107,8 +107,7 @@ if (navigator.geolocation) {
 function success(position) {
     var latitude = position.coords.latitude.toFixed(2);
     var longitude = position.coords.longitude.toFixed(2);
-    console.log("Latitude: " + latitude);
-    console.log("Longitude: " + longitude);
+
 
     // find location (as in city) from the coordonates
     fetch(`https://nominatim.openstreetmap.org/reverse?format=geojson&lat=${latitude}&lon=${longitude}`)
@@ -141,7 +140,7 @@ function success(position) {
             return response.json();
         })
         .then(function (data) {
-            console.log("weather : " + data.main.temp);
+  
             // set a variable for wather icon addres and display it
             var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
             var iconElement = $("<img>").attr("src", iconURL);
