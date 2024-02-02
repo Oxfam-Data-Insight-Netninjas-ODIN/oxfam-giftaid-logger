@@ -116,6 +116,7 @@ function success(position) {
         .then(data => {
             // take the reverse geolocation from API and display the city
             var currentCity = data.features[0].properties.address.town;
+            console.log("location object : "+data.features[0]);
 
 
             console.log("current location =" + currentCity);

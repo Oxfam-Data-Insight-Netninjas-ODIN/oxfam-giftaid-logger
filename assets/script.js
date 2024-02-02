@@ -1,5 +1,20 @@
 var userCode = "F1234";
 var firstName = "Martin";
+var cahiers = [
+    {firstName: "Martin",
+    user: "M1234"},
+    {firstName :"Amy",
+    user: "D3456"},
+    {firstName: "George",
+    user: "G8976"}
+];
+console.log("cahiers length: "+cahiers.length);
+for (i=0; i<cahiers.length; i++) {
+    var newButtonUser = $('<li>');
+    newButtonUser.text(cahiers[i].firstName)
+    console.log(cahiers[i].firstName);
+    $('#users').append(newButtonUser);
+}
 
 // bring data from dayjs using 1st API
 var todayDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
@@ -41,7 +56,7 @@ function success(position) {
         .then(data => {
             // take the reverse geolocation from API and display the city
             var currentCity = data.features[0].properties.address.town;
-
+            console.log("location object : "+JSON.stringify(data.features[0]));
 
             console.log("current location =" + currentCity);
 
