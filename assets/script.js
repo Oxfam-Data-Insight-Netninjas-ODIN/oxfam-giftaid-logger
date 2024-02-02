@@ -1,5 +1,6 @@
 var userCode = "F1234";
 var firstName = "Martin";
+// create a list of users
 var cahiers = [
     {firstName: "Martin",
     user: "M1234"},
@@ -8,13 +9,35 @@ var cahiers = [
     {firstName: "George",
     user: "G8976"}
 ];
-console.log("cahiers length: "+cahiers.length);
+// create a drop down list with user names
 for (i=0; i<cahiers.length; i++) {
     var newButtonUser = $('<li>');
     newButtonUser.text(cahiers[i].firstName)
     console.log(cahiers[i].firstName);
     $('#users').append(newButtonUser);
 }
+var userName = null
+// create a click event for the drop menu user to select the current user
+$('.dropdown-menu li').click(function() {
+    // Code to execute when an user is clicked
+    userName = $(this).text();
+    console.log("selected user is :" + userName);
+  });
+  console.log("selected user is :" + userName);
+
+
+  for (i=0; i<cahiers.length; i++){
+    $.each(cahiers[i], function(key, value) {
+        if (value === firstName) {
+          userCode = cahiers[i][key];
+        console.log(userCode);
+          return false; // Exit the loop once a match is found
+        }
+      });
+  }
+  window.globalResult = userCode;
+  console.log("userCode for first name is : "+userCode);
+
 
 // bring data from dayjs using 1st API
 var todayDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
