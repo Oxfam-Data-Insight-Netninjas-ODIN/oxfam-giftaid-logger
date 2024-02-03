@@ -6,7 +6,8 @@ localStorage.setItem("currentUserName", "anonymous");
 localStorage.setItem("currentUserCode", "anonymous");
 
 
-localStorage.getItem("giftClicksToday");
+var totalGiftAidClicksToday = localStorage.getItem("giftAidClicksToday")|| 0;
+var totalClicksToday = localStorage.getItem("giftClicksToday") || 0;
 $('#ga-count').text(totalGiftAidClicksToday);
 $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
 $('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)))
