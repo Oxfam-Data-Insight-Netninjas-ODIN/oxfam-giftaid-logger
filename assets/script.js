@@ -6,6 +6,12 @@ localStorage.setItem("currentUserName", "anonymous");
 localStorage.setItem("currentUserCode", "anonymous");
 
 
+localStorage.getItem("giftClicksToday");
+$('#ga-count').text(totalGiftAidClicksToday);
+$('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
+$('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)))
+
+
 // create a list of users
 var cashiers = [
   { firstName: "Martin", user: "M1234" },
@@ -150,6 +156,9 @@ function incrementCounter(buttonType) {
    }
   $('#ga-count').text(totalGiftAidClicksToday);
   $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
+  $('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)))
+  localStorage.setItem("giftAidClicksToday", totalGiftAidClicksToday);
+  localStorage.setItem("giftClicksToday", totalClicksToday);
   
 }
 
