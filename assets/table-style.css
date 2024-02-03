@@ -1,0 +1,15 @@
+th, td {
+    color: white;
+}
+
+.table-container {
+    border-radius: 30px;
+    padding: 50px;
+    background-color: #55a53caf;
+}
+
+.table-header {
+    border-radius: 30px;
+    padding: 50px;
+    background-color: darkgreen;
+}
