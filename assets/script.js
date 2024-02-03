@@ -62,33 +62,36 @@ function localDataWork() {
   //           Then save data to local storage
   let localdata = JSON.parse(localStorage.getItem("clickData"));
   const currentDate = dayjs().format("DD/MM/YYYY");
-  var userAlreadyInLocal = false
-  for (var key in localdata[currentDate]) {
-    var keys = Object.keys(localdata[currentDate]);
-    console.log("the first key is : "+keys[0]);
-    console.log("userCode is : "+userCode);
-    
-    if (key === userCode) {
-      console.log("same keys");
-    userAlreadyInLocal = true;
-      break;
-    } else ("keys not same")
-  }
   var newLocaldata;
   var newUserData;
+  var userAlreadyInLocal = false
+
   if (localdata == null) {
-      newLocaldata = {
-        [currentDate] : {[userCode]: {
-        user: userCode,
-        firstName: userName,
-        giftAid: 0,
-        not: 0,
-        date: currentDate,}}
-      };
-      console.log(newLocaldata);
-      localStorage.setItem('clickData', JSON.stringify(newLocaldata));
-    } else if (userAlreadyInLocal === true) {}
-    else {
+    newLocaldata = {
+      [currentDate] : {[userCode]: {
+      user: userCode,
+      firstName: userName,
+      giftAid: 0,
+      not: 0,
+      date: currentDate,}}
+    };
+    localStorage.setItem('clickData', JSON.stringify(newLocaldata));
+    localdata = newLocaldata;
+  }
+  // check if selected user is already in local storage   
+  for (var key in localdata[currentDate]) {
+    var keys = Object.keys(localdata[currentDate]);
+    console.log("the user key form storage is : "+key);
+    console.log("compared userCode is : "+userCode);
+    if (key === userCode) {
+      console.log("same keys");
+      userAlreadyInLocal = true;
+      break;
+    } else (console.log("keys not same"));
+  }
+  // is user not in local storage add the new user with default values   
+  if (userAlreadyInLocal === true) {}
+  else {
         newUserData = {
             [userCode]: {
             user: userCode,
@@ -104,51 +107,21 @@ function localDataWork() {
           localStorage.setItem('clickData', JSON.stringify(localdata));
     }
 }
-localDataWork()
+// localDataWork()
 
 // create a function to increment the values according to which is button pressed
 function incrementCounter(buttonType) {
   // create a variable referencing the curent date and change it to string
-//   var dateForObject = dayjs().format("DD/MM/YYYY");
-//   const currentDate = dateForObject;
   var currentDate = dayjs().format("DD/MM/YYYY");
   console.log("currenDate: " + currentDate);
   // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
   let localdata = JSON.parse(localStorage.getItem("clickData"));
-
   console.log(localdata);
-
-
-
-//   // check if "currentDate" key exist in the local data ; if not, create a default value of 0
-//   if (!localdata || (localdata == {})) {
-//     const newLocaldata = {
-//       currentDate : {userCode: {
-//       user: userCode,
-//       firstName: userName,
-//       giftAid: 0,
-//       not: 0,
-//       date: currentDate,}}
-//     };
-//     localStorage.setItem('clickData', JSON.stringify(newLocaldata));
-//   }
-
-//   localdata = localStorage.getItem("clickData");
-//   console.log("last local data is : "+localdata);
-//   localdata = JSON.parse(localStorage.getItem("clickData"));
-//   console.log("last local data is : "+localdata);
-  // increase/update the value of the "data""currentDate""userCode" value of the button pressed
-//   ["02/02/2024"].D3456.giftAid
-//   localdata[currentDate][userCode][buttonType]++;
-  console.log(localdata);
-//   currentDate = `"${currentDate}"`;
   console.log("currentDate is : "+currentDate);
-  console.log(localdata[currentDate]);
-//   localdata[currentDate][userCode].giftAid++;
-//   anonymous.giftAid
-  console.log(localdata[currentDate].anonymous);
-  console.log(userCode);
-  // save the updated data in local storage
+  userCode = localStorage.getItem("currentUserCode")
+  console.log(localdata[currentDate][userCode][buttonType]++);
+
+ // save the updated data in local storage
   localStorage.setItem("clickData", JSON.stringify(localdata));
   updateTable();
 }
@@ -238,7 +211,7 @@ function success(position) {
     .then((data) => {
       // take the reverse geolocation from API and display the city
       var currentCity = data.features[0].properties.address.town;
-      console.log("location object : " + JSON.stringify(data.features[0]));
+    //   console.log("location object : " + JSON.stringify(data.features[0]));
 
       console.log("current location =" + currentCity);
 
