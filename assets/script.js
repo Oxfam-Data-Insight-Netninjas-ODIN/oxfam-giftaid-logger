@@ -11,18 +11,16 @@ var cashiers = [
 for (i = 0; i < cashiers.length; i++) {
   var newButtonUser = $("<li>");
   newButtonUser.text(cashiers[i].firstName);
-
   $("#users").append(newButtonUser);
 }
 
 var userName = null;
-// create a click event for the drop menu user to select the current user
+// create a click event for the drop menu users to select the current user
 $(".dropdown-menu li").click(function () {
   userName = $(this).text();
   //   save to local storage the userName
   localStorage.setItem("currentUserName", userName);
   console.log("clicked username : " + userName);
-
   // loop through data to identify the userCode corresponding to the firstnme
   for (i = 0; i < cashiers.length; i++) {
     $.each(cashiers[i], function (key, value) {
@@ -33,50 +31,87 @@ $(".dropdown-menu li").click(function () {
         localStorage.setItem("currentUserCode", userCode);
         return false; // Exit the loop once a match is found
       }
+    localDataWork()
     });
   }
 });
 
-console.log("selected user is :" + userName);
-console.log("firstname is : " + firstName);
-console.log("userCode for first name is : " + userCode);
+console.log("default selected user is :" + userName);
+console.log("default firstname is : " + firstName);
+console.log("default userCode for first name is : " + userCode);
 
-var userCode = localStorage.getItem("currentUserCode");
-if (userCode == null) {
-    userCode = "anonymous"
-};
-console.log("usercode from storage : " + userCode);
+localDataWork()
 
-var userName = localStorage.getItem("currentUserName");
-if (userName == null) {
-    userName = "anonymous"
-}
-console.log("usercode from storage : " + userName);
-
-
-let localdata = JSON.parse(localStorage.getItem("clickData"));
-const currentDate = dayjs().format("DD/MM/YYYY");
-console.log(localdata);
-if (localdata == null) {
-    const newLocaldata = {
-      [currentDate] : {[userCode]: {
-      user: userCode,
-      firstName: userName,
-      giftAid: 0,
-      not: 0,
-      date: currentDate,}}
-    };
-    console.log(newLocaldata);
-    localStorage.setItem('clickData', JSON.stringify(newLocaldata));
+// write the object data in local storage as a function
+function localDataWork() {
+//   retrieve the selected userCode from local storage
+  var userCode = localStorage.getItem("currentUserCode");
+  if (userCode == null) {
+      userCode = "anonymous"
+  };
+  console.log("usercode from storage : " + userCode);
+  //   retrieve the selected userName from local storage
+  var userName = localStorage.getItem("currentUserName");
+  if (userName == null) {
+      userName = "anonymous"
   }
-
+  console.log("usercode from storage : " + userName);
+  
+  // retrieve data from locals storage and populate an object with selected User data;
+  //      if there is none, generate a default one
+  //           Then save data to local storage
+  let localdata = JSON.parse(localStorage.getItem("clickData"));
+  const currentDate = dayjs().format("DD/MM/YYYY");
+  var userAlreadyInLocal = false
+  for (var key in localdata[currentDate]) {
+    var keys = Object.keys(localdata[currentDate]);
+    console.log("the first key is : "+keys[0]);
+    console.log("userCode is : "+userCode);
+    
+    if (key === userCode) {
+      console.log("same keys");
+    userAlreadyInLocal = true;
+      break;
+    } else ("keys not same")
+  }
+  var newLocaldata;
+  var newUserData;
+  if (localdata == null) {
+      newLocaldata = {
+        [currentDate] : {[userCode]: {
+        user: userCode,
+        firstName: userName,
+        giftAid: 0,
+        not: 0,
+        date: currentDate,}}
+      };
+      console.log(newLocaldata);
+      localStorage.setItem('clickData', JSON.stringify(newLocaldata));
+    } else if (userAlreadyInLocal === true) {}
+    else {
+        newUserData = {
+            [userCode]: {
+            user: userCode,
+            firstName: userName,
+            giftAid: 0,
+            not: 0,
+            date: currentDate,}
+          };
+          console.log(newUserData);
+          console.log(localdata[currentDate]);
+          $.extend(localdata[currentDate], newUserData);
+          console.log(localdata[currentDate]);
+          localStorage.setItem('clickData', JSON.stringify(localdata));
+    }
+}
+localDataWork()
 
 // create a function to increment the values according to which is button pressed
 function incrementCounter(buttonType) {
   // create a variable referencing the curent date and change it to string
 //   var dateForObject = dayjs().format("DD/MM/YYYY");
 //   const currentDate = dateForObject;
-  const currentDate = dayjs().format("DD/MM/YYYY");
+  var currentDate = dayjs().format("DD/MM/YYYY");
   console.log("currenDate: " + currentDate);
   // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
   let localdata = JSON.parse(localStorage.getItem("clickData"));
@@ -98,13 +133,21 @@ function incrementCounter(buttonType) {
 //     localStorage.setItem('clickData', JSON.stringify(newLocaldata));
 //   }
 
-  localdata = localStorage.getItem("clickData");
-  console.log("last local data is : "+localdata);
-  localdata = JSON.parse(localStorage.getItem("clickData"));
-  console.log("last local data is : "+localdata);
+//   localdata = localStorage.getItem("clickData");
+//   console.log("last local data is : "+localdata);
+//   localdata = JSON.parse(localStorage.getItem("clickData"));
+//   console.log("last local data is : "+localdata);
   // increase/update the value of the "data""currentDate""userCode" value of the button pressed
-  localdata.currentDate.buttonType++;
-  console.log(localdata[currentDate][userCode]);
+//   ["02/02/2024"].D3456.giftAid
+//   localdata[currentDate][userCode][buttonType]++;
+  console.log(localdata);
+//   currentDate = `"${currentDate}"`;
+  console.log("currentDate is : "+currentDate);
+  console.log(localdata[currentDate]);
+//   localdata[currentDate][userCode].giftAid++;
+//   anonymous.giftAid
+  console.log(localdata[currentDate].anonymous);
+  console.log(userCode);
   // save the updated data in local storage
   localStorage.setItem("clickData", JSON.stringify(localdata));
   updateTable();
