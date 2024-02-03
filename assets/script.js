@@ -92,6 +92,25 @@ function localDataWork() {
     localStorage.setItem('clickData', JSON.stringify(newLocaldata));
     localdata = newLocaldata;
   }
+  if (Object.keys(localdata)[0] !== currentDate) {
+    console.log("different date");
+    var newDateLocaldata = {
+      [currentDate] : {[userCode]: {
+      user: userCode,
+      firstName: userName,
+      giftAid: 0,
+      not: 0,
+      percentage: 0,
+      date: currentDate,}}
+    };
+    $.extend(localdata, newDateLocaldata);
+    console.log("added new date object!");
+    localStorage.setItem('clickData', JSON.stringify(localdata));
+  } else{
+    console.log("same date so other date is added");
+  }
+
+  
   // check if selected user is already in local storage   
   for (var key in localdata[currentDate]) {
     var keys = Object.keys(localdata[currentDate]);
@@ -101,10 +120,19 @@ function localDataWork() {
       console.log("same keys");
       userAlreadyInLocal = true;
       break;
-    } else (console.log("keys not same"));
+    } else {
+        userAlreadyInLocal = false;
+        (console.log("keys not same"));
+    } 
   }
+
+  
+
+
   // is user not in local storage add the new user with default values   
-  if (userAlreadyInLocal === true) {}
+  if (userAlreadyInLocal === true) {
+    console.log("same user so nothing will change");
+  }
   else {
         newUserData = {
             [userCode]: {
@@ -113,8 +141,8 @@ function localDataWork() {
             giftAid: 0,
             not: 0,
             percentage: 0,
-            date: currentDate,}
-          };
+            date: currentDate,}};
+          
           console.log(newUserData);
           console.log(localdata[currentDate]);
           $.extend(localdata[currentDate], newUserData);
