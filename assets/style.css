@@ -6,19 +6,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
-    background: linear-gradient(90deg, black, green);
-    animation: gradientAnimation 20s ease infinite;
-    background-size: 200% 200%;
-}
-
-th, td{
-    color: white;
-}
-
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
 }
 
 button {
@@ -44,7 +31,7 @@ button {
 
 .nav-link {
     font-weight: bold;
-    color: white;
+    color: black;
     margin-right: 20px;
 }
 
@@ -59,9 +46,8 @@ button {
 
 #currentDay {
     font-size: 20px;
+    color: black;
 }
-
-/* INDEX.HTML */
 
 /* Start of GA/NGA button styling */
 #ga-container, #nga-container {
@@ -117,8 +103,16 @@ button {
 
 /* Start of description section styling */
 #description {
-    background-color: #458532;
+    background: linear-gradient(90deg, black, green);
+    animation: gradientAnimation 20s ease infinite;
+    background-size: 200% 200%;
     padding: 50px;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 h3, h4 {

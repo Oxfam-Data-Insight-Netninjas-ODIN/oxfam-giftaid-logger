@@ -1,15 +1,18 @@
 th, td {
     color: white;
+    border: 4px solid #000000af;
 }
 
-.table-container {
-    border-radius: 30px;
-    padding: 50px;
+#table-header {
+    background-color: #458532;
+    vertical-align: baseline;
+}
+
+#tableHistoryBody {
     background-color: #55a53caf;
 }
 
-.table-header {
-    border-radius: 30px;
-    padding: 50px;
-    background-color: darkgreen;
+.icon {
+    height: 40px;
+    vertical-align: middle;
 }
