@@ -150,15 +150,3 @@ p.logger-desc-section-text {
 #fullscreen-button:hover {
     background-color: #769d01;
 }
-
-/* TABLE.HTML */
-
-/* .table-header {
-
-} */
-
-.table-container {
-    border-radius: 30px;
-    padding: 50px;
-    background-color: #55a53caf;
-}
