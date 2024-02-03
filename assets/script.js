@@ -1,7 +1,6 @@
 const tableBody = document.getElementById("dataTableBody");
-var userCode = "F1234";
-var firstName = "Martin";
-var userCode = "anonymous"
+var userCode = "anonymous";
+var firstName = "anonymous";
 localStorage.setItem("currentUserName", "anonymous");
 localStorage.setItem("currentUserCode", "anonymous");
 
@@ -16,8 +15,9 @@ $('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday
 // create a list of users
 var cashiers = [
   { firstName: "Martin", user: "M1234" },
-  { firstName: "Amy", user: "D3456" },
+  { firstName: "Amy", user: "A3456" },
   { firstName: "George", user: "G8976" },
+  { firstName: "anonymous", user: "anonymous" },
 ];
 
 // create a drop down list with user names
