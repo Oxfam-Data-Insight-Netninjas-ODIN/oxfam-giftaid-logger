@@ -1,16 +1,23 @@
 const tableBody = document.getElementById("dataTableBody");
-var userCode = "F1234";
-var firstName = "Martin";
-var userCode = "anonymous"
+var userCode = "anonymous";
+var firstName = "anonymous";
 localStorage.setItem("currentUserName", "anonymous");
 localStorage.setItem("currentUserCode", "anonymous");
+
+
+var totalGiftAidClicksToday = localStorage.getItem("giftAidClicksToday")|| 0;
+var totalClicksToday = localStorage.getItem("giftClicksToday") || 0;
+$('#ga-count').text(totalGiftAidClicksToday);
+$('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
+$('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)))
 
 
 // create a list of users
 var cashiers = [
   { firstName: "Martin", user: "M1234" },
-  { firstName: "Amy", user: "D3456" },
+  { firstName: "Amy", user: "A3456" },
   { firstName: "George", user: "G8976" },
+  { firstName: "anonymous", user: "anonymous" },
 ];
 
 // create a drop down list with user names
@@ -150,6 +157,9 @@ function incrementCounter(buttonType) {
    }
   $('#ga-count').text(totalGiftAidClicksToday);
   $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
+  $('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)))
+  localStorage.setItem("giftAidClicksToday", totalGiftAidClicksToday);
+  localStorage.setItem("giftClicksToday", totalClicksToday);
   
 }
 
