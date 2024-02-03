@@ -1,5 +1,11 @@
+const tableBody = document.getElementById("dataTableBody");
 var userCode = "F1234";
 var firstName = "Martin";
+var userCode = "anonymous"
+localStorage.setItem("currentUserName", "anonymous");
+localStorage.setItem("currentUserCode", "anonymous");
+
+
 // create a list of users
 var cashiers = [
   { firstName: "Martin", user: "M1234" },
@@ -66,13 +72,14 @@ function localDataWork() {
   var newUserData;
   var userAlreadyInLocal = false
 
-  if (localdata == null) {
+  if (localdata == null || localdata == {}) {
     newLocaldata = {
       [currentDate] : {[userCode]: {
       user: userCode,
       firstName: userName,
       giftAid: 0,
       not: 0,
+      percentage: 0,
       date: currentDate,}}
     };
     localStorage.setItem('clickData', JSON.stringify(newLocaldata));
@@ -98,6 +105,7 @@ function localDataWork() {
             firstName: userName,
             giftAid: 0,
             not: 0,
+            percentage: 0,
             date: currentDate,}
           };
           console.log(newUserData);
@@ -113,19 +121,37 @@ function localDataWork() {
 function incrementCounter(buttonType) {
   // create a variable referencing the curent date and change it to string
   var currentDate = dayjs().format("DD/MM/YYYY");
-  console.log("currenDate: " + currentDate);
   // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
   let localdata = JSON.parse(localStorage.getItem("clickData"));
   console.log(localdata);
   console.log("currentDate is : "+currentDate);
   userCode = localStorage.getItem("currentUserCode")
-  console.log(localdata[currentDate][userCode][buttonType]++);
-
+  console.log(localdata[currentDate][userCode]);
+  localdata[currentDate][userCode][buttonType]++;
  // save the updated data in local storage
   localStorage.setItem("clickData", JSON.stringify(localdata));
   updateTable();
-}
 
+//   calculate and display total clicks today
+  var todayDataObj =  localdata[currentDate]
+  var totalClicksPerUser = 0;
+  var totalClicksToday = 0;
+  var totalGiftAidClicksToday = 0;
+  for (const user in todayDataObj) {
+    console.log("user is: "+ todayDataObj[key]);
+    // create a variable for the total number of both buttons pressed
+    var giftAidClick = todayDataObj[user].giftAid;
+    console.log("user giftaid is : "+giftAidClick);
+    var noGiftAidClick =  todayDataObj[user].not
+    totalClicksPerUser = giftAidClick + noGiftAidClick;
+    console.log("total Clicks per user = "+ totalClicksPerUser);
+    totalClicksToday = totalClicksToday + totalClicksPerUser;
+    totalGiftAidClicksToday = totalGiftAidClicksToday + giftAidClick;
+   }
+  $('#ga-count').text(totalGiftAidClicksToday);
+  $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
+  
+}
 
 
 // create function to create / update table with data introduced
@@ -133,25 +159,33 @@ function updateTable() {
   // call data from local storage
   const localdata = JSON.parse(localStorage.getItem("clickData")) || {};
   // create variable referencing the element with ID "dataTableBody"
-  const tableBody = document.getElementById("dataTableBody");
-  // setup initial value to empty
-  tableBody.innerHTML = "";
+
+
+  var currentDate = dayjs().format("DD/MM/YYYY");
+  userCode = localStorage.getItem("currentUserCode");
+  console.log(localdata[currentDate][userCode].giftAid)
+  var todayDataObj =  localdata[currentDate]
   // create a for loop to take every key in "data" object
-  for (const date in localdata) {
-    // object destructuring syntax is used to extract the values of the properties giftAid and not from the data objec
-    const { giftAid, not } = localdata[date];
+  for (const user in todayDataObj) {
+
     // create a variable for the total number of both buttons pressed
-    const total = giftAid + not;
+    var giftAid = localdata[currentDate][userCode].giftAid;
+    var noGiftAid = localdata[currentDate][userCode].not;
+    var firstName = localdata[currentDate][userCode].firstName;
+    const total = giftAid + noGiftAid;
+    console.log("total clicked per user is : "+total);
     // ternary operator is used to calculate the percentage value of giftAid button
-    const percentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
+    const calculatedPercentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
+    localdata[currentDate][userCode].percentage = calculatedPercentage
     // round a percentage to the nearest whole for display purpose
-    const roundPercentage = Math.round(percentage);
+    const roundPercentage = Math.round(calculatedPercentage);
     // create a new variable for a new table row
     const newRow = document.createElement("tr");
     // insert the table data with the values
-    newRow.innerHTML = `<td>${giftAid}</td><td>${not}</td><td>${date}</td><td>${roundPercentage}%</td>`;
+    newRow.innerHTML = `<td>${firstName}</td><td>${giftAid}</td><td>${noGiftAid}</td><td>${currentDate}</td><td>${roundPercentage}%</td>`;
+    tableBody.innerHTML = "";
     tableBody.appendChild(newRow);
-    localdata[date].percentage = percentage;
+    // localdata[date].percentage = percentage;
     // save the data in local storage
     localStorage.setItem("clickData", JSON.stringify(localdata));
     // If the amount of non-gift aided is greater than gift aided, switch the arrow colour to red
@@ -160,6 +194,7 @@ function updateTable() {
     }
   }
 }
+
 
 // // open another page to display the previous days results
 // function sendDataToPage2() {
