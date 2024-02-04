@@ -13,7 +13,98 @@
     />
     <link rel="stylesheet" href="score.css" />
 
-    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #fbfcfb;
+            color: rgb(32, 148, 69);
+        }
+
+        .navbar-brand img {
+            width: 150px;
+            height: auto;
+        }
+
+        .welcome-message {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+
+        #tableHistory {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #tableHistory th,
+        #tableHistory td {
+            padding: 10px;
+            border: none;
+        }
+
+        #leaderboard-row {
+            background-color: #458532; /* Darker green */
+            color: white;
+            font-weight: bold;
+            font-size: 28px; /* Increased font size for Leaderboard text */
+        }
+
+        #rank-row {
+            background-color: aqua;
+            color: #fbfcfb;
+            font-weight: bold;
+        }
+
+        #table-body {
+            text-align: center;
+        }
+
+        /* Custom styles for the first row (Place Holder 1) */
+        #table-body tr:nth-child(1) {
+            font-size: 30px; /* Larger font size */
+            color: #593932; /* Custom color */
+            font-weight: bold;
+        }
+
+        /* Custom styles for the second row (Place Holder 2) */
+        #table-body tr:nth-child(2) {
+            font-size: 30px; /* Smaller font size */
+            color: #593932; /* Custom color */
+            font-weight: bold;
+            text-indent: 20px; /* Indent to the right */
+        }
+
+        /* Custom styles for the third row (Place Holder 3) */
+        #table-body tr:nth-child(3) {
+            font-size: 30px; /* Smaller font size */
+            color: #593932; /* Custom color */
+            font-weight: bold;
+            text-indent: 40px; /* Indent to the right */
+        }
+
+        /* Custom styles for the fourth row */
+        #table-body tr:nth-child(4) {
+            font-size: 30px; /* Adjust font size */
+            color: #e03d14; /* Custom color */
+            font-weight: bold;
+            text-indent: 40px; /* Indent to the right */
+        }
+    </style>
+</head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -21,7 +112,9 @@
             <a class="navbar-brand" href="../index.html">
                 <img src="images/oxfam_logo.png" width="200" alt="Oxfam logo." />
             </a>
-            <p class="welcome-message">Welcome, Employee</p>
+            <div class="d-flex flex-column align-items-center">
+                <p class="welcome-message">Welcome, Employee</p>
+            </div>
             <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -51,80 +144,48 @@
     </nav>
 
     <section>
-      <div class="container table-container">
-          <table class="table" id="tableHistory">
-              <thead id="table-header" class="text-center">
-                  <th>
-                      <div class="d-flex align-items-center justify-content-center">
-                          Rank
-                      </div>
-                  </th>
-                  <th>
-                      <div class="d-flex align-items-center justify-content-center">
-                          Employee Name
-                      </div>
-                  </th>
-                  <th>
-                      <div class="d-flex align-items-center justify-content-center">
-                          Gift Aided
-                      </div>
-                  </th>
-              </thead>
-              <tbody id="table-body" class="text-center">
-                  <!-- Example rows -->
-              </tbody>
-          </table>
-      </div>
-  </section>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.js"
-      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-  <script src="tabledata.js"></script>
-
-  <script>
-      document.addEventListener("DOMContentLoaded", function () {
-          // Example data
-          var data = [
-              { name: "Player 1", giftAided: true },
-              { name: "Player 2", giftAided: false },
-              { name: "Player 3", giftAided: true }
-          ];
-
-          var tableBody = document.getElementById("table-body");
-
-          // Initialize rank counter
-          var rank = 1;
-
-          // Populate the table
-          data.forEach(function (entry) {
-              var row = document.createElement("tr");
-
-              // Rank column
-              var rankColumn = document.createElement("td");
-              rankColumn.textContent = rank++;
-              row.appendChild(rankColumn);
-
-              // Name column
-              var nameColumn = document.createElement("td");
-              nameColumn.textContent = entry.name;
-              row.appendChild(nameColumn);
-
-              // Gift Aided column
-              var giftAidedColumn = document.createElement("td");
-              giftAidedColumn.textContent = entry.giftAided ? "Yes" : "No";
-              row.appendChild(giftAidedColumn);
-
-              tableBody.appendChild(row);
-          });
-      });
-  </script>
-</body>
-            
-             
+        <div class="container table-container">
+            <table class="table" id="tableHistory">
+                <thead id="table-header">
+                    <!-- Leaderboard header row -->
+                    <tr id="leaderboard-row">
+                        <th colspan="3">
+                            Leaderboard
+                        </th>
+                    </tr>
+                    <!-- Rank, Employee Name, Gift Aided header row -->
+                    <tr>
+                        <th>Rank</th>
+                        <th>Employee Name</th>
+                        <th>Gift Aided</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- Placeholder rows -->
+                    <tr>
+                        <td>1</td>
+                        <td>Place Holder 1</td>
+                        <td>80% Gift Aided</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Place Holder 2</td>
+                        <td>60% Gifted</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Place Holder 3</td>
+                        <td>40% Gifted</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>You are in 7th Place</td>
+                        <td>40% Gift Aided</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -132,7 +193,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <!-- <script src="script.js"></script> -->
     <script src="tabledata.js"></script>
 </body>
 
