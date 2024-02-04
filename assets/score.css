@@ -1,37 +1,81 @@
-th, td {
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #fbfcfb;
+    color: rgb(32, 148, 69);
+}
+
+.navbar-brand img {
+    width: 150px;
+    height: auto;
+}
+
+.welcome-message {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-color: white;
+}
+
+.navbar-nav .nav-link {
+    color: rgb(0, 0, 0);
+    margin: 0 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.navbar-nav .nav-link.active {
+    color: #458532;
+}
+
+header {
+    background-color: #458532;
     color: white;
+    text-align: center;
+    padding: 15px 0; /* Adjusted padding here */
 }
 
-td {
-    border: 5px solid white;
+h1 {
+    margin: 0;
+    font-size: 24px; /* Adjusted font size here */
 }
 
-th:first-child, td:first-child {
-    border-left: none;
-}
-
-th:last-child, td:last-child {
-    border-right: none;
+section {
+    margin: 20px;
 }
 
 table {
+    width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 30px; /* Adjust as needed for roundness */
-    overflow: hidden; /* This ensures that child elements don't overflow the rounded corners */
-  }
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #039533;
+}
 
-#table-header {
+th, td {
+    color: white;
+    border: 5px solid white;
+    padding: 15px;
+    text-align: left;
+}
+
+th {
     background-color: #458532;
-    vertical-align: baseline;
 }
 
-#tableHistoryBody {
+tbody tr:hover {
     background-color: #55a53caf;
-}
-
-.icon {
-    height: 40px;
-    vertical-align: middle;
-    margin-right: 10px;
 }

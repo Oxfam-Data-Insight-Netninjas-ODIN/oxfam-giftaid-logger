@@ -50,39 +50,81 @@
         </div>
     </nav>
 
-    <header>
-        <h1>Leaderboard</h1>
-    </header>
-
     <section>
-        <table>
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Name</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Player 1</td>
-                    <td>1000</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Player 2</td>
-                    <td>950</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Player 3</td>
-                    <td>900</td>
-                </tr>
-                <!-- Add more rows as needed -->
-            </tbody>
-        </table>
-    </section>
+      <div class="container table-container">
+          <table class="table" id="tableHistory">
+              <thead id="table-header" class="text-center">
+                  <th>
+                      <div class="d-flex align-items-center justify-content-center">
+                          Rank
+                      </div>
+                  </th>
+                  <th>
+                      <div class="d-flex align-items-center justify-content-center">
+                          Employee Name
+                      </div>
+                  </th>
+                  <th>
+                      <div class="d-flex align-items-center justify-content-center">
+                          Gift Aided
+                      </div>
+                  </th>
+              </thead>
+              <tbody id="table-body" class="text-center">
+                  <!-- Example rows -->
+              </tbody>
+          </table>
+      </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script src="tabledata.js"></script>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          // Example data
+          var data = [
+              { name: "Player 1", giftAided: true },
+              { name: "Player 2", giftAided: false },
+              { name: "Player 3", giftAided: true }
+          ];
+
+          var tableBody = document.getElementById("table-body");
+
+          // Initialize rank counter
+          var rank = 1;
+
+          // Populate the table
+          data.forEach(function (entry) {
+              var row = document.createElement("tr");
+
+              // Rank column
+              var rankColumn = document.createElement("td");
+              rankColumn.textContent = rank++;
+              row.appendChild(rankColumn);
+
+              // Name column
+              var nameColumn = document.createElement("td");
+              nameColumn.textContent = entry.name;
+              row.appendChild(nameColumn);
+
+              // Gift Aided column
+              var giftAidedColumn = document.createElement("td");
+              giftAidedColumn.textContent = entry.giftAided ? "Yes" : "No";
+              row.appendChild(giftAidedColumn);
+
+              tableBody.appendChild(row);
+          });
+      });
+  </script>
+</body>
+            
+             
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
