@@ -13,6 +13,11 @@ button {
     border: none;
 }
 
+/* Removes the table, needed for functionality, from the page */
+#homeTable {
+    display: none;
+}
+
 .btn {
     background-color: var(--link-colour);
     color: white;
