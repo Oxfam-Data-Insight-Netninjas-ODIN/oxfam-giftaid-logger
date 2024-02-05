@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="table-style.css" />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -74,19 +75,91 @@
         </div>
       </div>
     </nav>
-    <table class="table" id="tableHistory">
-      <thead>
-        <tr>
-          <th scope="col">Date</th>
-          <th scope="col">User Code</th>
-          <th scope="col">Name</th>
-          <th scope="col">Gift Aided</th>
-          <th scope="col">Not Gift Aided</th>
-          <th scope="col">Percentage</th>
-        </tr>
-      </thead>
-      <tbody id="tableHistoryBody"></tbody>
-    </table>
+    <marquee behavior="scroll" direction="left" scrollamount="10">
+      <h3 id="currentDay"></h3>
+    </marquee>
+    <div class="container table-container">
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn tab grow">Weekly</button>
+        <div type="button" class="btn tab grow">All</div>
+      </div>
+      <div class="table-responsive">
+        <table class="table" id="tableHistory">
+          <thead id="table-header" class="text-center">
+            <th>
+              <div class="d-flex align-items-center justify-content-center">
+                <img
+                  class="img-fluid icon"
+                  src="images/date.svg"
+                  alt="White calendar icon."
+                  width="20"
+                />
+                Date
+              </div>
+            </th>
+            <th>
+              <div class="d-flex align-items-center justify-content-center">
+                <img
+                  class="img-fluid icon"
+                  src="images/code.svg"
+                  alt="White shield icon."
+                  width="20"
+                />
+                Employee Code
+              </div>
+            </th>
+            <th>
+              <div class="d-flex align-items-center justify-content-center">
+                <img
+                  class="img-fluid icon"
+                  src="images/user.svg"
+                  alt="White user icon."
+                  width="20"
+                />
+                Employee Name
+              </div>
+            </th>
+            <th>
+              <div class="d-flex align-items-center justify-content-center">
+                <img
+                  class="img-fluid icon"
+                  src="images/tick.svg"
+                  alt="White tick icon."
+                  width="40"
+                />
+                Gift Aided
+              </div>
+            </th>
+            <th>
+              <div class="d-flex align-items-center justify-content-center">
+                <img
+                  class="img-fluid icon"
+                  src="images/x.svg"
+                  alt="White x icon."
+                  width="20"
+                />
+                Not Gift Aided
+              </div>
+            </th>
+            <th>
+              <div class="d-flex align-items-center justify-content-center">
+                <img
+                  class="img-fluid icon"
+                  src="images/percentage.svg"
+                  alt="White percentage icon."
+                  width="40"
+                />
+                Percentage
+              </div>
+            </th>
+          </thead>
+          <tbody id="tableHistoryBody"></tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn">Print Table</button>
+      </div>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

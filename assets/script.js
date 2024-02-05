@@ -230,7 +230,7 @@ function updateTable() {
     localStorage.setItem("clickData", JSON.stringify(localdata));
     // If the amount of non-gift aided is greater than gift aided, switch the arrow colour to red
     if (not > giftAid) {
-        $("#arrow").attr("src","red_score_arrow");
+      $("#arrow").attr("src","assets/images/red_score_arrow.png");
     }
   }
 }

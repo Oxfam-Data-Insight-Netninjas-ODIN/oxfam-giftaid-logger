@@ -1,0 +1,181 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #fbfcfb;
+    color: rgb(32, 148, 69);
+}
+
+.navbar-brand img {
+    width: 150px;
+    height: auto;
+}
+
+.welcome-message {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-color: white;
+}
+
+.navbar-nav .nav-link {
+    color: rgb(0, 0, 0);
+    margin: 0 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.navbar-nav .nav-link.active {
+    color: #458532;
+}
+
+header {
+    background-color: #458532;
+    color: white;
+    text-align: center;
+    padding: 15px 0; /* Adjusted padding here */
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px; /* Adjusted font size here */
+}
+
+section {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #99e168;
+}
+
+th, td {
+    color: white;
+    border: 5px solid rgb(60, 49, 49);
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #458532;
+}
+
+tbody tr:hover {
+    background-color: #55a53caf;
+}
+/* Custom style for a specific row in the table body */
+#table-body .custom-row {
+    color: yellow; 
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #fbfcfb;
+    color: rgb(32, 148, 69);
+}
+
+.navbar-brand img {
+    width: 150px;
+    height: auto;
+}
+
+.welcome-message {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-color: white;
+}
+
+#tableHistory {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#tableHistory th,
+#tableHistory td {
+    padding: 10px;
+    border: none;
+}
+
+#leaderboard-row {
+    background-color: #458532; /* Darker green */
+    color: white;
+    font-weight: bold;
+    font-size: 28px; /* Increased font size for Leaderboard text */
+}
+
+#rank-row {
+    background-color: aqua;
+    color: #fbfcfb;
+    font-weight: bold;
+}
+
+#table-body {
+    text-align: center;
+}
+
+/* Custom styles for the first row (Place Holder 1) */
+#table-body tr:nth-child(1) {
+    font-size: 30px; /* Larger font size */
+    color: #ae2101; /* Custom color */
+    font-weight: bold;
+}
+
+/* Custom styles for the second row (Place Holder 2) */
+#table-body tr:nth-child(2) {
+    font-size: 30px; /* Smaller font size */
+    color: #593932; /* Custom color */
+    font-weight: bold;
+    text-indent: 20px; /* Indent to the right */
+}
+
+/* Custom styles for the third row (Place Holder 3) */
+#table-body tr:nth-child(3) {
+    font-size: 30px; /* Smaller font size */
+    color: #593932; /* Custom color */
+    font-weight: bold;
+    text-indent: 40px; /* Indent to the right */
+}
+
+/* Custom styles for Placeholder 5 */
+#table-body tr:nth-child(4) {
+    font-size: 40px; /* Larger font size than Placeholder 3 */
+    color: #ae532f; /* Custom color */
+    font-weight: bold;
+    text-indent: 60px; /* Indent to the right of Placeholder 3 */
+}
+/* Custom styles for the sixth row (Place Holder 6) */
+#table-body tr:nth-child(5) {
+    font-size: 10px; /* Adjust font size */
+    color: #e03d14; /* Custom color */
+    font-weight: bold;
+    text-indent: 40px; /* Indent to the right */
+}

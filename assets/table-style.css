@@ -1,0 +1,75 @@
+th {
+    color: white;
+    border:none;
+}
+
+th:first-child {
+    border-radius: 20px 0 0 0;
+}
+
+th:last-child {
+    border-radius: 0 20px 0 0;
+}
+
+td {
+    color: white;
+    border: 5px solid white;
+    border-right: none;
+    border-bottom: none;
+    font-weight: bold;
+}
+
+th:first-child, td:first-child {
+    border-left: none;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+.table-container {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 1rem; /* Creates space between the table and the marquee */
+    padding: 20px;
+    background-color: white;
+  }
+
+#table-header {
+    background-color: #458532;
+    vertical-align: baseline;
+    position: relative; /* Added so that z-index can be used, same deal for line 65 */
+    z-index: 2;
+}
+
+#tableHistoryBody {
+    background-color: rgb(76, 76, 76);
+}
+
+.icon {
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.tab {
+    border-radius: 5px 5px 0 0;
+    background-color: var(--link-colour);
+    padding: 5px;
+    margin-right: 10px;
+    width: 90px;
+    height: 20px;
+    transition: height 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.tab:hover {
+    height: 40px;
+}
+
+.tab:last-child {
+    margin-right: 20px;
+}

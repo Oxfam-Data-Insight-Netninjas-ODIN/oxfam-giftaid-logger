@@ -6,26 +6,24 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
-    background: linear-gradient(90deg, rgb(168, 161, 161), rgb(123, 214, 123));
-    animation: gradientAnimation 20s ease infinite;
-    background-size: 200% 200%;
-}
-
-th, td{
-    color: white;
-}
-
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
 }
 
 button {
     cursor: pointer;
     border: none;
-    border-radius: 8px;
-    margin: 0 10px;
+}
+
+.btn {
+    background-color: var(--link-colour);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+}
+
+.btn:hover {
+    color: rgb(30, 34, 73);
 }
 
 /* Start of navigation bar styling */
@@ -37,14 +35,14 @@ button {
 .welcome-message {
     position: absolute;
     bottom: 5px;
-    left: 115px; 
+    left: 115px;
     color: #458532;
     font-weight: bold;
 }
 
 .nav-link {
     font-weight: bold;
-    color: white;
+    color: black;
     margin-right: 20px;
 }
 
@@ -57,8 +55,10 @@ button {
 }
 /* End of navigation bar styling */
 
-
-/* INDEX.HTML */
+#currentDay {
+    font-size: 20px;
+    color: black;
+}
 
 /* Start of GA/NGA button styling */
 #ga-container, #nga-container {
@@ -101,10 +101,15 @@ button {
     }
 
     /* Adds space between buttons */
-    #not {
+    #not { 
         margin-top: 100px;
     }
+
+    /* Removes icons for the table resize. */
+    .icon {
+        display: none;
   }
+}
 
 /* Adds enlarge effect for ga/nga buttons */
 #giftAid:hover, #not:hover {
@@ -114,8 +119,16 @@ button {
 
 /* Start of description section styling */
 #description {
-    background-color: #458532;
+    background: linear-gradient(90deg, black, green);
+    animation: gradientAnimation 20s ease infinite;
+    background-size: 200% 200%;
     padding: 50px;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 h3, h4 {
@@ -139,15 +152,3 @@ p.logger-desc-section-text {
     margin: auto;
 }
 /* End of description section styling */
-
-#fullscreen-button {
-    background-color: var(--link-colour);
-    color: white;
-    font-size: 20px;
-    padding: 30px;
-    border-radius: 50px;
-}
-
-#fullscreen-button:hover {
-    background-color: #769d01;
-}
