@@ -13,6 +13,7 @@ th:last-child {
 td {
     color: white;
     border: 5px solid white;
+    border-right: none;
     border-bottom: none;
     font-weight: bold;
 }
@@ -25,12 +26,12 @@ th:last-child, td:last-child {
     border-right: none;
 }
 
-table {
+.table-container {
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 30px;
-    overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 1rem; /* Creates space between the table and the marquee */
     padding: 20px;
     background-color: white;
   }
@@ -50,3 +51,11 @@ table {
     margin-right: 10px;
 }
 
+.btn {
+    background-color: var(--link-colour);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 15px;
+}

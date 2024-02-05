@@ -75,6 +75,9 @@
         </div>
       </div>
     </nav>
+    <marquee behavior="scroll" direction="left" scrollamount="10">
+      <h3 id="currentDay"></h3>
+    </marquee>
     <div class="container table-container">
       <table class="table" id="tableHistory">
         <thead id="table-header" class="text-center">
@@ -147,6 +150,9 @@
         </thead>
         <tbody id="tableHistoryBody"></tbody>
       </table>
+      <div class="d-flex justify-content-end">
+        <button class="btn">Print Table</button>
+      </div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
