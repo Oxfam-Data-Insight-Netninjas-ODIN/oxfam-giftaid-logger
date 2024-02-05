@@ -1,115 +1,197 @@
-var userCode = "F1234";
-var firstName = "Martin";
+const tableBody = document.getElementById("dataTableBody");
+var userCode = localStorage.getItem("currentUserCode") || "anonymous";
+var firstName = localStorage.getItem("currentUserName") || "anonymous";
+var userName = localStorage.getItem("currentUserName") || "anonymous";
+// localStorage.setItem("currentUserName", "anonymous");
+// localStorage.setItem("currentUserCode", "anonymous");
+
+
+var totalGiftAidClicksToday = localStorage.getItem("giftAidClicksToday")|| 0;
+var totalClicksToday = localStorage.getItem("giftClicksToday") || 0;
+$('#ga-count').text(totalGiftAidClicksToday);
+$('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
+$('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)))
+
+
 // create a list of users
 var cashiers = [
   { firstName: "Martin", user: "M1234" },
-  { firstName: "Amy", user: "D3456" },
+  { firstName: "Amy", user: "A3456" },
   { firstName: "George", user: "G8976" },
+  { firstName: "anonymous", user: "anonymous" },
 ];
 
 // create a drop down list with user names
 for (i = 0; i < cashiers.length; i++) {
   var newButtonUser = $("<li>");
   newButtonUser.text(cashiers[i].firstName);
-
   $("#users").append(newButtonUser);
 }
 
-var userName = null;
-// create a click event for the drop menu user to select the current user
+
+// create a click event for the drop menu users to select the current user
 $(".dropdown-menu li").click(function () {
   userName = $(this).text();
   //   save to local storage the userName
   localStorage.setItem("currentUserName", userName);
   console.log("clicked username : " + userName);
-
   // loop through data to identify the userCode corresponding to the firstnme
   for (i = 0; i < cashiers.length; i++) {
     $.each(cashiers[i], function (key, value) {
       if (value === userName) {
         userCode = cashiers[i].user;
-        console.log("userCode coresonding to the click name is: " + userCode);
+
         //   save to local storage the userCode
         localStorage.setItem("currentUserCode", userCode);
         return false; // Exit the loop once a match is found
       }
+    localDataWork()
     });
   }
 });
 
-console.log("selected user is :" + userName);
-console.log("firstname is : " + firstName);
-console.log("userCode for first name is : " + userCode);
+console.log("default selected user is :" + userName);
+console.log("default firstname is : " + firstName);
+console.log("default userCode for first name is : " + userCode);
 
-var userCode = localStorage.getItem("currentUserCode");
-if (userCode == null) {
-    userCode = "anonymous"
-};
-console.log("usercode from storage : " + userCode);
+// localDataWork()
 
-var userName = localStorage.getItem("currentUserName");
-if (userName == null) {
-    userName = "anonymous"
-}
-console.log("usercode from storage : " + userName);
-
-
-let localdata = JSON.parse(localStorage.getItem("clickData"));
-const currentDate = dayjs().format("DD/MM/YYYY");
-console.log(localdata);
-if (localdata == null) {
-    const newLocaldata = {
+// write the object data in local storage as a function
+function localDataWork() {
+//   retrieve the selected userCode from local storage
+  var userCode = localStorage.getItem("currentUserCode");
+  if (userCode == null) {
+      userCode = "anonymous"
+  };
+  console.log("usercode from storage : " + userCode);
+  //   retrieve the selected userName from local storage
+  var userName = localStorage.getItem("currentUserName");
+  if (userName == null) {
+      userName = "anonymous"
+  }
+ 
+  
+  // retrieve data from locals storage and populate an object with selected User data;
+  //      if there is none, generate a default one
+  //           Then save data to local storage
+  let localdata = JSON.parse(localStorage.getItem("clickData"));
+  const currentDate = dayjs().format("DD/MM/YYYY");
+  var newLocaldata;
+  var newUserData;
+  var userAlreadyInLocal = false
+  
+//   if the local storage is empti create a default user data
+  if (localdata == null || localdata == {}) {
+    newLocaldata = {
       [currentDate] : {[userCode]: {
       user: userCode,
       firstName: userName,
       giftAid: 0,
       not: 0,
+      percentage: 0,
       date: currentDate,}}
     };
-    console.log(newLocaldata);
     localStorage.setItem('clickData', JSON.stringify(newLocaldata));
+    localdata = newLocaldata;
+  }
+  
+  // if the current date is different than the one in data base create a new data for current date  
+  //    as in check if the key date is present, if not add it with the value of new user
+  if (`${currentDate}` in localdata) {
+  } else {  
+    console.log(`all dates are different than ${currentDate} so a new date will be created`);
+    var newDateLocaldata = {
+      [currentDate] : {[userCode]: {
+      user: userCode,
+      firstName: userName,
+      giftAid: 0,
+      not: 0,
+      percentage: 0,
+      date: currentDate,}}
+    };
+
+    $.extend(localdata, newDateLocaldata);
+
+    localStorage.setItem('clickData', JSON.stringify(localdata));
+  } 
+
+  
+  // check if selected user is already in local storage   
+  for (var key in localdata[currentDate]) {
+    var keys = Object.keys(localdata[currentDate]);
+
+    if (key === userCode) {
+
+      userAlreadyInLocal = true;
+      break;
+    } else {
+        userAlreadyInLocal = false;
+
+    } 
   }
 
+  
+
+
+  // is user not in local storage add the new user with default values   
+  if (userAlreadyInLocal === true) {
+
+  }
+  else {
+        newUserData = {
+            [userCode]: {
+            user: userCode,
+            firstName: userName,
+            giftAid: 0,
+            not: 0,
+            percentage: 0,
+            date: currentDate,}};
+          
+
+          $.extend(localdata[currentDate], newUserData);
+
+          localStorage.setItem('clickData', JSON.stringify(localdata));
+    }
+}
+localDataWork()
 
 // create a function to increment the values according to which is button pressed
 function incrementCounter(buttonType) {
   // create a variable referencing the curent date and change it to string
-//   var dateForObject = dayjs().format("DD/MM/YYYY");
-//   const currentDate = dateForObject;
-  const currentDate = dayjs().format("DD/MM/YYYY");
-  console.log("currenDate: " + currentDate);
+  var currentDate = dayjs().format("DD/MM/YYYY");
   // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
   let localdata = JSON.parse(localStorage.getItem("clickData"));
 
-  console.log(localdata);
+  userCode = localStorage.getItem("currentUserCode")
 
-
-
-//   // check if "currentDate" key exist in the local data ; if not, create a default value of 0
-//   if (!localdata || (localdata == {})) {
-//     const newLocaldata = {
-//       currentDate : {userCode: {
-//       user: userCode,
-//       firstName: userName,
-//       giftAid: 0,
-//       not: 0,
-//       date: currentDate,}}
-//     };
-//     localStorage.setItem('clickData', JSON.stringify(newLocaldata));
-//   }
-
-  localdata = localStorage.getItem("clickData");
-  console.log("last local data is : "+localdata);
-  localdata = JSON.parse(localStorage.getItem("clickData"));
-  console.log("last local data is : "+localdata);
-  // increase/update the value of the "data""currentDate""userCode" value of the button pressed
-  localdata.currentDate.buttonType++;
-  console.log(localdata[currentDate][userCode]);
-  // save the updated data in local storage
+  localdata[currentDate][userCode][buttonType]++;
+ // save the updated data in local storage
   localStorage.setItem("clickData", JSON.stringify(localdata));
   updateTable();
-}
 
+//   calculate and display total clicks today
+  var todayDataObj =  localdata[currentDate]
+  var totalClicksPerUser = 0;
+  var totalClicksToday = 0;
+  var totalGiftAidClicksToday = 0;
+  for (const user in todayDataObj) {
+
+    // create a variable for the total number of both buttons pressed
+    var giftAidClick = todayDataObj[user].giftAid;
+    console.log("user giftaid is : "+giftAidClick);
+    var noGiftAidClick =  todayDataObj[user].not
+    totalClicksPerUser = giftAidClick + noGiftAidClick;
+    console.log("total Clicks per user = "+ totalClicksPerUser);
+    totalClicksToday = totalClicksToday + totalClicksPerUser;
+    totalGiftAidClicksToday = totalGiftAidClicksToday + giftAidClick;
+   }
+  $('#ga-count').text(totalGiftAidClicksToday);
+  $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
+  $('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)))
+  localStorage.setItem("giftAidClicksToday", totalGiftAidClicksToday);
+  localStorage.setItem("giftClicksToday", totalClicksToday);
+  
+}
 
 
 // create function to create / update table with data introduced
@@ -117,25 +199,33 @@ function updateTable() {
   // call data from local storage
   const localdata = JSON.parse(localStorage.getItem("clickData")) || {};
   // create variable referencing the element with ID "dataTableBody"
-  const tableBody = document.getElementById("dataTableBody");
-  // setup initial value to empty
-  tableBody.innerHTML = "";
+
+
+  var currentDate = dayjs().format("DD/MM/YYYY");
+  userCode = localStorage.getItem("currentUserCode");
+  console.log(localdata[currentDate][userCode].giftAid)
+  var todayDataObj =  localdata[currentDate]
   // create a for loop to take every key in "data" object
-  for (const date in localdata) {
-    // object destructuring syntax is used to extract the values of the properties giftAid and not from the data objec
-    const { giftAid, not } = localdata[date];
+  for (const user in todayDataObj) {
+
     // create a variable for the total number of both buttons pressed
-    const total = giftAid + not;
+    var giftAid = localdata[currentDate][userCode].giftAid;
+    var noGiftAid = localdata[currentDate][userCode].not;
+    var firstName = localdata[currentDate][userCode].firstName;
+    const total = giftAid + noGiftAid;
+    console.log("total clicked per user is : "+total);
     // ternary operator is used to calculate the percentage value of giftAid button
-    const percentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
+    const calculatedPercentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
+    localdata[currentDate][userCode].percentage = calculatedPercentage
     // round a percentage to the nearest whole for display purpose
-    const roundPercentage = Math.round(percentage);
+    const roundPercentage = Math.round(calculatedPercentage);
     // create a new variable for a new table row
     const newRow = document.createElement("tr");
     // insert the table data with the values
-    newRow.innerHTML = `<td>${giftAid}</td><td>${not}</td><td>${date}</td><td>${roundPercentage}%</td>`;
+    newRow.innerHTML = `<td>${firstName}</td><td>${giftAid}</td><td>${noGiftAid}</td><td>${currentDate}</td><td>${roundPercentage}%</td>`;
+    tableBody.innerHTML = "";
     tableBody.appendChild(newRow);
-    localdata[date].percentage = percentage;
+    // localdata[date].percentage = percentage;
     // save the data in local storage
     localStorage.setItem("clickData", JSON.stringify(localdata));
     // If the amount of non-gift aided is greater than gift aided, switch the arrow colour to red
@@ -144,16 +234,9 @@ function updateTable() {
     }
   }
 }
+updateTable();
 
-// // open another page to display the previous days results
-// function sendDataToPage2() {
-//     // take input userCode, add data to local storage and open page 2 with data from previous days
-//     var inputData = userCode.value;
-//     localStorage.setItem("userCode", inputData);
-//     // open the page with highscore
-//     var otherPage = window.open('highscores.html');
-//     otherPage.onload = scoresOnOtherPage();
-// }
+
 
 // bring data from dayjs using 1st API
 var todayDate = dayjs().format("[Today is : ] dddd[,] DD-MM-YYYY");
@@ -196,6 +279,7 @@ function success(position) {
       // take the reverse geolocation from API and display the city
       var currentCity = data.features[0].properties.address.town;
       console.log("location object : " + JSON.stringify(data.features[0]));
+      console.log(data);
 
       console.log("current location =" + currentCity);
 

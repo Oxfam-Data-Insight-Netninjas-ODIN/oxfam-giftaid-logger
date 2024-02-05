@@ -8,7 +8,6 @@ var historyData = [
   { user: "S2544", firstName: "Amy", giftAid: 0, not: 0, percentage: 0, date: "29/01/2023" },
   { user: "D1034", firstName: "Ela", giftAid: 8, not: 2, percentage: 80, date: "28/01/2023" },
 ];
-console.log(historyData);
 
 
 // if the local storage is empty create an empty object
@@ -20,24 +19,36 @@ if (!localStorage.getItem('clickData')) {
   // Store the empty object in local storage
   localStorage.setItem('clickData', emptyObjectJSON);
 }
+
 // get data stored in storage (is stored as object with objects inside)
 let storageData = JSON.parse(localStorage.getItem('clickData'));
 
-// create an array with the values of the keys (the key is the data when was introduced)
-var valuesArray = Object.values(storageData);
-// use a loop to add all data from local storage to the main database (the "historyData" )
-for (i=0 ; i<valuesArray.length ; i++) {
-  // add local storage data to current object data
-  historyData.push(valuesArray[i]);
+// go through all dates from local storage and bring their values as data to be added into historyData array
+$.each(storageData, function(key, value) {
 
-}
+    var newObject = value;
+    // repeat same process to go further down the path to target the needded values
+    $.each(newObject, function(key, value) {
+
+        var neededObject = value;
+        historyData.push(neededObject);
+        });
+  });
+
+// // create an array with the values of the keys (the key is the data when was introduced)
+// var valuesArray = Object.values(storageData);
+// // use a loop to add all data from local storage to the main database (the "historyData" )
+// for (i=0 ; i<valuesArray.length ; i++) {
+//   // add local storage data to current object data
+//   historyData.push(valuesArray[i]);
+
+// }
 
 
 // variable for first object length
 var historyDataObjectLength = Object.keys(historyData).length;
 // loop through all elemeents of the object to and populate the table
 for (var i=0 ; i<historyDataObjectLength ; i++) {
-  
   var populateUser = historyData[i].user;
   var populateName= historyData[i].firstName;
   var populateGiftAid= historyData[i].giftAid;
