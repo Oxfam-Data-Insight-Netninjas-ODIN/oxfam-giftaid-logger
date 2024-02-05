@@ -1,9 +1,20 @@
-th, td {
+th {
     color: white;
 }
 
+th:first-child {
+    border-radius: 20px 0 0 0;
+}
+
+th:last-child {
+    border-radius: 0 20px 0 0;
+}
+
 td {
+    color: white;
     border: 5px solid white;
+    border-bottom: none;
+    font-weight: bold;
 }
 
 th:first-child, td:first-child {
@@ -17,8 +28,11 @@ th:last-child, td:last-child {
 table {
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 30px; /* Adjust as needed for roundness */
-    overflow: hidden; /* This ensures that child elements don't overflow the rounded corners */
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    padding: 20px;
+    background-color: white;
   }
 
 #table-header {
@@ -35,3 +49,4 @@ table {
     vertical-align: middle;
     margin-right: 10px;
 }
+
