@@ -143,7 +143,7 @@ h3, h4 {
     color: #F35959;
 }
 
-p.logger-desc-section-text {
+p.logger-desc-section {
     opacity: var(--support-text);
 }
 
