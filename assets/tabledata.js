@@ -8,7 +8,6 @@ var historyData = [
   { user: "S2544", firstName: "Amy", giftAid: 0, not: 0, percentage: 0, date: "29/01/2023" },
   { user: "D1034", firstName: "Ela", giftAid: 8, not: 2, percentage: 80, date: "28/01/2023" },
 ];
-console.log(historyData);
 
 
 // if the local storage is empty create an empty object
@@ -23,15 +22,14 @@ if (!localStorage.getItem('clickData')) {
 
 // get data stored in storage (is stored as object with objects inside)
 let storageData = JSON.parse(localStorage.getItem('clickData'));
-console.log(storageData);
 
 // go through all dates from local storage and bring their values as data to be added into historyData array
 $.each(storageData, function(key, value) {
-    console.log("Key: " + key + ", Value: " + value);
+
     var newObject = value;
     // repeat same process to go further down the path to target the needded values
     $.each(newObject, function(key, value) {
-        console.log("NewObject Key: " + key + ", Value: " + value);
+
         var neededObject = value;
         historyData.push(neededObject);
         });

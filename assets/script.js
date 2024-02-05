@@ -1,6 +1,7 @@
 const tableBody = document.getElementById("dataTableBody");
 var userCode = "anonymous";
 var firstName = "anonymous";
+var userName = "anonymous";
 localStorage.setItem("currentUserName", "anonymous");
 localStorage.setItem("currentUserCode", "anonymous");
 
@@ -27,7 +28,7 @@ for (i = 0; i < cashiers.length; i++) {
   $("#users").append(newButtonUser);
 }
 
-var userName = null;
+
 // create a click event for the drop menu users to select the current user
 $(".dropdown-menu li").click(function () {
   userName = $(this).text();
@@ -39,7 +40,7 @@ $(".dropdown-menu li").click(function () {
     $.each(cashiers[i], function (key, value) {
       if (value === userName) {
         userCode = cashiers[i].user;
-        console.log("userCode coresonding to the click name is: " + userCode);
+
         //   save to local storage the userCode
         localStorage.setItem("currentUserCode", userCode);
         return false; // Exit the loop once a match is found
@@ -53,7 +54,7 @@ console.log("default selected user is :" + userName);
 console.log("default firstname is : " + firstName);
 console.log("default userCode for first name is : " + userCode);
 
-localDataWork()
+// localDataWork()
 
 // write the object data in local storage as a function
 function localDataWork() {
@@ -68,7 +69,7 @@ function localDataWork() {
   if (userName == null) {
       userName = "anonymous"
   }
-  console.log("usercode from storage : " + userName);
+ 
   
   // retrieve data from locals storage and populate an object with selected User data;
   //      if there is none, generate a default one
@@ -78,7 +79,8 @@ function localDataWork() {
   var newLocaldata;
   var newUserData;
   var userAlreadyInLocal = false
-
+  
+//   if the local storage is empti create a default user data
   if (localdata == null || localdata == {}) {
     newLocaldata = {
       [currentDate] : {[userCode]: {
@@ -92,8 +94,12 @@ function localDataWork() {
     localStorage.setItem('clickData', JSON.stringify(newLocaldata));
     localdata = newLocaldata;
   }
-  if (Object.keys(localdata)[0] !== currentDate) {
-    console.log("different date");
+  
+  // if the current date is different than the one in data base create a new data for current date  
+  //    as in check if the key date is present, if not add it with the value of new user
+  if (`${currentDate}` in localdata) {
+  } else {  
+    console.log(`all dates are different than ${currentDate} so a new date will be created`);
     var newDateLocaldata = {
       [currentDate] : {[userCode]: {
       user: userCode,
@@ -103,26 +109,24 @@ function localDataWork() {
       percentage: 0,
       date: currentDate,}}
     };
+
     $.extend(localdata, newDateLocaldata);
-    console.log("added new date object!");
+
     localStorage.setItem('clickData', JSON.stringify(localdata));
-  } else{
-    console.log("same date so other date is added");
-  }
+  } 
 
   
   // check if selected user is already in local storage   
   for (var key in localdata[currentDate]) {
     var keys = Object.keys(localdata[currentDate]);
-    console.log("the user key form storage is : "+key);
-    console.log("compared userCode is : "+userCode);
+
     if (key === userCode) {
-      console.log("same keys");
+
       userAlreadyInLocal = true;
       break;
     } else {
         userAlreadyInLocal = false;
-        (console.log("keys not same"));
+
     } 
   }
 
@@ -131,7 +135,7 @@ function localDataWork() {
 
   // is user not in local storage add the new user with default values   
   if (userAlreadyInLocal === true) {
-    console.log("same user so nothing will change");
+
   }
   else {
         newUserData = {
@@ -143,14 +147,13 @@ function localDataWork() {
             percentage: 0,
             date: currentDate,}};
           
-          console.log(newUserData);
-          console.log(localdata[currentDate]);
+
           $.extend(localdata[currentDate], newUserData);
-          console.log(localdata[currentDate]);
+
           localStorage.setItem('clickData', JSON.stringify(localdata));
     }
 }
-// localDataWork()
+localDataWork()
 
 // create a function to increment the values according to which is button pressed
 function incrementCounter(buttonType) {
@@ -158,10 +161,9 @@ function incrementCounter(buttonType) {
   var currentDate = dayjs().format("DD/MM/YYYY");
   // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
   let localdata = JSON.parse(localStorage.getItem("clickData"));
-  console.log(localdata);
-  console.log("currentDate is : "+currentDate);
+
   userCode = localStorage.getItem("currentUserCode")
-  console.log(localdata[currentDate][userCode]);
+
   localdata[currentDate][userCode][buttonType]++;
  // save the updated data in local storage
   localStorage.setItem("clickData", JSON.stringify(localdata));
@@ -173,7 +175,7 @@ function incrementCounter(buttonType) {
   var totalClicksToday = 0;
   var totalGiftAidClicksToday = 0;
   for (const user in todayDataObj) {
-    console.log("user is: "+ todayDataObj[key]);
+
     // create a variable for the total number of both buttons pressed
     var giftAidClick = todayDataObj[user].giftAid;
     console.log("user giftaid is : "+giftAidClick);
