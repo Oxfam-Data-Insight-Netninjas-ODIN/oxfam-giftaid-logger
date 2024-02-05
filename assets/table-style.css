@@ -45,7 +45,7 @@ th:last-child, td:last-child {
 }
 
 #tableHistoryBody {
-    background-color: #99e168;
+    background-color: rgb(76, 76, 76);
 }
 
 .icon {
