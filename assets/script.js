@@ -236,15 +236,7 @@ function updateTable() {
 }
 updateTable();
 
-// // open another page to display the previous days results
-// function sendDataToPage2() {
-//     // take input userCode, add data to local storage and open page 2 with data from previous days
-//     var inputData = userCode.value;
-//     localStorage.setItem("userCode", inputData);
-//     // open the page with highscore
-//     var otherPage = window.open('highscores.html');
-//     otherPage.onload = scoresOnOtherPage();
-// }
+
 
 // bring data from dayjs using 1st API
 var todayDate = dayjs().format("[Today is : ] dddd[,] DD-MM-YYYY");
@@ -287,6 +279,7 @@ function success(position) {
       // take the reverse geolocation from API and display the city
       var currentCity = data.features[0].properties.address.town;
       console.log("location object : " + JSON.stringify(data.features[0]));
+      console.log(data);
 
       console.log("current location =" + currentCity);
 
