@@ -11,8 +11,19 @@ body {
 button {
     cursor: pointer;
     border: none;
-    border-radius: 8px;
-    margin: 0 10px;
+}
+
+.btn {
+    background-color: var(--link-colour);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+}
+
+.btn:hover {
+    color: rgb(30, 34, 73);
 }
 
 /* Start of navigation bar styling */
@@ -24,7 +35,7 @@ button {
 .welcome-message {
     position: absolute;
     bottom: 5px;
-    left: 115px; 
+    left: 115px;
     color: #458532;
     font-weight: bold;
 }
@@ -136,15 +147,3 @@ p.logger-desc-section-text {
     margin: auto;
 }
 /* End of description section styling */
-
-#fullscreen-button {
-    background-color: var(--link-colour);
-    color: white;
-    font-size: 20px;
-    padding: 30px;
-    border-radius: 30px;
-}
-
-#fullscreen-button:hover {
-    background-color: #769d01;
-}
