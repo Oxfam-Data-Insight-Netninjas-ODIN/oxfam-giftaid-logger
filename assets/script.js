@@ -1,9 +1,9 @@
 const tableBody = document.getElementById("dataTableBody");
-var userCode = "anonymous";
-var firstName = "anonymous";
-var userName = "anonymous";
-localStorage.setItem("currentUserName", "anonymous");
-localStorage.setItem("currentUserCode", "anonymous");
+var userCode = localStorage.getItem("currentUserCode") || "anonymous";
+var firstName = localStorage.getItem("currentUserName") || "anonymous";
+var userName = localStorage.getItem("currentUserName") || "anonymous";
+// localStorage.setItem("currentUserName", "anonymous");
+// localStorage.setItem("currentUserCode", "anonymous");
 
 
 var totalGiftAidClicksToday = localStorage.getItem("giftAidClicksToday")|| 0;
@@ -234,7 +234,7 @@ function updateTable() {
     }
   }
 }
-
+updateTable();
 
 // // open another page to display the previous days results
 // function sendDataToPage2() {
@@ -286,7 +286,7 @@ function success(position) {
     .then((data) => {
       // take the reverse geolocation from API and display the city
       var currentCity = data.features[0].properties.address.town;
-    //   console.log("location object : " + JSON.stringify(data.features[0]));
+      console.log("location object : " + JSON.stringify(data.features[0]));
 
       console.log("current location =" + currentCity);
 
