@@ -101,10 +101,15 @@ button {
     }
 
     /* Adds space between buttons */
-    #not {
+    #not { 
         margin-top: 100px;
     }
+
+    /* Removes icons for the table resize. */
+    .icon {
+        display: none;
   }
+}
 
 /* Adds enlarge effect for ga/nga buttons */
 #giftAid:hover, #not:hover {
