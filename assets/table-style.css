@@ -40,6 +40,8 @@ th:last-child, td:last-child {
 #table-header {
     background-color: #458532;
     vertical-align: baseline;
+    position: relative; /* Added so that z-index can be used, same deal for line 65 */
+    z-index: 2;
 }
 
 #tableHistoryBody {
@@ -58,6 +60,14 @@ th:last-child, td:last-child {
     padding: 5px;
     margin-right: 10px;
     width: 90px;
+    height: 20px;
+    transition: height 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.tab:hover {
+    height: 40px;
 }
 
 .tab:last-child {
