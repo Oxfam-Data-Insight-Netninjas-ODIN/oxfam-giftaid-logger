@@ -4,28 +4,6 @@ body {
     padding: 0;
 }
 
-.navbar {
-    background-color: #fbfcfb;
-    color: rgb(32, 148, 69);
-}
-
-.navbar-brand img {
-    width: 150px;
-    height: auto;
-}
-
-.welcome-message {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.navbar-toggler {
-    border: none;
-}
-
-.navbar-toggler-icon {
-    background-color: white;
-}
 
 header {
     background-color: #458532;
@@ -156,8 +134,3 @@ tbody tr:hover {
     color: #e03d14;
     font-weight: bold;
     text-indent: 40px;
-}
-.navbar-nav .nav-link {
-    color: black !important;
-    font-weight: bold !important;
-}
