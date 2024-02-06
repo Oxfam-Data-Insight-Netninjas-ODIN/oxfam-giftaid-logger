@@ -22,8 +22,12 @@
             alt="Oxfam logo."
         /></a>
         <p class="welcome-message" id="username">Welcome, Employee</p>
+        <div class="location">
+          <p id="currentLocation">1</p>
+          <p id="locationTemp">2</p>
+        </div>
         <button
-          class="navbar-toggler navbar-dark"
+          class="navbar-toggler navbar-light"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
@@ -68,11 +72,13 @@
           </ul>
         </div>
     </nav>
-    <marquee behavior="scroll" direction="left" scrollamount="10">
+    <marquee behavior="scroll" direction="left" scrollamount="10" class="marquee-text">
         <h3 id="currentDay"></h3>
+        Gift Aid plays a crucial role in Oxfam's mission to alleviate poverty and empower communities worldwide. Through this government scheme, Oxfam can reclaim a basic rate tax of 25% on donations made by UK taxpayers, significantly boosting the value of each contribution. This additional funding enables Oxfam to expand its humanitarian efforts, supporting life-changing projects and initiatives that address issues such as hunger, healthcare, education, and sustainable livelihoods. By encouraging supporters to Gift Aid their donations, Oxfam maximizes the impact of every pound received, allowing them to reach more vulnerable individuals and communities in need . The collective effect of Gift Aid not only amplifies Oxfam's outreach but also helps to ensure the sustainability and effectiveness of its programs, ultimately making a significant difference in the lives of those facing poverty and injustice globally.
     </marquee>
-    <div class="float-end me-5 mb-5">
-      <p id="currentLocationData"></p>
+    <div class="container d-flex justify-content-end current-score">
+      <h3 id="ga-count">0</h3>
+      <p>Gift Aided</p>
     </div>
     <div id="button-container" class="container-fluid mx-auto">
       <button
@@ -90,7 +96,8 @@
         Not Gift Aid
       </button>
     </div>
-    <table>
+    <div id="homeTable">
+      <table>
         <thead>
             <tr>
                 <th>Gift Aided</th>
@@ -103,7 +110,8 @@
 
         </tbody>
     </table>
-    <section class="container-fluid mx-auto" id="description">
+    </div>
+    <section class="container-fluid mx-auto sales-desc" id="description">
         <div class="row ">
             <div class="col-4 ms-auto my-auto">
         <h3>Giftaid Sales</h3>
@@ -116,15 +124,15 @@
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 ">
             <h4 id="ga-count">0</h4>
-            <p class="logger-desc-section-text text-center">Gift Aided</p>
+            <p class="logger-desc-section text-center">Gift Aided</p>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
             <h4 id="nga-count">0</h4>
-            <p class="logger-desc-section-text text-center">Not Gift Aided</p>
+            <p class="logger-desc-section text-center">Not Gift Aided</p>
         </div>
         <img src="assets/images/green_score_arrow.svg" alt="Green arrow." class="d-block mx-auto" id="arrow">
         <h3 class="pt-3" id="percent-count">0</h3>
-        <p class="logger-desc-section-text text-center">Total</p>
+        <p class="logger-desc-section text-center">Total</p>
         </div>
         </div>
         </div>

@@ -54,22 +54,9 @@ th:last-child, td:last-child {
     margin-right: 10px;
 }
 
-.tab {
-    border-radius: 5px 5px 0 0;
-    background-color: var(--link-colour);
-    padding: 5px;
-    margin-right: 10px;
-    width: 90px;
-    height: 20px;
-    transition: height 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.tab:hover {
-    height: 40px;
-}
-
-.tab:last-child {
-    margin-right: 20px;
-}
+/* Removes print button from page when table is printed. */
+@media print {
+    button {
+      display: none;
+    } 
+  }

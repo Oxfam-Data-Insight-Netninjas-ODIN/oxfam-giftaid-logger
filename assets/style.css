@@ -5,12 +5,26 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    color: rgb(2, 0, 0);
+}
+
+.location {
+    display: flex;
+    color: black;
+}
+
+.marquee-text {
     color: white;
 }
 
 button {
     cursor: pointer;
     border: none;
+}
+
+/* Removes the table, needed for functionality, from the page */
+#homeTable {
+    display: none;
 }
 
 .btn {
@@ -143,8 +157,13 @@ h3, h4 {
     color: #F35959;
 }
 
-p.logger-desc-section-text {
+p.logger-desc-section {
     opacity: var(--support-text);
+    color: white;
+}
+
+.sales-desc {
+    color: white;
 }
 
 #arrow {
@@ -152,3 +171,13 @@ p.logger-desc-section-text {
     margin: auto;
 }
 /* End of description section styling */
+
+#currentLocationData {
+    color: black;
+}
+
+
+.current-score {
+    background-color: blue;
+    color: black;
+}
