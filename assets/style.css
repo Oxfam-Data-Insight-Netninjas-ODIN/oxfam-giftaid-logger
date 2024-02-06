@@ -14,7 +14,7 @@ body {
 }
 
 .marquee-text {
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 button {
@@ -76,6 +76,7 @@ button {
 
 /* Start of GA/NGA button styling */
 #ga-container, #nga-container {
+    z-index: 1;
     position: relative;
 }
 
@@ -192,4 +193,10 @@ p.current-score {
     cursor: pointer;
     background-color: var(--link-colour);
     margin-top: 5px;
+
+#gifClipID {
+    position: absolute;
+    top: 200px;
+    right: 100px;
+    z-index: 10;
 }

@@ -178,19 +178,28 @@ function incrementCounter(buttonType) {
 
     // create a variable for the total number of both buttons pressed
     var giftAidClick = todayDataObj[user].giftAid;
-    console.log("user giftaid is : "+giftAidClick);
+
     var noGiftAidClick =  todayDataObj[user].not
     totalClicksPerUser = giftAidClick + noGiftAidClick;
-    console.log("total Clicks per user = "+ totalClicksPerUser);
+
     totalClicksToday = totalClicksToday + totalClicksPerUser;
     totalGiftAidClicksToday = totalGiftAidClicksToday + giftAidClick;
    }
   $('#ga-count').text(totalGiftAidClicksToday);
   $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
-  $('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)));
+  $('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)) + "%");
   localStorage.setItem("giftAidClicksToday", totalGiftAidClicksToday);
   localStorage.setItem("giftClicksToday", totalClicksToday);
   
+  // call function to display a gif as a reward for introducing data
+
+  if (buttonType == "giftAid") {
+    $('#gifClipID').empty();
+    gifClip();
+  }
+  if (buttonType == "not") {
+    $('#gifClipID').empty();
+    }
 }
 
 
@@ -203,7 +212,7 @@ function updateTable() {
 
   var currentDate = dayjs().format("DD/MM/YYYY");
   userCode = localStorage.getItem("currentUserCode");
-  console.log(localdata[currentDate][userCode].giftAid)
+
   var todayDataObj =  localdata[currentDate]
   // create a for loop to take every key in "data" object
   for (const user in todayDataObj) {
@@ -213,7 +222,7 @@ function updateTable() {
     var noGiftAid = localdata[currentDate][userCode].not;
     var firstName = localdata[currentDate][userCode].firstName;
     const total = giftAid + noGiftAid;
-    console.log("total clicked per user is : "+total);
+
     // ternary operator is used to calculate the percentage value of giftAid button
     const calculatedPercentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
     localdata[currentDate][userCode].percentage = calculatedPercentage
@@ -267,8 +276,7 @@ if (navigator.geolocation) {
 function success(position) {
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
-  console.log("Latitude: " + latitude);
-  console.log("Longitude: " + longitude);
+
 
   // find location (as in city) from the coordonates
   fetch(
@@ -303,7 +311,7 @@ function success(position) {
       return response.json();
     })
     .then(function (data) {
-      console.log("weather : " + data.main.temp);
+ 
       // set a variable for wather icon addres and display it
       var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
       var iconElement = $("<img>").attr("src", iconURL);
@@ -331,7 +339,7 @@ function toggleFullscreen() {
 var fullscreenButton = document.getElementById("fullscreen-button");
 
 // add event listener for clicking the fullscreen button
-fullscreenButton.addEventListener("click", toggleFullscreen);
+// fullscreenButton.addEventListener("click", toggleFullscreen);
 
 // click event to open table html
 $("#myButtonHistory").click(function () {
@@ -357,3 +365,24 @@ if (window.matchMedia("(max-width: 575px)").matches) {
     $("#arrow").remove();
   }
 
+// 4th API to display a gif when GiftAidis pressed
+function gifClip () {
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=happy dance";
+
+  fetch(queryURL)
+  .then(function(response) {
+    return response.json();
+  }).then(function(data) {
+
+      var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+      var myImg = data.data[randomNumber].images.original.url;
+      var imgTag = document.createElement("img");
+      imgTag.src = myImg;
+      $('#gifClipID').append(imgTag)
+      setTimeout(function() {
+        $('#gifClipID').empty();
+      }, 5000);
+    
+  });
+}
