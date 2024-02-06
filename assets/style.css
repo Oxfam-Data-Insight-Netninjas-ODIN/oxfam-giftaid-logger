@@ -157,3 +157,7 @@ p.logger-desc-section {
     margin: auto;
 }
 /* End of description section styling */
+
+#currentLocationData {
+    color: black;
+}

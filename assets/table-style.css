@@ -1,3 +1,7 @@
+p {
+    color: black;
+}
+
 th {
     color: white;
     border:none;
@@ -73,3 +77,10 @@ th:last-child, td:last-child {
 .tab:last-child {
     margin-right: 20px;
 }
+
+/* Removes print + tab buttons from page when table is printed. */
+@media print {
+    button {
+      display: none;
+    } 
+  }
