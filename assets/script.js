@@ -357,3 +357,21 @@ if (window.matchMedia("(max-width: 575px)").matches) {
     $("#arrow").remove();
   }
 
+// 4th API to display a gif when GiftAidis pressed
+function gifClip () {
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=5&q=happy dance";
+
+  fetch(queryURL)
+  .then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    for (let i = 0; i < data.data.length; i++) {
+      // var randomNumber = Math.floor(Math.random() * 10) + 1;
+      // console.log("number is :"+ randomNumber);
+      var myImg = data.data[i].images.original.url;
+      var imgTag = document.createElement("img");
+      imgTag.src = myImg;
+      $('#gifClipID').body.append(imgTag)
+    }
+  });
+}
