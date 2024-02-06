@@ -183,3 +183,13 @@ p.current-score {
     font-weight: bold;
 }
 
+.cashier {
+    margin-top: 5px;
+}
+
+.cashier:hover {
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: var(--link-colour);
+    margin-top: 5px;
+}
