@@ -14,8 +14,7 @@
 </head>
 <body>
     <!-- The navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary container-fluid">
         <a class="navbar-brand" href="index.html"
           ><img
             src="assets/images/oxfam_logo.png"
@@ -71,7 +70,6 @@
                 </ul>
               </li>
           </ul>
-        </div>
     </nav>
 
     <!-- Text marquee showing date + explaining gift aid -->
@@ -103,13 +101,13 @@
     <!-- Logger description section -->
     <section class="container-fluid ms-auto sales-desc" id="description">
         <div class="row">
-            <div class="col-4 ms-auto my-auto">
+            <article class="col-4 ms-auto my-auto">
         <h3>Giftaid Sales</h3>
         <p>Log your gift aid sales using this tracker, helping us analyse data to increase gift aid sales!</p>
         <p>Aim for as many gift aided donations as you can and compete against your colleagues to earn top spot on the leaderboard.</p>
         <p>Data is stored in your browser History. If you clear your browser data, the data will be lost.</p>
-        </div>
-        <div class="col-4 text-center mx-auto">
+            </article>
+        <aside class="col-4 text-center mx-auto">
             <h3>Today's Score</h3>
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 ">
@@ -124,12 +122,12 @@
         <h3 class="pt-3" id="percent-count">0</h3>
         <p class="logger-desc text-center">Total</p>
         </div>
-        </div>
+        </aside>
         </div>
         </section>
-        <div class="text-center my-5">
+        <footer class="text-center my-5">
         <button type="button" class="btn" onclick="toggleFullscreen()">Toggle Fullscreen</button>
-    </div>
+        </footer>
 
     <!-- Invisible table, required for increment functionality -->
     <table id="home-table">
