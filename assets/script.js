@@ -23,7 +23,7 @@ var cashiers = [
 
 // create a drop down list with user names
 for (i = 0; i < cashiers.length; i++) {
-  var newButtonUser = $("<li>");
+  var newButtonUser = $(`<li class="cashier">`);
   newButtonUser.text(cashiers[i].firstName);
   $("#users").append(newButtonUser);
 }
