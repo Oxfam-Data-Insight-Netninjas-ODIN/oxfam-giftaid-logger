@@ -277,7 +277,7 @@ function success(position) {
     .then((response) => response.json())
     .then((data) => {
       // take the reverse geolocation from API and display the city
-      var currentCity = data.features[0].properties.address.town;
+      var currentCity = data.features[0].properties.address.town || data.features[0].properties.address.village;
       console.log("location object : " + JSON.stringify(data.features[0]));
       console.log(data);
 
