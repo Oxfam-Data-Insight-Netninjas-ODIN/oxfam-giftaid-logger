@@ -155,6 +155,11 @@ h3, h4 {
 
 p.logger-desc-section {
     opacity: var(--support-text);
+    color: white;
+}
+
+.sales-desc {
+    color: white;
 }
 
 #arrow {
