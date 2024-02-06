@@ -10,7 +10,7 @@ var totalGiftAidClicksToday = localStorage.getItem("giftAidClicksToday")|| 0;
 var totalClicksToday = localStorage.getItem("giftClicksToday") || 0;
 $('#ga-count').text(totalGiftAidClicksToday);
 $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
-$('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)))
+$('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)) + "%")
 
 
 // create a list of users
@@ -187,7 +187,7 @@ function incrementCounter(buttonType) {
    }
   $('#ga-count').text(totalGiftAidClicksToday);
   $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
-  $('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)))
+  $('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)));
   localStorage.setItem("giftAidClicksToday", totalGiftAidClicksToday);
   localStorage.setItem("giftClicksToday", totalClicksToday);
   
