@@ -191,6 +191,15 @@ function incrementCounter(buttonType) {
   localStorage.setItem("giftAidClicksToday", totalGiftAidClicksToday);
   localStorage.setItem("giftClicksToday", totalClicksToday);
   
+  // call function to display a gif as a reward for introducing data
+  console.log("the button pressed is :" +buttonType);
+  if (buttonType == "giftAid") {
+    $('#gifClipID').empty();
+    gifClip();
+  }
+  if (buttonType == "not") {
+    $('#gifClipID').empty();
+    }
 }
 
 
@@ -359,19 +368,22 @@ if (window.matchMedia("(max-width: 575px)").matches) {
 
 // 4th API to display a gif when GiftAidis pressed
 function gifClip () {
-  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=5&q=happy dance";
-
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=happy dance";
+  console.log("displaying gif");
   fetch(queryURL)
   .then(function(response) {
     return response.json();
   }).then(function(data) {
-    for (let i = 0; i < data.data.length; i++) {
-      // var randomNumber = Math.floor(Math.random() * 10) + 1;
-      // console.log("number is :"+ randomNumber);
-      var myImg = data.data[i].images.original.url;
+    // for (let i = 0; i < data.data.length; i++) {
+      var randomNumber = Math.floor(Math.random() * 5) + 1;
+      console.log("number is :"+ randomNumber);
+      var myImg = data.data[randomNumber].images.original.url;
       var imgTag = document.createElement("img");
       imgTag.src = myImg;
-      $('#gifClipID').body.append(imgTag)
-    }
+      $('#gifClipID').append(imgTag)
+      setTimeout(function() {
+        $('#gifClipID').empty();
+      }, 5000);
+    // }
   });
 }
