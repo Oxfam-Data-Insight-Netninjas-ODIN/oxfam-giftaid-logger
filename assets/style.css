@@ -192,12 +192,14 @@ p.current-score {
     transition: 0.3s;
     cursor: pointer;
     background-color: var(--link-colour);
+    color: white;
     margin-top: 5px;
 }
 
 #gifClipID {
     position: absolute;
-    top: 200px;
-    right: 100px;
-    z-index: 10;
-}
+    top: 50%;  
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3; /* Sits on top of both buttons */
+  }
