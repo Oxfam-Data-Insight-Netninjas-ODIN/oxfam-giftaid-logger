@@ -76,6 +76,7 @@ button {
 
 /* Start of GA/NGA button styling */
 #ga-container, #nga-container {
+    z-index: 1;
     position: relative;
 }
 
@@ -176,3 +177,9 @@ p.logger-desc-section {
     color: black;
 }
 
+#gifClipID {
+    position: absolute;
+    top: 200px;
+    right: 100px;
+    z-index: 10;
+}
