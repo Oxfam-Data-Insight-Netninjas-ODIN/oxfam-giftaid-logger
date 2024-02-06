@@ -13,6 +13,10 @@ body {
     color: black;
 }
 
+.marquee-text {
+    color: white;
+}
+
 button {
     cursor: pointer;
     border: none;
