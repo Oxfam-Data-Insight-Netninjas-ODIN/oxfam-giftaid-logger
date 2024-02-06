@@ -177,7 +177,9 @@ p.logger-desc-section {
 }
 
 
-.current-score {
-    background-color: blue;
+p.current-score {
     color: black;
+    opacity: 0.2;
+    font-weight: bold;
 }
+
