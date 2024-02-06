@@ -95,26 +95,35 @@ button {
     background-color: var(--link-colour); /* Green */
     position: relative;
     z-index: 2;
-    top: 2vh;
-    left: 2vw;
+    top: 2rem;
+    left: 8rem;
 }
 
 #not {
     background-color: #F35959; /* Red */
     position: relative;
-    top: -5vh;
-    left: 35vw;
+    bottom: 8rem;
+    left: 30rem;
     z-index: 1;
 }
 
-/* Switches button layout when screen size is 768px (mobile) */
-@media only screen and (max-width: 768px) {
+/* Switches button layout when screen size is 1200px (mobile) */
+@media only screen and (max-width: 1200px) {
     #giftAid, #not {
         position: static;
         width: 100%;
         border-radius: 0;
     }
+}
 
+/* Switches button layout when screen size is 1600px (large screen) */
+@media only screen and (min-width: 1601px) {
+    #giftAid, #not {
+        position: static;
+        width: 100%;
+        border-radius: 0;
+    }
+}
     /* Adds space between buttons */
     #not { 
         margin-top: 100px;
@@ -124,7 +133,6 @@ button {
     .icon {
         display: none;
   }
-}
 
 /* Adds enlarge effect for ga/nga buttons */
 #giftAid:hover, #not:hover {
@@ -181,11 +189,6 @@ p.logger-desc-section {
 
 #locationTemp {
     padding-left: 10px;
-
-p.current-score {
-    color: black;
-    opacity: 0.2;
-    font-weight: bold;
 }
 
 .cashier {
@@ -207,4 +210,3 @@ p.current-score {
     transform: translate(-50%, -50%);
     z-index: 3; /* Sits on top of both buttons */
   }
-}
