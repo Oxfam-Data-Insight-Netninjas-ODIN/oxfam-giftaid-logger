@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
+    <!-- The navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html"
@@ -72,17 +73,22 @@
           </ul>
         </div>
     </nav>
-    <marquee behavior="scroll" direction="left" scrollamount="10" class="marquee-text">
+
+    <!-- Text marquee showing date + explaining gift aid -->
+    <marquee behavior="scroll" direction="left" scrollamount="10">
         <h3 id="currentDay"></h3>
         Gift Aid plays a crucial role in Oxfam's mission to alleviate poverty and empower communities worldwide. Through this government scheme, Oxfam can reclaim a basic rate tax of 25% on donations made by UK taxpayers, significantly boosting the value of each contribution. This additional funding enables Oxfam to expand its humanitarian efforts, supporting life-changing projects and initiatives that address issues such as hunger, healthcare, education, and sustainable livelihoods. By encouraging supporters to Gift Aid their donations, Oxfam maximizes the impact of every pound received, allowing them to reach more vulnerable individuals and communities in need . The collective effect of Gift Aid not only amplifies Oxfam's outreach but also helps to ensure the sustainability and effectiveness of its programs, ultimately making a significant difference in the lives of those facing poverty and injustice globally.
     </marquee>
-    <div id="button-container" class="container-fluid mx-auto">
+
+    <!-- The gift aid/not gift aid buttons -->
+    <div class="container-fluid mx-auto">
+      <!-- Gif, played when a donation is logged as gift aid -->
       <div id="gifClipID"></div>
       <button
         id="giftAid"
         onclick="incrementCounter('giftAid'); playSound('pickupCoin')"
       >
-      <img src="assets/images/tick.svg" alt="tick icon.">
+      <img src="assets/images/tick.svg" alt="Tick icon.">
         Gift Aid
       </button>
       <button
@@ -93,22 +99,9 @@
         Not Gift Aid
       </button>
     </div>
-    <div id="homeTable">
-      <table>
-        <thead>
-            <tr>
-                <th>Gift Aided</th>
-                <th>Not Gift Aided</th>
-                <th>Date</th>
-                <th>Percentage</th>
-            </tr>
-        </thead>
-        <tbody id="dataTableBody">
 
-        </tbody>
-    </table>
-    </div>
-    <section class="container-fluid mx-auto sales-desc" id="description">
+    <!-- Logger description section -->
+    <section class="container-fluid ms-auto sales-desc" id="description">
         <div class="row">
             <div class="col-4 ms-auto my-auto">
         <h3>Giftaid Sales</h3>
@@ -121,15 +114,15 @@
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 ">
             <h4 id="ga-count">0</h4>
-            <p class="logger-desc-section text-center">Gift Aided</p>
+            <p class="logger-desc text-center">Gift Aided</p>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
             <h4 id="nga-count">0</h4>
-            <p class="logger-desc-section text-center">Not Gift Aided</p>
+            <p class="logger-desc text-center">Not Gift Aided</p>
         </div>
-        <img src="assets/images/green_score_arrow.svg" alt="Green arrow." class="d-block mx-auto" id="arrow">
+        <img src="assets/images/green_score_arrow.svg" alt="Green arrow."  id="arrow">
         <h3 class="pt-3" id="percent-count">0</h3>
-        <p class="logger-desc-section text-center">Total</p>
+        <p class="logger-desc text-center">Total</p>
         </div>
         </div>
         </div>
@@ -137,6 +130,21 @@
         <div class="text-center my-5">
         <button type="button" class="btn" onclick="toggleFullscreen()">Toggle Fullscreen</button>
     </div>
+
+    <!-- Invisible table, required for increment functionality -->
+    <table id="home-table">
+            <thead>
+                <tr>
+                    <th>Gift Aided</th>
+                    <th>Not Gift Aided</th>
+                    <th>Date</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody id="dataTableBody">
+    
+            </tbody>
+      </table>
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

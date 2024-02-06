@@ -10,21 +10,11 @@ body {
 
 .location {
     display: flex;
-    color: black;
-}
-
-.marquee-text {
-    color: rgb(0, 0, 0);
 }
 
 button {
     cursor: pointer;
     border: none;
-}
-
-/* Removes the table, needed for functionality, from the page */
-#homeTable {
-    display: none;
 }
 
 .btn {
@@ -166,7 +156,7 @@ h3, h4 {
     color: #F35959;
 }
 
-p.logger-desc-section {
+p.logger-desc {
     opacity: var(--support-text);
     color: white;
 }
@@ -210,3 +200,8 @@ p.logger-desc-section {
     transform: translate(-50%, -50%);
     z-index: 3; /* Sits on top of both buttons */
   }
+
+/* Removes the table, needed for functionality, from the page */
+#home-table {
+    display: none;
+}
