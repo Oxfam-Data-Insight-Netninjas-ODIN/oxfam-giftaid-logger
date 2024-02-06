@@ -193,6 +193,7 @@ p.current-score {
     cursor: pointer;
     background-color: var(--link-colour);
     margin-top: 5px;
+}
 
 #gifClipID {
     position: absolute;
