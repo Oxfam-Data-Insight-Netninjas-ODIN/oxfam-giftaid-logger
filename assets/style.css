@@ -178,6 +178,10 @@ p.logger-desc-section {
 }
 
 
+
+#locationTemp {
+    padding-left: 10px;
+
 p.current-score {
     color: black;
     opacity: 0.2;
@@ -186,17 +190,22 @@ p.current-score {
 
 .cashier {
     margin-top: 5px;
+    
 }
 
 .cashier:hover {
     transition: 0.3s;
     cursor: pointer;
     background-color: var(--link-colour);
+    color: white;
     margin-top: 5px;
+}
 
 #gifClipID {
     position: absolute;
-    top: 200px;
-    right: 100px;
-    z-index: 10;
+    top: 50%;  
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3; /* Sits on top of both buttons */
+  }
 }
