@@ -1,15 +1,12 @@
 :root {
+    --font-colour: white;
     --link-colour: #99CC00;
     --support-text: 0.7;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    color: rgb(2, 0, 0);
-}
-
-.location {
-    display: flex;
+    color: black;
 }
 
 button {
@@ -19,7 +16,7 @@ button {
 
 .btn {
     background-color: var(--link-colour);
-    color: white;
+    color: var(--font-colour);
     font-weight: bold;
     font-size: 16px;
     padding: 1rem 2rem;
@@ -31,6 +28,16 @@ button {
 }
 
 /* Start of navigation bar styling */
+
+/* Ensures city/temp is displayed on same line */
+.location {
+    display: flex;
+}
+
+#locationTemp {
+    padding-left: 10px;
+}
+
 .container-fluid {
     margin: 10px;
 }
@@ -50,70 +57,67 @@ button {
     margin-right: 20px;
 }
 
-.nav-link:hover {
+.nav-link:hover, .active {
     color: var(--link-colour);
 }
 
-.active {
-    color: var(--link-colour);
+.cashier {
+    margin-top: 5px;
+}
+
+.cashier:hover {
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: var(--link-colour);
+    color: var(--font-colour);
+    margin-top: 5px;
 }
 /* End of navigation bar styling */
 
-#currentDay {
-    font-size: 20px;
-    color: black;
-}
 
 /* Start of GA/NGA button styling */
-#ga-container, #nga-container {
-    z-index: 1;
-    position: relative;
-}
-
 #giftAid, #not {
-    /* Scales the size of the buttons as the viewport is resized */
     padding: 5vw;
     margin: 0;
     font-size: 7vw;
     border-radius: 20px;
-    /* Adds drop shadow */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Adds drop shadow */
+    color: var(--font-colour)
 }
 
 #giftAid {
-    background-color: var(--link-colour); /* Green */
+    background-color: var(--link-colour);
     position: relative;
-    z-index: 2;
+    z-index: 1;
     top: 2rem;
     left: 8rem;
 }
 
 #not {
-    background-color: #F35959; /* Red */
+    background-color: #F35959;
     position: relative;
     bottom: 8rem;
     left: 30rem;
     z-index: 1;
 }
 
-/* Switches button layout when screen size is 1200px (mobile) */
-@media only screen and (max-width: 1200px) {
-    #giftAid, #not {
-        position: static;
-        width: 100%;
-        border-radius: 0;
-    }
-}
+#gifClipID {
+    position: absolute;
+    /* Centers gif */
+    top: 50%;  
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Sits on top of both buttons */
+  }
 
-/* Switches button layout when screen size is 1600px (large screen) */
-@media only screen and (min-width: 1601px) {
+/* Switches button layout when screen size is below 1200px (mobile) and above 1600 (large screen) */
+@media only screen and (max-width: 1200px), only screen and (min-width: 1600px) {
     #giftAid, #not {
         position: static;
         width: 100%;
         border-radius: 0;
     }
-}
+
     /* Adds space between buttons */
     #not { 
         margin-top: 100px;
@@ -123,6 +127,7 @@ button {
     .icon {
         display: none;
   }
+}
 
 /* Adds enlarge effect for ga/nga buttons */
 #giftAid:hover, #not:hover {
@@ -130,8 +135,10 @@ button {
   }
 /* End of GA/NGA button styling */
 
+
 /* Start of description section styling */
 #description {
+    /* Provides animated background to the section */
     background: linear-gradient(90deg, black, green);
     animation: gradientAnimation 20s ease infinite;
     background-size: 200% 200%;
@@ -158,11 +165,11 @@ h3, h4 {
 
 p.logger-desc {
     opacity: var(--support-text);
-    color: white;
+    color: var(--font-colour);
 }
 
 .sales-desc {
-    color: white;
+    color: var(--font-colour);
 }
 
 #arrow {
@@ -171,37 +178,7 @@ p.logger-desc {
 }
 /* End of description section styling */
 
-#currentLocationData {
-    color: black;
-}
-
-
-
-#locationTemp {
-    padding-left: 10px;
-}
-
-.cashier {
-    margin-top: 5px;
-}
-
-.cashier:hover {
-    transition: 0.3s;
-    cursor: pointer;
-    background-color: var(--link-colour);
-    color: white;
-    margin-top: 5px;
-}
-
-#gifClipID {
-    position: absolute;
-    top: 50%;  
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3; /* Sits on top of both buttons */
-  }
-
-/* Removes the table, needed for functionality, from the page */
+/* Hides the table, needed for functionality, from the page */
 #home-table {
     display: none;
 }
