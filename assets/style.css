@@ -178,6 +178,10 @@ p.logger-desc-section {
 }
 
 
+
+#locationTemp {
+    padding-left: 10px;
+
 p.current-score {
     color: black;
     opacity: 0.2;

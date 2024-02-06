@@ -257,7 +257,7 @@ var currentCityElem = $("#currentLocation");
 var tempElem = $("#locationTemp");
 
 // Create a variable referencing the html element with ID "currentLocationData"
-var locationElem = $("#currentLocationData");
+// var locationElem = $("#currentLocationData");
 // // add the date to html element
 dateElem.text(todayDate);
 console.log(todayDate);
@@ -291,9 +291,9 @@ function success(position) {
 
       console.log("current location =" + currentCity);
 
-      currentCityElem.text(currentCity);
+      // currentCityElem.text(`${currentCity}  -dfse  ${data.main.temp} °C`);
       // Meant to fetch data but undefined
-      locationElem.text(`${currentCityElem.text()} | ${tempElem.text()}`);
+      // locationElem.text(`${currentCityElem.text()} ${tempElem.text()}`);
     })
     .catch((error) => {
       // Handle any errors
@@ -317,7 +317,7 @@ function success(position) {
       var iconElement = $("<img>").attr("src", iconURL);
       // display current weather data
 
-      tempElem.text(" Temp: " + data.main.temp + "°C");
+      // tempElem.text(`" "+" temp: " + ${data.main.temp} °C`);
     });
 }
 function error() {
