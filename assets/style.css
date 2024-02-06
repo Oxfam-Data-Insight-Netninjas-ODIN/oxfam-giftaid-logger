@@ -176,3 +176,8 @@ p.logger-desc-section {
     color: black;
 }
 
+
+.current-score {
+    background-color: blue;
+    color: black;
+}
