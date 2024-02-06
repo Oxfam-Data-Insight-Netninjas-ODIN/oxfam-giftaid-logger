@@ -1,12 +1,12 @@
 
 var historyData = [
-  { user: "F2345", firstName: "John", giftAid: 2, not: 2, percentage: 50,  date: "30/01/2023" },
-  { user: "F1234", firstName: "Martin", giftAid: 1, not: 1, percentage: 50, date: "30/01/2023" },
-  { user: "F5678", firstName: "Duncan", giftAid: 3, not: 1, percentage: 75, date: "30/01/2023" },
-  { user: "F2334", firstName: "Rob", giftAid: 4, not: 0, percentage: 100, date: "30/01/2023" },
-  { user: "G6734", firstName: "Tom", giftAid: 2, not: 1, percentage: 66, date: "29/01/2023" },
-  { user: "S2544", firstName: "Amy", giftAid: 0, not: 0, percentage: 0, date: "29/01/2023" },
-  { user: "D1034", firstName: "Ela", giftAid: 8, not: 2, percentage: 80, date: "28/01/2023" },
+  { user: "F2345", firstName: "John", giftAid: 2, not: 2, percentage: 50,  date: "30/01/2024" },
+  { user: "F1234", firstName: "Martin", giftAid: 1, not: 1, percentage: 50, date: "30/01/2024" },
+  { user: "F5678", firstName: "Duncan", giftAid: 3, not: 1, percentage: 75, date: "30/01/2024" },
+  { user: "F2334", firstName: "Rob", giftAid: 4, not: 0, percentage: 100, date: "30/01/2024" },
+  { user: "G6734", firstName: "Tom", giftAid: 2, not: 1, percentage: 66, date: "29/01/2024" },
+  { user: "S2544", firstName: "Amy", giftAid: 0, not: 0, percentage: 0, date: "29/01/2024" },
+  { user: "D1034", firstName: "Ela", giftAid: 8, not: 2, percentage: 80, date: "28/01/2024" },
 ];
 
 
@@ -22,7 +22,7 @@ if (!localStorage.getItem('clickData')) {
 
 // get data stored in storage (is stored as object with objects inside)
 let storageData = JSON.parse(localStorage.getItem('clickData'));
-
+var newStorag
 // go through all dates from local storage and bring their values as data to be added into historyData array
 $.each(storageData, function(key, value) {
 
@@ -43,6 +43,20 @@ $.each(storageData, function(key, value) {
 //   historyData.push(valuesArray[i]);
 
 // }
+// Custom comparison function
+function compareDates(a, b) {
+  var dateA = new Date(a.date);
+  console.log(dateA);
+  var dateB = new Date(b.date);
+  console.log("dateB-dateA : " +dateB - dateA);
+  return dateB - dateA;
+}
+
+// Sort the data based on the date value
+historyData.sort(compareDates);
+
+// Output the sorted data
+console.log(historyData);
 
 
 // variable for first object length
@@ -144,7 +158,7 @@ function success(position) {
 
             currentCityElem.text(currentCity);
             // Meant to fetch data but undefined
-            locationElem.text(`${currentCityElem.text()} | ${tempElem.text()}`);
+            // locationElem.text(`${currentCityElem.text()}  ${tempElem.text()}`);
         })
         .catch(error => {
             // Handle any errors
@@ -169,7 +183,7 @@ function success(position) {
             // display current weather data
 
 
-            tempElem.text(" Temp: " + data.main.temp + "°C");
+            tempElem.text("   Temp: " + data.main.temp + "°C");
 
         })
 }
