@@ -8,6 +8,11 @@ body {
     color: white;
 }
 
+.location {
+    display: flex;
+    color: black;
+}
+
 button {
     cursor: pointer;
     border: none;
