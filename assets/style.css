@@ -1,25 +1,14 @@
 :root {
     --font-colour: white;
-    --link-colour: #99CC00;
+    --link-colour: #458532;
     --support-text: 0.7;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: black;
+    font-weight: bold;
     overflow-x: hidden; /* Added to fix the phantom overflow */
-    background: linear-gradient(to top, #26e710, white); /* Added gradient */
-    animation: gradientAnimation 5s infinite; /* Added animation */
-}
-
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 100%; /* Start position */
-    }
-    100% {
-        background-position: 0% 0%; /* End position */
-    }
-    
 }
 
 button {
@@ -30,7 +19,6 @@ button {
 .btn {
     background-color: var(--link-colour);
     color: var(--font-colour);
-    font-weight: bold;
     font-size: 1rem;
     padding: 1rem 2rem;
     border-radius: 0.9rem;
@@ -52,19 +40,21 @@ button {
     margin-bottom: 2rem;
 }
 
-.container-fluid {
-    margin: 0.6rem;
+#currentDay {
+    color: rgb(228, 5, 49);
 }
 
-/* Positions the welcome message under the logo */
+.container-fluid {
+    margin: 0.6rem;
+    margin-bottom: -1rem;
+}
+
 .welcome-message {
     margin-top: -1rem;
-    color: #458532;
-    font-weight: bold;
+    color: var(--link-colour);
 }
 
 .nav-link {
-    font-weight: bold;
     color: black;
     margin-right: 1.25rem;
 }
@@ -86,6 +76,13 @@ button {
 }
 /* End of navigation bar styling */
 
+marquee {
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.2);
+}
+
+main {
+    background: linear-gradient(to top, #075006, white); /* Added gradient */
+}
 
 /* Start of GA/NGA button styling */
 #giftAid, #not {
@@ -135,6 +132,7 @@ button {
     /* Adds space between buttons */
     #not { 
         margin-top: 6.25rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -161,16 +159,10 @@ button {
 /* Start of description section styling */
 #description {
     /* Provides animated background to the section */
-    background: linear-gradient(90deg, black, green);
-    animation: gradientAnimation 20s ease infinite;
+    background: linear-gradient(to top, #0f5b0d, #0d540b); /* Added gradient */
     background-size: 200% 200%;
     padding: 3.1rem;
-}
-
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    margin-top: 0;
 }
 
 h3, h4 {
@@ -178,7 +170,7 @@ h3, h4 {
 }
 
 #ga-count {
-    color: var(--link-colour);
+    color: #99CC00;
 }
 
 #nga-count {
@@ -199,6 +191,7 @@ p.logger-desc {
     margin: auto;
 }
 /* End of description section styling */
+
 
 /* Hides the table, needed for functionality, from the page */
 #home-table {
