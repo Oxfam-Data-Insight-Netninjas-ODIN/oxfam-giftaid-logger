@@ -30,7 +30,7 @@ var cashiers = [
   { firstName: "George", user: "G8976" },
   { firstName: "anonymous", user: "anonymous" },
 ];
-
+t-count
 
 // create a drop down list with user names
 for (i = 0; i < cashiers.length; i++) {
@@ -382,7 +382,7 @@ if (window.matchMedia("(max-width: 575px)").matches) {
 
 // 4th API to display a gif when GiftAidis pressed
 function gifClip () {
-  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=happy dance";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=congratulation";
 
   fetch(queryURL)
   .then(function(response) {
