@@ -7,7 +7,6 @@ var historyDataServer = [
   { user: "F2334", firstName: "Rob", giftAid: 4, not: 1, percentage: 100, date: "30/12/2023" },
   { user: "G6734", firstName: "Tom", giftAid: 2, not: 1, percentage: 66, date: "29/12/2023" },
   { user: "S2544", firstName: "Amy", giftAid: 0, not: 0, percentage: 0, date: "29/12/2023" },
- 
 ];
 
 
@@ -40,28 +39,7 @@ $.each(storageData, function(key, value) {
 historyData = historyData.concat(historyDataServer)
 
 
-// // create an array with the values of the keys (the key is the data when was introduced)
-// var valuesArray = Object.values(storageData);
-// // use a loop to add all data from local storage to the main database (the "historyData" )
-// for (i=0 ; i<valuesArray.length ; i++) {
-//   // add local storage data to current object data
-//   historyData.push(valuesArray[i]);
 
-// }
-// Custom comparison function
-// function compareDates(a, b) {
-//   var dateA = new Date(a.date);
-//   console.log(dateA);
-//   var dateB = new Date(b.date);
-//   console.log("dateB-dateA : " +dateB - dateA);
-//   return dateB - dateA;
-// }
-
-// // Sort the data based on the date value
-// historyData.sort(compareDates);
-
-// // Output the sorted data
-// console.log(historyData);
 
 
 // variable for first object length
@@ -84,7 +62,7 @@ for (var i=0 ; i<historyDataObjectLength ; i++) {
 
 
 
-
+// ////////////////////////////////////////////////////
 // code for Scores HTML
 
 // Sort the object based on the 'age' value in descending order
@@ -93,7 +71,6 @@ historyData.sort(function(a, b) {
     return b.giftAid - a.giftAid;
   }
   return b.percentage - a.percentage;
-  
 });
 
 // Iterate over the sorted object and create rows
@@ -113,6 +90,21 @@ $.each(historyData, function(index, element) {
   $('#table-body').append(newRow);
 });
 
+// populate top3
+var top1name = historyData[0].firstName;
+$('#top1nameElem').text(top1name);
+var top1percentage = historyData[0].percentage
+$('#top1percElem').text(`${top1percentage}%`);
+
+var top2name = historyData[1].firstName;
+$('#top2nameElem').text(top2name);
+var top2percentage = historyData[1].percentage
+$('#top2percElem').text(`${top2percentage}%`);
+
+var top3name = historyData[2].firstName;
+$('#top3nameElem').text(top3name);
+var top3percentage = historyData[2].percentage
+$('#top3percElem').text(`${top3percentage}%`);
 
 
 
