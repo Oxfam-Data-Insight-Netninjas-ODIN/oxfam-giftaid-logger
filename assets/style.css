@@ -8,6 +8,18 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: black;
     overflow-x: hidden; /* Added to fix the phantom overflow */
+    background: linear-gradient(to top, #26e710, white); /* Added gradient */
+    animation: gradientAnimation 5s infinite; /* Added animation */
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 100%; /* Start position */
+    }
+    100% {
+        background-position: 0% 0%; /* End position */
+    }
+    
 }
 
 button {
@@ -37,6 +49,7 @@ button {
 
 #locationTemp {
     padding-left: 0.6rem;
+    margin-bottom: 2rem;
 }
 
 .container-fluid {
@@ -45,9 +58,7 @@ button {
 
 /* Positions the welcome message under the logo */
 .welcome-message {
-    position: absolute;
-    bottom: 0.1rem;
-    left: 6.5rem;
+    margin-top: -1rem;
     color: #458532;
     font-weight: bold;
 }
@@ -134,11 +145,7 @@ button {
         display: none;
     }
 
-    /* Removes welcome message */
-    .welcome-message {
-        display: none;
-    }
-
+    /* Removes spacing between buttons */
     #giftAid, #not {
         margin-top: 1rem;
     }

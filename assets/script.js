@@ -237,7 +237,6 @@ function updateTable() {
 
     // ternary operator is used to calculate the percentage value of giftAid button
     if (total != 0) { 
-      console.log("total is not 0");
       var calculatedPercentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
     } else { calculatedPercentage = 0};
 

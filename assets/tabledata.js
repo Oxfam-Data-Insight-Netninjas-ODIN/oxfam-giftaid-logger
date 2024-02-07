@@ -1,3 +1,5 @@
+displayUser ();
+
 var currentUserCode = localStorage.getItem('currentUserCode');
 var currentDate = dayjs().format("DD/MM/YYYY");
 
@@ -112,7 +114,7 @@ $('#top3nameElem').text(top3name);
 var top3percentage = Math.round(historyData[2].percentage)
 $('#top3percElem').text(`${top3percentage}%`);
 
-// find the current user data in the table data and return the position in the table 
+// find the current user data in the table data and return the position of the user in the table 
 for (var i = 0; i < historyData.length; i++) {
   if (historyData[i].user === currentUserCode && historyData[i].date === currentDate) {
     index = i+1;
@@ -121,9 +123,21 @@ for (var i = 0; i < historyData.length; i++) {
     var currentUserPerc = Math.round(historyData[i].percentage)
     $('#currentUserPercentage').text(`${currentUserPerc}%`);
     console.log("index of user is : "+index);
+    if (index <4) {
+      $('#gifClipID').empty();
+      gifClip2();
+    }
+    // highlight the current user inside the table
+    // $("#table-body > :nth-child(i+3)").css("color", "red");
+    var currentUserTableRowIndex = i+5
+    var parent = document.getElementById("table-body");
+    var currentUserDataChild = parent.querySelector(":nth-child(" + currentUserTableRowIndex + ")");
+
+    currentUserDataChild.style.backgroundColor = "green";
     break;
   }
 }
+
 
 
 // work in progress with data copied from main html to test it here !
@@ -207,4 +221,39 @@ function success(position) {
 }
 function error() {
     console.log("Unable to retrieve your location.");
+}
+
+
+
+function displayUser () {
+  var userName = localStorage.getItem("currentUserName")
+  console.log("username for title is :"+userName);
+  if (userName === "anonymous") {
+    console.log("username is anonymous in left top corner");
+    $('#username').text (`Welcome, Employee`);
+  } else {
+    $('#username').text (`Welcome, ${userName}`);
+  }
+};
+
+
+function gifClip2 () {
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=top3";
+
+  fetch(queryURL)
+  .then(function(response) {
+    return response.json();
+  }).then(function(data) {
+
+      var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+      var myImg = data.data[randomNumber].images.original.url;
+      var imgTag = document.createElement("img");
+      imgTag.src = myImg;
+      $('#gifClipID').append(imgTag)
+      setTimeout(function() {
+        $('#gifClipID').empty();
+      }, 5000);
+    
+  });
 }
