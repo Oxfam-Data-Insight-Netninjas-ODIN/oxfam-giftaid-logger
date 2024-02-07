@@ -129,7 +129,7 @@ for (var i = 0; i < historyData.length; i++) {
     }
     // highlight the current user inside the table
     // $("#table-body > :nth-child(i+3)").css("color", "red");
-    var currentUserTableRowIndex = i+5
+    var currentUserTableRowIndex = i+7
     var parent = document.getElementById("table-body");
     // var currentUserDataChild = parent.querySelector(":nth-child(" + currentUserTableRowIndex + ")");
     
@@ -231,7 +231,7 @@ function displayUser () {
   console.log("username for title is :"+userName);
   if (userName === "anonymous") {
     console.log("username is anonymous in left top corner");
-    $('#username').text (`Welcome, Employee`);
+    $('#username').text (`Welcome, Volunteer`);
   } else {
     $('#username').text (`Welcome, ${userName}`);
   }
@@ -239,7 +239,7 @@ function displayUser () {
 
 
 function gifClip2 () {
-  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=top3";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=congratulation";
 
   fetch(queryURL)
   .then(function(response) {
@@ -258,3 +258,4 @@ function gifClip2 () {
     
   });
 }
+
