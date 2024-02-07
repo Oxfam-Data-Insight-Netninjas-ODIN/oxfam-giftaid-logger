@@ -1,7 +1,13 @@
 const tableBody = document.getElementById("dataTableBody");
 var userCode = localStorage.getItem("currentUserCode") || "anonymous";
+localStorage.setItem("currentUserCode", userCode);
+
 var firstName = localStorage.getItem("currentUserName") || "anonymous";
+localStorage.setItem("currentUserName", firstName);
+
 var userName = localStorage.getItem("currentUserName") || "anonymous";
+localStorage.setItem("currentUserName", userName);
+
 // localStorage.setItem("currentUserName", "anonymous");
 // localStorage.setItem("currentUserCode", "anonymous");
 
