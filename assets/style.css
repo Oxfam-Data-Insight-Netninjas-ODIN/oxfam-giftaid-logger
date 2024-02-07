@@ -78,9 +78,10 @@ button {
 
 /* Start of GA/NGA button styling */
 #giftAid, #not {
-    padding: 6rem;
+    padding: 4rem;
+    width: 50%;
     margin: 0;
-    font-size: 5rem;
+    font-size: 2rem;
     border-radius: 1.25rem;
     box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.2); /* Creates drop shadow */
     color: var(--font-colour)
@@ -91,14 +92,14 @@ button {
     position: relative;
     z-index: 2;
     top: 2rem;
-    left: 8rem;
+    left: 5rem;
 }
 
 #not {
     background-color: #F35959;
     position: relative;
-    bottom: 2rem;
-    left: 30rem;
+    bottom: 3rem;
+    left: 35rem;
     z-index: 1;
 }
 
@@ -117,6 +118,7 @@ button {
         position: static;
         width: 100%;
         border-radius: 0;
+        padding: 2rem;
     }
 
     /* Adds space between buttons */
