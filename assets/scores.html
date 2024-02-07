@@ -26,10 +26,6 @@
     <a class="navbar-brand" href="index.html">
         <img src="images/oxfam_logo.png" width="200" alt="Oxfam logo."/>
     </a>
-    <div class="location">
-        <p id="currentLocation"></p>
-        <p id="locationTemp"></p>
-    </div>
     <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -49,6 +45,11 @@
 </nav>
 <!-- Welcome message to user -->
 <p class="welcome-message text-end mx-4" id="username">Welcome, Employee</p>
+<div class="location d-flex justify-content-end mx-4">
+    <p id="currentLocation"></p>
+    <p id="locationTemp"></p>
+  </div>
+
 <section>
     <div class="container table-container">
         <table class="table" id="tableHistory">

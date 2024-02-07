@@ -37,6 +37,7 @@ button {
 
 #locationTemp {
     padding-left: 0.6rem;
+    margin-bottom: 2rem;
 }
 
 .container-fluid {
@@ -46,7 +47,6 @@ button {
 /* Positions the welcome message under the logo */
 .welcome-message {
     margin-top: -1rem;
-    margin-bottom: 2rem;
     color: #458532;
     font-weight: bold;
 }
