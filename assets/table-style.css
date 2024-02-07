@@ -1,12 +1,13 @@
 th {
     color: white;
-    border:none;
 }
 
+/* Rounds left header corner */
 th:first-child {
     border-radius: 20px 0 0 0;
 }
 
+/* Rounds right header corner */
 th:last-child {
     border-radius: 0 20px 0 0;
 }
@@ -14,11 +15,10 @@ th:last-child {
 td {
     color: white;
     border: 5px solid white;
-    border-right: none;
-    border-bottom: none;
     font-weight: bold;
 }
 
+/* Removes border around the table rows, lining them up with the table header */
 th:first-child, td:first-child {
     border-left: none;
 }
@@ -27,20 +27,10 @@ th:last-child, td:last-child {
     border-right: none;
 }
 
-.table-container {
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    margin-top: 1rem; /* Creates space between the table and the marquee */
-    padding: 20px;
-    background-color: white;
-  }
-
 #table-header {
     background-color: #458532;
     vertical-align: baseline;
-    position: relative; /* Added so that z-index can be used, same deal for line 65 */
+    position: relative; /* Added so that z-index can be used */
     z-index: 2;
 }
 
@@ -50,21 +40,20 @@ th:last-child, td:last-child {
 
 .icon {
     height: 40px;
-    vertical-align: middle;
     margin-right: 10px;
 }
 
+.table-container {
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Creates drop shadow */
+    margin-top: 1rem; /* Creates space between the table and the marquee */
+    padding: 20px;
+    background-color: white;
+  }
+
 /* Removes print button, marquee, and navbar from page when table is printed. */
 @media print {
-    button {
-        visibility: hidden;    
-    }
-
-    marquee {
-        visibility: hidden;
-    }
-
-    nav {
+    button, marquee, nav {
         visibility: hidden;    
     }
   }
