@@ -1,3 +1,5 @@
+displayUser ();
+
 var currentUserCode = localStorage.getItem('currentUserCode');
 var currentDate = dayjs().format("DD/MM/YYYY");
 
@@ -208,3 +210,17 @@ function success(position) {
 function error() {
     console.log("Unable to retrieve your location.");
 }
+
+
+
+function displayUser () {
+  var userName = localStorage.getItem("currentUserName")
+  console.log("username for title is :"+userName);
+  if (userName === "anonymous") {
+    console.log("username is anonymous in left top corner");
+    $('#username').text (`Welcome, Employee`);
+  } else {
+    $('#username').text (`Welcome, ${userName}`);
+  }
+};
+
