@@ -138,6 +138,10 @@ button {
     .welcome-message {
         display: none;
     }
+
+    #giftAid, #not {
+        margin-top: 1rem;
+    }
 }
 
 /* Adds enlarge effect for ga/nga buttons */
