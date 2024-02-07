@@ -54,6 +54,6 @@ th:last-child, td:last-child {
 /* Removes print button, marquee, and navbar from page when table is printed. */
 @media print {
     button, marquee, nav {
-        visibility: hidden;    
+        visibility: hidden;
     }
   }

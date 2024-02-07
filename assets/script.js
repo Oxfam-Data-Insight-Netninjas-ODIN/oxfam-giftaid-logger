@@ -48,6 +48,8 @@ $(".dropdown-menu li").click(function () {
     localDataWork()
     });
   }
+  // Greet the cashier using their name
+  $('#username').text (`Welcome, ${userName}`);
 });
 
 console.log("default selected user is :" + userName);
