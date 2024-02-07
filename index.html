@@ -18,15 +18,10 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary container-fluid">
         <a class="navbar-brand" href="index.html"
           ><img
-            src="assets/images/oxfam_logo.png"
+            src="./assets/images/oxfam_logo.png"
             width="200"
             alt="Oxfam logo."
         /></a>
-        <p class="welcome-message" id="username">Welcome, Employee</p>
-        <div class="location">
-          <p id="currentLocation"></p>
-          <p id="locationTemp"></p>
-        </div>
         <button
           class="navbar-toggler navbar-light"
           type="button"
@@ -71,7 +66,14 @@
                 </ul>
               </li>
           </ul>
-    </nav>
+        </nav>
+    <!-- Welcome message to user -->
+    <p class="welcome-message text-end mx-4" id="username">Welcome, Employee</p>
+    <div class="location d-flex justify-content-end mx-4">
+      <p id="currentLocation"></p>
+      <p id="locationTemp"></p>
+    </div>
+
 
     <!-- Text marquee showing date + explaining gift aid -->
     <marquee behavior="scroll" direction="left" scrollamount="10">
@@ -87,14 +89,14 @@
         id="giftAid"
         onclick="incrementCounter('giftAid'); playSound('pickupCoin')"
       >
-      <img src="assets/images/tick.svg" alt="Tick icon.">
+      <img src="assets/images/tick.svg" alt="Tick icon." width="20%">
         Gift Aid
       </button>
       <button
         id="not" 
         onclick="incrementCounter('not'); playSound('hitHurt')"
       >
-      <img src="assets/images/x.svg" alt="X icon.">
+      <img src="assets/images/x.svg" alt="X icon." width="10%">
         Not Gift Aid
       </button>
     </div>
