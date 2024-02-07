@@ -4,10 +4,10 @@ var historyDataServer = [
   { user: "F2345", firstName: "John", giftAid: 2, not: 2, percentage: 50,  date: "30/12/2023" },
   { user: "F1234", firstName: "Martin", giftAid: 1, not: 1, percentage: 50, date: "30/12/2023" },
   { user: "F5678", firstName: "Duncan", giftAid: 3, not: 1, percentage: 75, date: "30/12/2023" },
-  { user: "F2334", firstName: "Rob", giftAid: 4, not: 0, percentage: 100, date: "30/12/2023" },
+  { user: "F2334", firstName: "Rob", giftAid: 4, not: 1, percentage: 100, date: "30/12/2023" },
   { user: "G6734", firstName: "Tom", giftAid: 2, not: 1, percentage: 66, date: "29/12/2023" },
   { user: "S2544", firstName: "Amy", giftAid: 0, not: 0, percentage: 0, date: "29/12/2023" },
-  { user: "D1034", firstName: "Ela", giftAid: 8, not: 2, percentage: 80, date: "28/12/2023" },
+ 
 ];
 
 
@@ -89,7 +89,11 @@ for (var i=0 ; i<historyDataObjectLength ; i++) {
 
 // Sort the object based on the 'age' value in descending order
 historyData.sort(function(a, b) {
+  if (b.percentage === a.percentage) {
+    return b.giftAid - a.giftAid;
+  }
   return b.percentage - a.percentage;
+  
 });
 
 // Iterate over the sorted object and create rows
@@ -106,7 +110,7 @@ $.each(historyData, function(index, element) {
   newRow.append('<td>' + Math.round(element.percentage)+"%" + '</td>');
 
   // Append the new row to the table
-  $('#tableScoresBody').append(newRow);
+  $('#table-body').append(newRow);
 });
 
 
