@@ -134,3 +134,28 @@ tbody tr:hover {
     color: #e03d14;
     font-weight: bold;
     text-indent: 40px;
+}
+
+.divider {
+    height: 1px;
+    background-color: #ddd; 
+    margin: 20px 0; 
+    border: none;
+}
+
+.divider.hr-line {
+    height: 0; 
+    border-top: 1px solid #ddd; 
+    margin: 20px 0; 
+}
+
+.divider.hr-dotted {
+    height: 1px; 
+    border-top: 1px dotted #ddd; 
+    margin: 20px 0; 
+}
+#table-body .global-leaderboard h2 {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}

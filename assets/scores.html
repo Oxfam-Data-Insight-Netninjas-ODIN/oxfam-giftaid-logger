@@ -1,129 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Leaderboard</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="score.css" />
-    <link rel="stylesheet" href="style.css"
-  </head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="score.css"/>
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+        /* Additional CSS styles */
+        .divider {
+            height: 1px;
+            background-color: #333;
+            margin: 10px 0;
+        }
 
-  <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary container-fluid">
-      <a class="navbar-brand" href="index.html"
-        ><img
-          src="images/oxfam_logo.png"
-          width="200"
-          alt="Oxfam logo."
-      /></a>
-      <p class="welcome-message" id="username">Welcome, Employee</p>
-      <div class="location">
+        .global-leaderboard {
+            text-align: center;
+            margin-top: 2555px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary container-fluid">
+    <a class="navbar-brand" href="index.html">
+        <img src="images/oxfam_logo.png" width="200" alt="Oxfam logo."/>
+    </a>
+    <p class="welcome-message" id="username">Welcome, Employee</p>
+    <div class="location">
         <p id="currentLocation"></p>
         <p id="locationTemp"></p>
-      </div>
-      <button
-        class="navbar-toggler navbar-light"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+    </div>
+    <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              id="myButtonHistory"
-              aria-current="page"
-              href="../index.html"
-              >Logger</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              id="myButtonHistory"
-              href="table.html"
-              >Store Data</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" id="myButtonScores" href="scores.html"
-              >Leaderboard</a
-            >
-          </li>
+            <li class="nav-item">
+                <a class="nav-link" id="myButtonHistory" aria-current="page" href="../index.html">Logger</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="myButtonHistory" href="table.html">Store Data</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" id="myButtonScores" href="scores.html">Leaderboard</a>
+            </li>
         </ul>
-  </nav>
-
-    <section>
-      <div class="container table-container">
+    </div>
+</nav>
+<section>
+    <div class="container table-container">
         <table class="table" id="tableHistory">
-          <thead id="table-header">
+            <thead id="table-header">
             <!-- Leaderboard header row -->
             <tr id="leaderboard-row">
-              <th colspan="3">Leaderboard</th>
+                <th colspan="3">Leaderboard</th>
             </tr>
             <!-- Rank, Employee Name, Gift Aided header row -->
             <tr>
-              <th>Rank</th>
-              <th>Employee Name</th>
-              <th>Gift Aided</th>
+                <th>Rank</th>
+                <th>Employee Name</th>
+                <th>Gift Aided</th>
+                <th>Medal</th>
             </tr>
-          </thead>
-          <tbody id="table-body">
+            </thead>
+            <tbody id="table-body">
             <!-- Placeholder rows -->
             <tr>
               <td>1</td>
               <td id="top1nameElem">Place Holder 1</td>
               <td id="top1percElem">80% Gift Aided</td>
+              <td><img src="assets/images/rank1.png" alt="Rank 1"></td>
+          </tr>
+          
+                <td>2</td>
+                <td id="top2nameElem">Place Holder 2</td>
+                <td id="top2percElem">60% Gifted</td>
+                <td></td>
+                <td><img src="assets/images/rank2.png" alt="Rank 2"></td>
             </tr>
             <tr>
-              <td>2</td>
-              <td id="top2nameElem">Place Holder 2</td>
-              <td id="top2percElem">60% Gifted</td>
+                <td>3</td>
+                <td id="top3nameElem">Place Holder 3</td>
+                <td id="top3percElem">40% Gifted</td>
+                <td></td>
+                <td><img src="assets/images/rank3.png" alt="Rank 3"></td>
             </tr>
             <tr>
-              <td>3</td>
-              <td id="top3nameElem">Place Holder 3</td>
-              <td id="top3percElem">40% Gifted</td>
+                <td></td>
+                <td>You are in 7th Place</td>
+                <td>40% Gift Aided</td>
+                <td></td>
             </tr>
             <tr>
-              <td></td>
-              <td>You are in 7th Place</td>
-              <td>40% Gift Aided</td>
+                <td></td>
+                <td>Place holder 6!</td>
+                <td>5 more places before you beat Placeholder 3</td>
+                <td></td>
             </tr>
+            <!-- Divider under Placeholder 6 -->
             <tr>
-              <td></td>
-              <td>Place holder 6!</td>
-              <td>5 more places before you beat Placeholder 3</td>
+                <td colspan="4">
+                    <div class="divider"></div>
+                </td>
+            </tr>
+            <!-- Row for "GLOBAL LEADERBOARD" -->
+            <tr class="global-leaderboard">
+                <td colspan="4">
+                    <h2>GlobaL Leaderboard</h2>
+                </td>
             </tr>
             <!-- Add additional rows as needed -->
-          </tbody>
+            </tbody>
         </table>
-      </div>
-    </section>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.js"
-      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script src="tabledata.js"></script>
-  </body>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+<script src="tabledata.js"></script>
+</body>
 </html>
