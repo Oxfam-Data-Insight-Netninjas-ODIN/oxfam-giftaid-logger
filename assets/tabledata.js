@@ -1,12 +1,13 @@
+var historyData = [];
 
-var historyData = [
-  { user: "F2345", firstName: "John", giftAid: 2, not: 2, percentage: 50,  date: "30/01/2024" },
-  { user: "F1234", firstName: "Martin", giftAid: 1, not: 1, percentage: 50, date: "30/01/2024" },
-  { user: "F5678", firstName: "Duncan", giftAid: 3, not: 1, percentage: 75, date: "30/01/2024" },
-  { user: "F2334", firstName: "Rob", giftAid: 4, not: 0, percentage: 100, date: "30/01/2024" },
-  { user: "G6734", firstName: "Tom", giftAid: 2, not: 1, percentage: 66, date: "29/01/2024" },
-  { user: "S2544", firstName: "Amy", giftAid: 0, not: 0, percentage: 0, date: "29/01/2024" },
-  { user: "D1034", firstName: "Ela", giftAid: 8, not: 2, percentage: 80, date: "28/01/2024" },
+var historyDataServer = [
+  { user: "F2345", firstName: "John", giftAid: 2, not: 2, percentage: 50,  date: "30/12/2023" },
+  { user: "F1234", firstName: "Martin", giftAid: 1, not: 1, percentage: 50, date: "30/12/2023" },
+  { user: "F5678", firstName: "Duncan", giftAid: 3, not: 1, percentage: 75, date: "30/12/2023" },
+  { user: "F2334", firstName: "Rob", giftAid: 4, not: 0, percentage: 100, date: "30/12/2023" },
+  { user: "G6734", firstName: "Tom", giftAid: 2, not: 1, percentage: 66, date: "29/12/2023" },
+  { user: "S2544", firstName: "Amy", giftAid: 0, not: 0, percentage: 0, date: "29/12/2023" },
+  { user: "D1034", firstName: "Ela", giftAid: 8, not: 2, percentage: 80, date: "28/12/2023" },
 ];
 
 
@@ -31,9 +32,13 @@ $.each(storageData, function(key, value) {
     $.each(newObject, function(key, value) {
 
         var neededObject = value;
-        historyData.push(neededObject);
+        // add the element to the historydata in the first position
+        historyData.unshift(neededObject);
         });
   });
+// add the data from file to the historydata
+historyData = historyData.concat(historyDataServer)
+
 
 // // create an array with the values of the keys (the key is the data when was introduced)
 // var valuesArray = Object.values(storageData);
@@ -44,19 +49,19 @@ $.each(storageData, function(key, value) {
 
 // }
 // Custom comparison function
-function compareDates(a, b) {
-  var dateA = new Date(a.date);
-  console.log(dateA);
-  var dateB = new Date(b.date);
-  console.log("dateB-dateA : " +dateB - dateA);
-  return dateB - dateA;
-}
+// function compareDates(a, b) {
+//   var dateA = new Date(a.date);
+//   console.log(dateA);
+//   var dateB = new Date(b.date);
+//   console.log("dateB-dateA : " +dateB - dateA);
+//   return dateB - dateA;
+// }
 
-// Sort the data based on the date value
-historyData.sort(compareDates);
+// // Sort the data based on the date value
+// historyData.sort(compareDates);
 
-// Output the sorted data
-console.log(historyData);
+// // Output the sorted data
+// console.log(historyData);
 
 
 // variable for first object length
