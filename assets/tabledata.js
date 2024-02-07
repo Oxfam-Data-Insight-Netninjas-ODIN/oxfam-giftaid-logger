@@ -1,3 +1,6 @@
+var currentUserCode = localStorage.getItem('currentUserCode');
+var currentDate = dayjs().format("DD/MM/YYYY");
+
 var historyData = [];
 
 var historyDataServer = [
@@ -59,6 +62,9 @@ for (var i=0 ; i<historyDataObjectLength ; i++) {
   newRow.append(`<td>${populateDate}</td><td>${populateUser}</td><td>${populateName}</td><td>${populateGiftAid}</td><td>${populateNot}</td><td>${Math.round(populatePercentage)}%</td>`)
   $('#tableHistoryBody').append(newRow);
 }
+// create a variable for the data entry of the current user
+var currentUserEntry = historyData[0];
+
 
 
 
@@ -93,20 +99,31 @@ $.each(historyData, function(index, element) {
 // populate top3
 var top1name = historyData[0].firstName;
 $('#top1nameElem').text(top1name);
-var top1percentage = historyData[0].percentage
+var top1percentage = Math.round(historyData[0].percentage)
 $('#top1percElem').text(`${top1percentage}%`);
 
 var top2name = historyData[1].firstName;
 $('#top2nameElem').text(top2name);
-var top2percentage = historyData[1].percentage
+var top2percentage = Math.round(historyData[1].percentage)
 $('#top2percElem').text(`${top2percentage}%`);
 
 var top3name = historyData[2].firstName;
 $('#top3nameElem').text(top3name);
-var top3percentage = historyData[2].percentage
+var top3percentage = Math.round(historyData[2].percentage)
 $('#top3percElem').text(`${top3percentage}%`);
 
-
+// find the current user data in the table data and return the position in the table 
+for (var i = 0; i < historyData.length; i++) {
+  if (historyData[i].user === currentUserCode && historyData[i].date === currentDate) {
+    index = i+1;
+    var currentUserPosition = index;
+    $('#currentUserPosition').text(`You are in ${index}th Place`);
+    var currentUserPerc = Math.round(historyData[i].percentage)
+    $('#currentUserPercentage').text(`${currentUserPerc}%`);
+    console.log("index of user is : "+index);
+    break;
+  }
+}
 
 
 // work in progress with data copied from main html to test it here !
