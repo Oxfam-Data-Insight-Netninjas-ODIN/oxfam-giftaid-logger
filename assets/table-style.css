@@ -54,9 +54,17 @@ th:last-child, td:last-child {
     margin-right: 10px;
 }
 
-/* Removes print button from page when table is printed. */
+/* Removes print button, marquee, and navbar from page when table is printed. */
 @media print {
     button {
-      display: none;
-    } 
+        visibility: hidden;    
+    }
+
+    marquee {
+        visibility: hidden;
+    }
+
+    nav {
+        visibility: hidden;    
+    }
   }
