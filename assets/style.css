@@ -45,9 +45,8 @@ button {
 
 /* Positions the welcome message under the logo */
 .welcome-message {
-    position: absolute;
-    bottom: 0.1rem;
-    left: 6.5rem;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
     color: #458532;
     font-weight: bold;
 }
@@ -134,11 +133,7 @@ button {
         display: none;
     }
 
-    /* Removes welcome message */
-    .welcome-message {
-        display: none;
-    }
-
+    /* Removes spacing between buttons */
     #giftAid, #not {
         margin-top: 1rem;
     }
