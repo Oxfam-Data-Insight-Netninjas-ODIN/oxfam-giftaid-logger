@@ -8,15 +8,19 @@ localStorage.setItem("currentUserName", firstName);
 var userName = localStorage.getItem("currentUserName") || "anonymous";
 localStorage.setItem("currentUserName", userName);
 
+// Greet the cashier using their name 
+displayUser()
+
 // localStorage.setItem("currentUserName", "anonymous");
 // localStorage.setItem("currentUserCode", "anonymous");
 
 
 var totalGiftAidClicksToday = localStorage.getItem("giftAidClicksToday")|| 0;
 var totalClicksToday = localStorage.getItem("giftClicksToday") || 0;
+var totalPercentageDisplay = Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2))
 $('#ga-count').text(totalGiftAidClicksToday);
 $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
-$('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)) + "%")
+$('#percent-count').text((Math.round(totalPercentageDisplay) || 0) + "%");
 
 
 // create a list of users
@@ -26,6 +30,7 @@ var cashiers = [
   { firstName: "George", user: "G8976" },
   { firstName: "anonymous", user: "anonymous" },
 ];
+
 
 // create a drop down list with user names
 for (i = 0; i < cashiers.length; i++) {
@@ -54,8 +59,7 @@ $(".dropdown-menu li").click(function () {
     localDataWork()
     });
   }
-  // Greet the cashier using their name
-  $('#username').text (`Welcome, ${userName}`);
+  displayUser()
 });
 
 console.log("default selected user is :" + userName);
@@ -195,7 +199,7 @@ function incrementCounter(buttonType) {
    }
   $('#ga-count').text(totalGiftAidClicksToday);
   $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
-  $('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)) + "%");
+  $('#percent-count').text((Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)) + "%") || 0);
   localStorage.setItem("giftAidClicksToday", totalGiftAidClicksToday);
   localStorage.setItem("giftClicksToday", totalClicksToday);
   
@@ -232,7 +236,11 @@ function updateTable() {
     const total = giftAid + noGiftAid;
 
     // ternary operator is used to calculate the percentage value of giftAid button
-    const calculatedPercentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
+    if (total != 0) { 
+      console.log("total is not 0");
+      var calculatedPercentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
+    } else { calculatedPercentage = 0};
+
     localdata[currentDate][userCode].percentage = calculatedPercentage
     // round a percentage to the nearest whole for display purpose
     const roundPercentage = Math.round(calculatedPercentage);
@@ -393,4 +401,16 @@ function gifClip () {
       }, 5000);
     
   });
+}
+
+
+function displayUser () {
+  var userName = localStorage.getItem("currentUserName")
+  console.log("username for title is :"+userName);
+  if (userName === "anonymous") {
+    console.log("username is anonymous in left top corner");
+    $('#username').text (`Welcome, Employee`);
+  } else {
+    $('#username').text (`Welcome, ${userName}`);
+  }
 }
