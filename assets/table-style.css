@@ -4,17 +4,17 @@ th {
 
 /* Rounds left header corner */
 th:first-child {
-    border-radius: 20px 0 0 0;
+    border-radius: 1.25rem 0 0 0;
 }
 
 /* Rounds right header corner */
 th:last-child {
-    border-radius: 0 20px 0 0;
+    border-radius: 0 1.25rem 0 0;
 }
 
 td {
     color: white;
-    border: 5px solid white;
+    border: 0.3rem solid white;
     font-weight: bold;
 }
 
@@ -39,15 +39,15 @@ th:last-child, td:last-child {
 }
 
 .icon {
-    height: 40px;
-    margin-right: 10px;
+    height: 2.5rem;
+    margin-right: 0.6rem;
 }
 
 .table-container {
-    border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Creates drop shadow */
+    border-radius: 1.8rem;
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.2); /* Creates drop shadow */
     margin-top: 1rem; /* Creates space between the table and the marquee */
-    padding: 20px;
+    padding: 1.25rem;
     background-color: white;
   }
 

@@ -19,9 +19,9 @@ button {
     background-color: var(--link-colour);
     color: var(--font-colour);
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1rem;
     padding: 1rem 2rem;
-    border-radius: 15px;
+    border-radius: 0.9rem;
 }
 
 .btn:hover {
@@ -36,18 +36,18 @@ button {
 }
 
 #locationTemp {
-    padding-left: 10px;
+    padding-left: 0.6rem;
 }
 
 .container-fluid {
-    margin: 10px;
+    margin: 0.6rem;
 }
 
 /* Positions the welcome message under the logo */
 .welcome-message {
     position: absolute;
     bottom: 0.1rem;
-    left: 105px;
+    left: 6.5rem;
     color: #458532;
     font-weight: bold;
 }
@@ -55,7 +55,7 @@ button {
 .nav-link {
     font-weight: bold;
     color: black;
-    margin-right: 20px;
+    margin-right: 1.25rem;
 }
 
 .nav-link:hover, .active {
@@ -63,7 +63,7 @@ button {
 }
 
 .cashier {
-    margin-top: 5px;
+    margin-top: 0.3rem;
 }
 
 .cashier:hover {
@@ -71,18 +71,18 @@ button {
     cursor: pointer;
     background-color: var(--link-colour);
     color: var(--font-colour);
-    margin-top: 5px;
+    margin-top: 0.3rem;
 }
 /* End of navigation bar styling */
 
 
 /* Start of GA/NGA button styling */
 #giftAid, #not {
-    padding: 5vw;
+    padding: 6rem;
     margin: 0;
-    font-size: 7vw;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Adds drop shadow */
+    font-size: 5rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.2); /* Creates drop shadow */
     color: var(--font-colour)
 }
 
@@ -111,7 +111,7 @@ button {
     z-index: 3; /* Sits on top of both buttons */
   }
 
-/* Switches button layout when screen size is below 1200px (mobile) and above 1600 (large screen) */
+/* Switches button layout when screen size is below 1200px (mobile) and above 1600px (large screen) */
 @media only screen and (max-width: 1200px), only screen and (min-width: 1600px) {
     #giftAid, #not {
         position: static;
@@ -121,7 +121,7 @@ button {
 
     /* Adds space between buttons */
     #not { 
-        margin-top: 100px;
+        margin-top: 6.25rem;
     }
 }
 
@@ -151,7 +151,7 @@ button {
     background: linear-gradient(90deg, black, green);
     animation: gradientAnimation 20s ease infinite;
     background-size: 200% 200%;
-    padding: 50px;
+    padding: 3.1rem;
 }
 
 @keyframes gradientAnimation {
