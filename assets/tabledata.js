@@ -123,6 +123,10 @@ for (var i = 0; i < historyData.length; i++) {
     var currentUserPerc = Math.round(historyData[i].percentage)
     $('#currentUserPercentage').text(`${currentUserPerc}%`);
     console.log("index of user is : "+index);
+    if (index <4) {
+      $('#gifClipID').empty();
+      gifClip2();
+    }
     // highlight the current user inside the table
     // $("#table-body > :nth-child(i+3)").css("color", "red");
     var currentUserTableRowIndex = i+5
@@ -232,3 +236,24 @@ function displayUser () {
   }
 };
 
+
+function gifClip2 () {
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=top3";
+
+  fetch(queryURL)
+  .then(function(response) {
+    return response.json();
+  }).then(function(data) {
+
+      var randomNumber = Math.floor(Math.random() * 5) + 1;
+
+      var myImg = data.data[randomNumber].images.original.url;
+      var imgTag = document.createElement("img");
+      imgTag.src = myImg;
+      $('#gifClipID').append(imgTag)
+      setTimeout(function() {
+        $('#gifClipID').empty();
+      }, 5000);
+    
+  });
+}
