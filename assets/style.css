@@ -8,6 +8,18 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: black;
     overflow-x: hidden; /* Added to fix the phantom overflow */
+    background: linear-gradient(to top, #26e710, white); /* Added gradient */
+    animation: gradientAnimation 5s infinite; /* Added animation */
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 100%; /* Start position */
+    }
+    100% {
+        background-position: 0% 0%; /* End position */
+    }
+    
 }
 
 button {
