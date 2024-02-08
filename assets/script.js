@@ -7,20 +7,15 @@ localStorage.setItem("currentUserName", firstName);
 
 var userName = localStorage.getItem("currentUserName") || "anonymous";
 localStorage.setItem("currentUserName", userName);
-
-// Greet the cashier using their name 
-displayUser()
-
 // localStorage.setItem("currentUserName", "anonymous");
 // localStorage.setItem("currentUserCode", "anonymous");
 
 
 var totalGiftAidClicksToday = localStorage.getItem("giftAidClicksToday")|| 0;
 var totalClicksToday = localStorage.getItem("giftClicksToday") || 0;
-var totalPercentageDisplay = Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2))
 $('#ga-count').text(totalGiftAidClicksToday);
 $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
-$('#percent-count').text((Math.round(totalPercentageDisplay) || 0) + "%");
+$('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)) + "%")
 
 
 // create a list of users
@@ -30,7 +25,6 @@ var cashiers = [
   { firstName: "George", user: "G8976" },
   { firstName: "anonymous", user: "anonymous" },
 ];
-t-count
 
 // create a drop down list with user names
 for (i = 0; i < cashiers.length; i++) {
@@ -59,7 +53,6 @@ $(".dropdown-menu li").click(function () {
     localDataWork()
     });
   }
-  displayUser()
 });
 
 console.log("default selected user is :" + userName);
@@ -111,7 +104,7 @@ function localDataWork() {
   //    as in check if the key date is present, if not add it with the value of new user
   if (`${currentDate}` in localdata) {
   } else {  
-    console.log(`all dates are different than ${currentDate} so a new date will be created`);
+
     var newDateLocaldata = {
       [currentDate] : {[userCode]: {
       user: userCode,
@@ -199,7 +192,7 @@ function incrementCounter(buttonType) {
    }
   $('#ga-count').text(totalGiftAidClicksToday);
   $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
-  $('#percent-count').text((Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)) + "%") || 0);
+  $('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)) + "%");
   localStorage.setItem("giftAidClicksToday", totalGiftAidClicksToday);
   localStorage.setItem("giftClicksToday", totalClicksToday);
   
@@ -236,10 +229,7 @@ function updateTable() {
     const total = giftAid + noGiftAid;
 
     // ternary operator is used to calculate the percentage value of giftAid button
-    if (total != 0) { 
-      var calculatedPercentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
-    } else { calculatedPercentage = 0};
-
+    const calculatedPercentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
     localdata[currentDate][userCode].percentage = calculatedPercentage
     // round a percentage to the nearest whole for display purpose
     const roundPercentage = Math.round(calculatedPercentage);
@@ -301,10 +291,7 @@ function success(position) {
     .then((data) => {
       // take the reverse geolocation from API and display the city
       var currentCity = data.features[0].properties.address.town || data.features[0].properties.address.village;
-      console.log("location object : " + JSON.stringify(data.features[0]));
-      console.log(data);
 
-      console.log("current location =" + currentCity);
 
       // currentCityElem.text(`${currentCity}  -dfse  ${data.main.temp} °C`);
       // Meant to fetch data but undefined
@@ -320,7 +307,7 @@ function success(position) {
 
   // display weather for default city - London and add weather icon - to be updated with lo
   var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
-  // console.log(cityQueryURL);
+
   fetch(cityQueryURL)
     .then(function (response) {
       return response.json();
@@ -382,7 +369,7 @@ if (window.matchMedia("(max-width: 575px)").matches) {
 
 // 4th API to display a gif when GiftAidis pressed
 function gifClip () {
-  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=congratulation";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=happy dance";
 
   fetch(queryURL)
   .then(function(response) {
@@ -400,16 +387,4 @@ function gifClip () {
       }, 5000);
     
   });
-}
-
-
-function displayUser () {
-  var userName = localStorage.getItem("currentUserName")
-  console.log("username for title is :"+userName);
-  if (userName === "anonymous") {
-    console.log("username is anonymous in left top corner");
-    $('#username').text (`Welcome, Employee`);
-  } else {
-    $('#username').text (`Welcome, ${userName}`);
-  }
 }
