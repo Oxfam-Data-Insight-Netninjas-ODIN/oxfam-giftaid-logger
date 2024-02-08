@@ -10,12 +10,21 @@
     <style>
         /* Custom CSS for adjusting GIF size */
         .gif-cell {
-            width: 200px; /* Adjust width as needed */
+            position: relative;
+            width: 300px; /* Adjust width as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin: 0 auto; /* Center the container horizontally */
+        }
+        .gif-container {
+            position: absolute;
+            top: 0;
+            right: 0; /* Adjust the position */
+            width: 100%; /* Use 100% of the container width */
             height: auto; /* Maintain aspect ratio */
         }
         .gif-iframe {
-            width: 100%; /* Use 100% of the cell width */
-            height: 100%; /* Use 100% of the cell height */
+            width: 100%; /* Use 100% of the container width */
+            height: auto; /* Maintain aspect ratio */
         }
     </style>
 </head>
@@ -77,9 +86,11 @@
                     80% Gift Aided
                 </td>
                 <td class="gif-cell"> <!-- Cell for the GIF -->
-                    <!-- Place the new GIF here -->
-                    <iframe src="https://giphy.com/embed/s2qXK8wAvkHTO" width="300" height="auto" frameBorder="0" class="giphy-iframe gif-iframe" allowFullScreen></iframe>
-                    <p><a href="https://giphy.com/gifs/party-birthday-celebration-s2qXK8wAvkHTO"></a></p>
+                    <div class="gif-container"> <!-- Container for the GIF -->
+                        <!-- Place the new GIF here -->
+                        <iframe src="https://giphy.com/embed/s2qXK8wAvkHTO" width="300" height="auto" frameBorder="0" class="giphy-iframe gif-iframe" allowFullScreen></iframe>
+                        <p><a href="https://giphy.com/gifs/party-birthday-celebration-s2qXK8wAvkHTO"></a></p>
+                    </div>
                 </td>
             </tr>
             <tr>
