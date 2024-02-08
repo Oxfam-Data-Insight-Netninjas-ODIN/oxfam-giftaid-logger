@@ -35,6 +35,9 @@ First up:
 
 which leads straight to:
 
+![screenshot1final](https://github.com/Alex-Quayle/oxfam-giftaid-logger/assets/64762171/4a965318-5de3-4aaa-8644-e4a5468b8fad)
+
+
 # Page 1 - landing page 
 
 This is the Landing page and displays Oxfam heading and title
@@ -58,11 +61,13 @@ a button to toggle the Application Fullscreen, small and discrete
 a link to page 2, possibly small and discrete as well (this is not included on the prototype landing page)
 a link to page 3, also possibly small and discrete. (this is not included on the prototype landing page)
   
-# Page 2 (yet to be added)
+# Page 2, table of data 
+
+![screenshot2final](https://github.com/Alex-Quayle/oxfam-giftaid-logger/assets/64762171/8154ba1f-d2b9-426c-ac10-ff1f10631a57)
 
 This should contain:
 
-- smaller logo, page description title, page header.
+- small logo, page description title, page header.
 
 A table that is the same as the table row on the main page except containing more rows (the previous days) is added to as each day goes by
 (this is the current functionality of the landing page, however, the List that it adds to , should be added to is the one on this page)
@@ -72,13 +77,16 @@ Ideally, finding a way of printing this data into a readable format on paper wou
 - a link to page 3, also possibly small and discrete. 
 
 
-# page 3 (yet to be added)
+# page 3 high scores
+
+![screenshot3final](https://github.com/Alex-Quayle/oxfam-giftaid-logger/assets/64762171/c3657efb-9c45-4912-aed8-54509baef532)
+
 
 This should contain:
 
 - smaller logo, page description title, page header.
 
-this page is similar to page 2 except it is a high-score table of users with the highest gift aid percentage per day at the top.
+This page is similar to page 2 except it is a high-score table of users with the highest gift aid percentage per day at the top.
 Ideally, finding a way of printing this data into a readable format on paper would be good (to be sorted by highest percentage).
 
 - a link to page 1, possibly small and discrete as well 
