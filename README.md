@@ -36,17 +36,17 @@ Implementation of this solution is poised to enhance data input accuracy, encour
 
 This is the Landing page and displays the Oxfam heading and title
 
-The page will ask to confirm a user location, and display if allowed
+The page will ask to confirm a user location, and display if allowed.
 
 The page shows the current date and temperature.
 
 The page shows a message saying welcome, and then the name of who is 'logged in' or just says 'volunteer'.
 
-The page has a drop-down form that lets the user select their name if they are using the till.
+The page has a drop-down form that lets the user select their name if they are using the till, this will carry across page changes
 
 It has 2 x buttons, 1 for add gift aid, and one for not gift aid. These are large for the user to see and responsive (sound/visual cues)
 
-An animated marquee. this could maybe be replaced with another animation in the future -it is just something to grab the user's attention.
+An animated marquee. this could maybe be replaced with another animation in the future -it is just something to grab the user's attention, containing a motivational script.
 
 ## A single table row with the days data:  Gift Aided / Not Gift Aided / Percentage
 
@@ -77,8 +77,14 @@ A table that is the same as the table row on the main page except containing mor
 (this is the current functionality of the landing page, however, the List that it adds to , should be added to is the one on this page)
 Ideally, finding a way of printing this data into a readable format on paper would be good (to be sorted by date).
 
-- a link to page 1, possibly small and discrete as well 
-- a link to page 3, also possibly small and discrete. 
+Data Rows contain:
+
+Date / employee(shop)code / employee (volunteer) name / Gift Aided / Not Gift Aided / Percentage of GA sales
+
+Refer to page 1 for the data types of each of these pieces of information.
+
+- a link to page 1 (the landing page), possibly small and discrete as well 
+- a link to page 3 (the highscore table), also possibly small and discrete. 
 
 
 # page 3 high scores
