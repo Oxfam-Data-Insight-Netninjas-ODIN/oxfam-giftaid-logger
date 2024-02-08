@@ -2,9 +2,10 @@ displayUser ();
 
 var currentUserCode = localStorage.getItem('currentUserCode');
 var currentDate = dayjs().format("DD/MM/YYYY");
-
+// create a array for local user data
 var historyData = [];
 
+// array with old user data (will be used to refer to user data from national server)
 var historyDataServer = [
   { user: "F2345", firstName: "John", giftAid: 2, not: 2, percentage: 50,  date: "30/12/2023" },
   { user: "F1234", firstName: "Martin", giftAid: 1, not: 1, percentage: 50, date: "30/12/2023" },
@@ -13,7 +14,6 @@ var historyDataServer = [
   { user: "G6734", firstName: "Tom", giftAid: 2, not: 1, percentage: 66, date: "29/12/2023" },
   { user: "S2544", firstName: "Amy", giftAid: 0, not: 0, percentage: 0, date: "29/12/2023" },
 ];
-
 
 // if the local storage is empty create an empty object
 if (!localStorage.getItem('clickData')) {
@@ -30,11 +30,9 @@ let storageData = JSON.parse(localStorage.getItem('clickData'));
 var newStorag
 // go through all dates from local storage and bring their values as data to be added into historyData array
 $.each(storageData, function(key, value) {
-
     var newObject = value;
     // repeat same process to go further down the path to target the needded values
     $.each(newObject, function(key, value) {
-
         var neededObject = value;
         // add the element to the historydata in the first position
         historyData.unshift(neededObject);
@@ -42,10 +40,6 @@ $.each(storageData, function(key, value) {
   });
 // add the data from file to the historydata
 historyData = historyData.concat(historyDataServer)
-
-
-
-
 
 // variable for first object length
 var historyDataObjectLength = Object.keys(historyData).length;
@@ -68,12 +62,11 @@ for (var i=0 ; i<historyDataObjectLength ; i++) {
 var currentUserEntry = historyData[0];
 
 
-
-
 // ////////////////////////////////////////////////////
-// code for Scores HTML
+// code for the second tabledata html = Scores HTML
 
-// Sort the object based on the 'age' value in descending order
+// Sort the object based on the 'percentage' value in descending order ;
+//  if there are users with same percentage, order descending according to the number of giftAid clicked
 historyData.sort(function(a, b) {
   if (b.percentage === a.percentage) {
     return b.giftAid - a.giftAid;
@@ -81,11 +74,10 @@ historyData.sort(function(a, b) {
   return b.percentage - a.percentage;
 });
 
-// Iterate over the sorted object and create rows
+// iterate over the sorted object and display data on the leaderboard
 $.each(historyData, function(index, element) {
   // Create a new row element
   var newRow = $('<tr>');
-
   // Add cells or data to the row
   newRow.append('<td>' + element.date + '</td>');
   newRow.append('<td>' + element.user + '</td>');
@@ -93,12 +85,11 @@ $.each(historyData, function(index, element) {
   newRow.append('<td>' + element.giftAid + '</td>');
   newRow.append('<td>' + element.not + '</td>');
   newRow.append('<td>' + Math.round(element.percentage)+"%" + '</td>');
-
   // Append the new row to the table
   $('#table-body').append(newRow);
 });
 
-// populate top3
+// populate top3 users and display them
 var top1name = historyData[0].firstName;
 $('#top1nameElem').text(top1name);
 var top1percentage = Math.round(historyData[0].percentage)
@@ -114,7 +105,7 @@ $('#top3nameElem').text(top3name);
 var top3percentage = Math.round(historyData[2].percentage)
 $('#top3percElem').text(`${top3percentage}%`);
 
-// find the current user data in the table data and return the position of the user in the table 
+// find the current user data in the table data and display the position of the user in the leaderboard
 for (var i = 0; i < historyData.length; i++) {
   if (historyData[i].user === currentUserCode && historyData[i].date === currentDate) {
     index = i+1;
@@ -126,30 +117,21 @@ for (var i = 0; i < historyData.length; i++) {
    
     var currentUserPerc = Math.round(historyData[i].percentage)
     $('#currentUserPercentage').text(`${currentUserPerc}%`);
-    console.log("index of user is : "+index);
+    // display a "congratulation" gif if user is in top3
     if (index <4) {
       $('#gifClipID').empty();
       gifClip2();
     }
-    // highlight the current user inside the table
-    // $("#table-body > :nth-child(i+3)").css("color", "red");
+    // highlight the current user position inside the table
     var currentUserTableRowIndex = i+7
     var parent = document.getElementById("table-body");
-    // var currentUserDataChild = parent.querySelector(":nth-child(" + currentUserTableRowIndex + ")");
-    
-    // currentUserDataChild.style.backgroundColor = "green";
     $("#table-body > :nth-child(" + currentUserTableRowIndex + ")").css("backgroundColor", "green");
     break;
   }
 }
 
-
-
-// work in progress with data copied from main html to test it here !
-
-
-
-
+// ///////////////////////////////////////////////////
+// data from script.js that is needed also here
 // bring data from dayjs using 1st API
 var todayDate = dayjs().format('[Today is : ] dddd[,] DD-MM-YYYY');
 
@@ -189,13 +171,7 @@ function success(position) {
         .then(data => {
             // take the reverse geolocation from API and display the city
             var currentCity = data.features[0].properties.address.town;
-
-
-
-
             currentCityElem.text(currentCity);
-            // Meant to fetch data but undefined
-            // locationElem.text(`${currentCityElem.text()}  ${tempElem.text()}`);
         })
         .catch(error => {
             // Handle any errors
@@ -204,7 +180,6 @@ function success(position) {
 
 // // create variable coordinates referencing the localization of the user computer
     var coordinates = `${latitude}&lon=${longitude}`;
-
     // display weather for default city - London and add weather icon - to be updated with lo
     var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
     // console.log(cityQueryURL);
@@ -213,15 +188,11 @@ function success(position) {
             return response.json();
         })
         .then(function (data) {
-  
             // set a variable for wather icon addres and display it
             var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
             var iconElement = $("<img>").attr("src", iconURL);
             // display current weather data
-
-
             tempElem.text("   Temp: " + data.main.temp + "°C");
-
         })
 }
 function error() {
@@ -229,29 +200,24 @@ function error() {
 }
 
 
-
+// function to display the current user
 function displayUser () {
   var userName = localStorage.getItem("currentUserName")
-  console.log("username for title is :"+userName);
   if (userName === "anonymous") {
-    console.log("username is anonymous in left top corner");
     $('#username').text (`Welcome, Volunteer`);
   } else {
     $('#username').text (`Welcome, ${userName}`);
   }
 };
 
-
+// function to display congratulation gif
 function gifClip2 () {
   var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=congratulation";
-
   fetch(queryURL)
   .then(function(response) {
     return response.json();
   }).then(function(data) {
-
       var randomNumber = Math.floor(Math.random() * 5) + 1;
-
       var myImg = data.data[randomNumber].images.original.url;
       var imgTag = document.createElement("img");
       imgTag.src = myImg;
@@ -259,7 +225,6 @@ function gifClip2 () {
       setTimeout(function() {
         $('#gifClipID2').empty();
       }, 5000);
-    
   });
 }
 

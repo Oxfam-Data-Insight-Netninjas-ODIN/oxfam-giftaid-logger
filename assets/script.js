@@ -1,13 +1,13 @@
 const tableBody = document.getElementById("dataTableBody");
+// populate the variable if any local storage present
 var userCode = localStorage.getItem("currentUserCode") || "anonymous";
 localStorage.setItem("currentUserCode", userCode);
-
 var firstName = localStorage.getItem("currentUserName") || "anonymous";
 localStorage.setItem("currentUserName", firstName);
-
 var userName = localStorage.getItem("currentUserName") || "anonymous";
 localStorage.setItem("currentUserName", userName);
 
+// display the number of clicks and percentage
 var totalGiftAidClicksToday = localStorage.getItem("giftAidClicksToday")|| 0;
 var totalClicksToday = localStorage.getItem("giftClicksToday") || 0;
 if ((totalGiftAidClicksToday || totalClicksToday) === 0) {var totalPercentage = 0}
@@ -56,12 +56,6 @@ $(".dropdown-menu li").click(function () {
   }
 });
 
-console.log("default selected user is :" + userName);
-console.log("default firstname is : " + firstName);
-console.log("default userCode for first name is : " + userCode);
-
-// localDataWork()
-
 // write the object data in local storage as a function
 function localDataWork() {
 //   retrieve the selected userCode from local storage
@@ -76,7 +70,6 @@ function localDataWork() {
       userName = "anonymous"
   }
  
-  
   // retrieve data from locals storage and populate an object with selected User data;
   //      if there is none, generate a default one
   //           Then save data to local storage
@@ -105,7 +98,6 @@ function localDataWork() {
   //    as in check if the key date is present, if not add it with the value of new user
   if (`${currentDate}` in localdata) {
   } else {  
-
     var newDateLocaldata = {
       [currentDate] : {[userCode]: {
       user: userCode,
@@ -115,33 +107,23 @@ function localDataWork() {
       percentage: 0,
       date: currentDate,}}
     };
-
     $.extend(localdata, newDateLocaldata);
-
     localStorage.setItem('clickData', JSON.stringify(localdata));
   } 
-
   
   // check if selected user is already in local storage   
   for (var key in localdata[currentDate]) {
     var keys = Object.keys(localdata[currentDate]);
-
     if (key === userCode) {
-
       userAlreadyInLocal = true;
       break;
     } else {
         userAlreadyInLocal = false;
-
     } 
   }
 
-  
-
-
   // is user not in local storage add the new user with default values   
   if (userAlreadyInLocal === true) {
-
   }
   else {
         newUserData = {
@@ -151,11 +133,8 @@ function localDataWork() {
             giftAid: 0,
             not: 0,
             percentage: 0,
-            date: currentDate,}};
-          
-
+            date: currentDate,}};       
           $.extend(localdata[currentDate], newUserData);
-
           localStorage.setItem('clickData', JSON.stringify(localdata));
     }
 }
@@ -167,15 +146,13 @@ function incrementCounter(buttonType) {
   var currentDate = dayjs().format("DD/MM/YYYY");
   // create a variable for "clickData" stored in local storage  ; if no data then create an empty object for it
   let localdata = JSON.parse(localStorage.getItem("clickData"));
-
   userCode = localStorage.getItem("currentUserCode")
   // increment the local data according with which button is pressed
   localdata[currentDate][userCode][buttonType]++;
  // save the updated data in local storage
   localStorage.setItem("clickData", JSON.stringify(localdata));
   updateTable();
-
-//   calculate and display total clicks today
+ //   calculate and display total clicks today
   var todayDataObj =  localdata[currentDate]
   var totalClicksPerUser = 0;
   var totalClicksToday = 0;
@@ -199,7 +176,6 @@ function incrementCounter(buttonType) {
   localStorage.setItem("giftClicksToday", totalClicksToday);
   
   // call function to display a gif as a reward for introducing data
-
   if (buttonType == "giftAid") {
     $('#gifClipID').empty();
     gifClip();
@@ -209,27 +185,21 @@ function incrementCounter(buttonType) {
     }
 }
 
-
 // create function to create / update table with data introduced
 function updateTable() {
   // call data from local storage
   const localdata = JSON.parse(localStorage.getItem("clickData")) || {};
   // create variable referencing the element with ID "dataTableBody"
-
-
   var currentDate = dayjs().format("DD/MM/YYYY");
   userCode = localStorage.getItem("currentUserCode");
-
   var todayDataObj =  localdata[currentDate]
   // create a for loop to take every key in "data" object
   for (const user in todayDataObj) {
-
     // create a variable for the total number of both buttons pressed
     var giftAid = localdata[currentDate][userCode].giftAid;
     var noGiftAid = localdata[currentDate][userCode].not;
     var firstName = localdata[currentDate][userCode].firstName;
     const total = giftAid + noGiftAid;
-
     // ternary operator is used to calculate the percentage value of giftAid button
     const calculatedPercentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
     localdata[currentDate][userCode].percentage = calculatedPercentage
@@ -251,7 +221,6 @@ function updateTable() {
   }
 }
 updateTable();
-
 
 
 // bring data from dayjs using 1st API
@@ -283,8 +252,6 @@ if (navigator.geolocation) {
 function success(position) {
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
-
-
   // find location (as in city) from the coordonates
   fetch(
     `https://nominatim.openstreetmap.org/reverse?format=geojson&lat=${latitude}&lon=${longitude}`
@@ -293,8 +260,6 @@ function success(position) {
     .then((data) => {
       // take the reverse geolocation from API and display the city
       var currentCity = data.features[0].properties.address.town || data.features[0].properties.address.village;
-
-
       // currentCityElem.text(`${currentCity}  -dfse  ${data.main.temp} °C`);
       // Meant to fetch data but undefined
       // locationElem.text(`${currentCityElem.text()} ${tempElem.text()}`);
@@ -303,25 +268,19 @@ function success(position) {
       // Handle any errors
       console.error(error);
     });
-
   // // create variable coordinates referencing the localization of the user computer
   var coordinates = `${latitude}&lon=${longitude}`;
-
   // display weather for default city - London and add weather icon - to be updated with lo
   var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
-
   fetch(cityQueryURL)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
- 
-      // set a variable for wather icon addres and display it
+       // set a variable for wather icon addres and display it
       var iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
       var iconElement = $("<img>").attr("src", iconURL);
       // display current weather data
-
-      // tempElem.text(`" "+" temp: " + ${data.main.temp} °C`);
     });
 }
 function error() {
@@ -342,9 +301,6 @@ function toggleFullscreen() {
 // set a variable referencing the element with ID "fullscreen-button"
 var fullscreenButton = document.getElementById("fullscreen-button");
 
-// add event listener for clicking the fullscreen button
-// fullscreenButton.addEventListener("click", toggleFullscreen);
-
 // click event to open table html
 $("#myButtonHistory").click(function () {
   // Open the other webpage
@@ -360,7 +316,6 @@ $("#myButtonScores").click(function () {
 // add sound effect when pressing buttons
 function playSound(soundId) {
   const sound = new Audio(`assets/sound/${soundId}.wav`);
-
   sound.play();
 }
 
@@ -372,14 +327,11 @@ if (window.matchMedia("(max-width: 575px)").matches) {
 // 4th API to display a gif when GiftAidis pressed
 function gifClip () {
   var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=happy dance";
-
   fetch(queryURL)
   .then(function(response) {
     return response.json();
   }).then(function(data) {
-
       var randomNumber = Math.floor(Math.random() * 5) + 1;
-
       var myImg = data.data[randomNumber].images.original.url;
       var imgTag = document.createElement("img");
       imgTag.src = myImg;
@@ -387,7 +339,6 @@ function gifClip () {
       setTimeout(function() {
         $('#gifClipID').empty();
       }, 5000);
-    
   });
 }
 
