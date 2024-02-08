@@ -17,9 +17,9 @@ One contributing factor may be insufficient hardware in the till scanners receiv
   
 APIS we are considering using are:
 
-- Day.js for tracking the date
+- Day.js for tracking the date - for quality of life, keep till operators eyes on the app.
 - openweathermap API - for displaying the weather -perhaps on a marquee
-- navigator.geolocation.API - to display where the user is based
+- navigator.geolocation.API - to display where the user is based.
 - a giff APi - as part of the gamification element - 'happy pictures' on a gift aid sale
 - a sound API - as part of the gamification process.
 
