@@ -26,27 +26,29 @@ APIS we are considering using are:
 
 Implementation of this solution is poised to enhance data input accuracy, encouraging a seamless and efficient Gift Aid process while providing valuable insights for management.
 
-Therefore, an idea to help encourage the data input accuracy of till operators and provide feedback to managers and area managers is to be implemented.
-
 ## basic structure
 
-First up: 
-[SOMEWAY OF LOGGING A USERNAME & SHOPCODE INTO LOCAL STORAGE via table. Perhaps a button that opens a modal to ask for them. see single table row bullet points on page one below - not a priority but something that can be implemented after the minimum viable product has been created]
-
-which leads straight to:
 
 ![screenshot1final](https://github.com/Alex-Quayle/oxfam-giftaid-logger/assets/64762171/4a965318-5de3-4aaa-8644-e4a5468b8fad)
 
 
 # Page 1 - landing page 
 
-This is the Landing page and displays Oxfam heading and title
+This is the Landing page and displays the Oxfam heading and title
 
-2 x buttons, 1 for add gift aid, one for not gift aid. theese must be large for the user to see and responsive (sound/visual cues)
+The page will ask to confirm a user location, and display if allowed
 
-An animated marquee. this could be replaced with another animation - just something to grab the users attention.
+The page shows the current date and temperature
 
-## A single table row with the days data: shopCode / usersFirstName / Gift Aided / Not Gift Aided / Date / Percentage
+The page shows a message saying welcome, and then the name of who is 'logged in' or just says 'volunteer'
+
+It has 2 x buttons, 1 for add gift aid, and one for not gift aid. These are large for the user to see and responsive (sound/visual cues)
+
+An animated marquee. this could maybe be replaced with another animation in the future -it is just something to grab the user's attention.
+
+## A single table row with the days data:  Gift Aided / Not Gift Aided / Percentage
+
+information that is being used on this page is:
 
 - shopCode is 1 letter followed by 4 numbers e.g.. F1924 (this is not included on the prototype landing page)
 - userFirstName is a string of up to 12 characters (this is not included on the prototype landing page)
@@ -58,8 +60,8 @@ An animated marquee. this could be replaced with another animation - just someth
 ## also:
 
 a button to toggle the Application Fullscreen, small and discrete
-a link to page 2, possibly small and discrete as well (this is not included on the prototype landing page)
-a link to page 3, also possibly small and discrete. (this is not included on the prototype landing page)
+a link to page 2 (data table), possibly small and discrete as well 
+a link to page 3 (high scores), also possibly small and discrete. 
   
 # Page 2, table of data 
 
