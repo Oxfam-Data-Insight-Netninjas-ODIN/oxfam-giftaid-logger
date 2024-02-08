@@ -7,15 +7,14 @@ localStorage.setItem("currentUserName", firstName);
 
 var userName = localStorage.getItem("currentUserName") || "anonymous";
 localStorage.setItem("currentUserName", userName);
-// localStorage.setItem("currentUserName", "anonymous");
-// localStorage.setItem("currentUserCode", "anonymous");
-
 
 var totalGiftAidClicksToday = localStorage.getItem("giftAidClicksToday")|| 0;
 var totalClicksToday = localStorage.getItem("giftClicksToday") || 0;
+if ((totalGiftAidClicksToday || totalClicksToday) === 0) {var totalPercentage = 0}
+else {var totalPercentage = (totalGiftAidClicksToday / totalClicksToday) * 100};
 $('#ga-count').text(totalGiftAidClicksToday);
 $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
-$('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)) + "%")
+$('#percent-count').text(Math.round((totalPercentage).toFixed(2)) + "%")
 
 
 // create a list of users
@@ -33,7 +32,8 @@ for (i = 0; i < cashiers.length; i++) {
   $("#users").append(newButtonUser);
 }
 
-
+// dispplay current user message
+displayUser();
 // create a click event for the drop menu users to select the current user
 $(".dropdown-menu li").click(function () {
   userName = $(this).text();
@@ -51,6 +51,7 @@ $(".dropdown-menu li").click(function () {
         return false; // Exit the loop once a match is found
       }
     localDataWork()
+    displayUser();
     });
   }
 });
@@ -164,11 +165,11 @@ localDataWork()
 function incrementCounter(buttonType) {
   // create a variable referencing the curent date and change it to string
   var currentDate = dayjs().format("DD/MM/YYYY");
-  // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
+  // create a variable for "clickData" stored in local storage  ; if no data then create an empty object for it
   let localdata = JSON.parse(localStorage.getItem("clickData"));
 
   userCode = localStorage.getItem("currentUserCode")
-
+  // increment the local data according with which button is pressed
   localdata[currentDate][userCode][buttonType]++;
  // save the updated data in local storage
   localStorage.setItem("clickData", JSON.stringify(localdata));
@@ -180,19 +181,20 @@ function incrementCounter(buttonType) {
   var totalClicksToday = 0;
   var totalGiftAidClicksToday = 0;
   for (const user in todayDataObj) {
-
-    // create a variable for the total number of both buttons pressed
+    // create a variable for the total number of both buttons pressed(per user and in total)
     var giftAidClick = todayDataObj[user].giftAid;
-
     var noGiftAidClick =  todayDataObj[user].not
     totalClicksPerUser = giftAidClick + noGiftAidClick;
-
     totalClicksToday = totalClicksToday + totalClicksPerUser;
     totalGiftAidClicksToday = totalGiftAidClicksToday + giftAidClick;
    }
+
+  // display the number of clicks and the percentage of giftAid clicks
   $('#ga-count').text(totalGiftAidClicksToday);
   $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
-  $('#percent-count').text(Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)) + "%");
+  if ((totalGiftAidClicksToday || totalClicksToday) === 0) {var totalPercentage = 0}
+  else {var totalPercentage = (totalGiftAidClicksToday / totalClicksToday) * 100};
+  $('#percent-count').text(Math.round((totalPercentage).toFixed(2)) + "%");
   localStorage.setItem("giftAidClicksToday", totalGiftAidClicksToday);
   localStorage.setItem("giftClicksToday", totalClicksToday);
   
@@ -388,3 +390,15 @@ function gifClip () {
     
   });
 }
+
+// function to display current user name message
+function displayUser () {
+  var userName = localStorage.getItem("currentUserName")
+  console.log("username for title is :"+userName);
+  if (userName === "anonymous") {
+    console.log("username is anonymous in left top corner");
+    $('#username').text (`Welcome, Volunteer`);
+  } else {
+    $('#username').text (`Welcome, ${userName}`);
+  }
+};
