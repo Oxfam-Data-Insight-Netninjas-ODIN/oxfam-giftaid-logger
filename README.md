@@ -90,8 +90,7 @@ Refer to page 1 for the data types of each of these pieces of information.
 
 # page 3 high scores
 
-![screenshot3final](https://github.com/Alex-Quayle/oxfam-giftaid-logger/assets/64762171/c3657efb-9c45-4912-aed8-54509baef532)
-
+![screenshot3final](https://github.com/Oxfam-Data-Insight-Netninjas-ODIN/oxfam-giftaid-logger/assets/64762171/efe39408-497a-4138-ad81-3e9f81b30839)
 
 This should contain:
 
