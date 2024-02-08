@@ -1,5 +1,12 @@
 # Giftaid-logger
 
+## Collaborators
+
+Cris Bogdan - Javascript and API's (Backend)
+Alex Qualye - Figma, UX Design, CSS HTML (Frontend)
+Demitri Nunziata - Figma, UX Design, CSS HTML (Frontend)
+Terence Honeyford - Concept, Client liaison, Presentation, testing (Project Co-ordinator)
+
 Deployed Application: https://oxfam-data-insight-netninjas-odin.github.io/oxfam-giftaid-logger
 
 # Gift Aid Enhancement Strategy for Oxfam GB
@@ -22,6 +29,8 @@ APIS we are considering using are:
 - navigator.geolocation.API - to display where the user is based.
 - a giff APi - as part of the gamification element - 'happy pictures' on a gift aid sale
 - a sound API - as part of the gamification process.
+- Bootstrap
+- 
 
 Implementation of this solution is poised to enhance data input accuracy, encouraging a seamless and efficient Gift Aid process while providing valuable insights for management.
 
@@ -70,12 +79,12 @@ a link to page 3 (high scores), also possibly small and discrete.
 
 ![screenshot2final](https://github.com/Alex-Quayle/oxfam-giftaid-logger/assets/64762171/8154ba1f-d2b9-426c-ac10-ff1f10631a57)
 
-This should contain:
+This contains:
 
 - small logo, page description title, page header, username/temperature, location if applicable.
 
 A table that is the same as the table row on the main page except containing more rows (the previous days) is added to as each day goes by
-(this is the current functionality of the landing page, however, the List that it adds to , should be added to is the one on this page)
+(this is the current functionality of the landing page, however, the List that it adds to, should be added to is the one on this page)
 Ideally, finding a way of printing this data into a readable format on paper would be good (to be sorted by date).
 
 Data Rows contain:
@@ -95,6 +104,17 @@ Refer to page 1 for the data types of each of these pieces of information.
 This should contain:
 
 - smaller logo, page description title, page header, username
+
+  ## Challenges
+
+  Geolocation the first test went well, but some data didn't show well, alex and Cris sorted that out.
+  Change the mentality of working alone - you have to accommodate and adapt.
+  Originally overly enthusiastic, but we learned to focus on a minimum-viable product and leave other features for later.
+  local storage consists of 5 data types. uses interlocking storage.
+
+  ## Successes
+
+  Team worked really well together, we used kanban, team gelled well together, worked role
 
 This page is similar to page 2 except it is a high-score table of users with the highest gift aid percentage per day at the top.
 This page should differentiate between 1st, 2nd, and 3rd places, and also show the current users position.
