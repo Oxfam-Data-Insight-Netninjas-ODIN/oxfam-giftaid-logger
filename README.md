@@ -24,7 +24,7 @@ One contributing factor may be insufficient hardware in the till scanners receiv
   
 APIS we are considering using are:
 
-- Day.js for tracking the date - for quality of life, keep till operators eyes on the app.
+- Day.js for tracking the date - for quality of life, keep till operators' eyes on the app.
 - openweathermap API - for displaying the weather -perhaps on a marquee
 - navigator.geolocation.API - to display where the user is based.
 - a giff APi - as part of the gamification element - 'happy pictures' on a gift aid sale
@@ -35,6 +35,7 @@ APIS we are considering using are:
 - HTML
 - CSS
 - Javascript
+- Jquery
 - Bootstrap
 - Figma
 - Github
@@ -42,15 +43,15 @@ APIS we are considering using are:
 
 Implementation of this solution is poised to enhance data input accuracy, encouraging a seamless and efficient Gift Aid process while providing valuable insights for management.
 
-## basic structure
+## Basic structure
 
-Burger menus are included at the top of all pages upon the event of resize
+Burger menus are included at the top of all pages upon the event of re-size.
 
 
 ![screenshot1final](https://github.com/Alex-Quayle/oxfam-giftaid-logger/assets/64762171/4a965318-5de3-4aaa-8644-e4a5468b8fad)
 
 
-# Page 1 - landing page / logger
+# Page 1 - landing page/logger
 
 This is the Landing page and displays the Oxfam heading and title
 
@@ -66,7 +67,7 @@ It has 2 x buttons, 1 for add gift aid, and one for not gift aid. These are larg
 
 An animated marquee. this could maybe be replaced with another animation in the future -it is just something to grab the user's attention, containing a motivational script.
 
-## A single table row with the days data:  Gift Aided / Not Gift Aided / Percentage
+## A single table row with the days' data:  Gift Aided / Not Gift Aided / Percentage
 
 information that is being used on this page is:
 
@@ -97,19 +98,19 @@ Ideally, finding a way of printing this data into a readable format on paper wou
 
 Data Rows contain:
 
-Date / employee(shop)code / employee (volunteer) name / Gift Aided / Not Gift Aided / Percentage of GA sales
+Date/employee (shop) code/employee (volunteer) name / Gift Aided / Not Gift Aided / Percentage of GA sales
 
 Refer to page 1 for the data types of each of these pieces of information.
 
 - a link to page 1 (the landing page), possibly small and discrete as well 
-- a link to page 3 (the highscore table), also possibly small and discrete. 
+- a link to page 3 (the high score table), also possibly small and discrete. 
 
 
 # page 3 high scores
 
 ![screenshot3final](https://github.com/Oxfam-Data-Insight-Netninjas-ODIN/oxfam-giftaid-logger/assets/64762171/efe39408-497a-4138-ad81-3e9f81b30839)
 
-This should contain:
+This contains:
 
 - smaller logo, page description title, page header, username
 
@@ -117,7 +118,7 @@ This page is similar to page 2 except it is a high-score table of users with the
 This page should differentiate between 1st, 2nd, and 3rd places, and also show the current users position.
 A motivational giff is placed at the top as part of the gamification process.
 
-- a link to page 1 and 2, possibly small and discrete as well 
+- a link to pages 1 and 2, possibly small and discrete as well 
 - a link to page 2, also possibly small and discrete.
 
   ## Challenges
@@ -129,5 +130,5 @@ A motivational giff is placed at the top as part of the gamification process.
 
   ## Successes
 
-Team worked really well together, we used kanban but found we didn't need it once we settled into roles well. we found being connected 
-on slack and zoom voice chat enough to complete most tasks. There is opportunity to expand on the work we've done.
+The team worked really well together, we used kanban but found we didn't need it once we settled into roles well. we found being connected 
+on Slack and Zoom voice chat enough to complete most tasks. There is an opportunity to expand on the work we've done.
