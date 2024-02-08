@@ -1,7 +1,7 @@
 # Giftaid-logger
 
 
-Deployed Application: https://alex-quayle.github.io/oxfam-giftaid-logger/
+Deployed Application: https://oxfam-data-insight-netninjas-odin.github.io/oxfam-giftaid-logger
 
 # Gift Aid Enhancement Strategy for Oxfam GB
 
