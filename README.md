@@ -2,10 +2,10 @@
 
 ## Collaborators
 
-Cris Bogdan - Javascript and API's (Backend)
-Alex Qualye - Figma, UX Design, CSS HTML (Frontend)
-Demitri Nunziata - Figma, UX Design, CSS HTML (Frontend)
-Terence Honeyford - Concept, Client liaison, Presentation, testing (Project Co-ordinator)
+- Cris Bogdan - Javascript and API's (Backend)
+- Alex Qualye - Figma, UX Design, CSS HTML (Frontend)
+- Demitri Nunziata - Figma, UX Design, CSS HTML (Frontend)
+- Terence Honeyford - Concept, Client liaison, Presentation, testing (Project Co-ordinator)
 
 Deployed Application: https://oxfam-data-insight-netninjas-odin.github.io/oxfam-giftaid-logger
 
