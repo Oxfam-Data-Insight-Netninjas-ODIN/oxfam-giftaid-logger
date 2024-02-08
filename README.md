@@ -15,7 +15,7 @@ One contributing factor may be insufficient hardware in the till scanners receiv
 - identify potential anomalies
 - encourage participation through gamification
 - provide feedback to area managers, for further analysis
-- 
+  
 APIS we are considering using are:
 
 - Day.js for tracking the date
@@ -27,6 +27,8 @@ APIS we are considering using are:
 Implementation of this solution is poised to enhance data input accuracy, encouraging a seamless and efficient Gift Aid process while providing valuable insights for management.
 
 ## basic structure
+
+Burger menus are included at the top of all pages upon the event of resize
 
 
 ![screenshot1final](https://github.com/Alex-Quayle/oxfam-giftaid-logger/assets/64762171/4a965318-5de3-4aaa-8644-e4a5468b8fad)
@@ -71,7 +73,7 @@ a link to page 3 (high scores), also possibly small and discrete.
 
 This should contain:
 
-- small logo, page description title, page header.
+- small logo, page description title, page header, username/temperature, location if applicable.
 
 A table that is the same as the table row on the main page except containing more rows (the previous days) is added to as each day goes by
 (this is the current functionality of the landing page, however, the List that it adds to , should be added to is the one on this page)
@@ -94,10 +96,11 @@ Refer to page 1 for the data types of each of these pieces of information.
 
 This should contain:
 
-- smaller logo, page description title, page header.
+- smaller logo, page description title, page header, username
 
 This page is similar to page 2 except it is a high-score table of users with the highest gift aid percentage per day at the top.
-Ideally, finding a way of printing this data into a readable format on paper would be good (to be sorted by highest percentage).
+This page should differentiate between 1st, 2nd, and 3rd places, and also show the current users position.
+A motivational giff is placed at the top as part of the gamification process.
 
 - a link to page 1, possibly small and discrete as well 
 - a link to page 2, also possibly small and discrete. 
