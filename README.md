@@ -1,6 +1,5 @@
 # Giftaid-logger
 
-
 Deployed Application: https://oxfam-data-insight-netninjas-odin.github.io/oxfam-giftaid-logger
 
 # Gift Aid Enhancement Strategy for Oxfam GB
@@ -34,7 +33,7 @@ Burger menus are included at the top of all pages upon the event of resize
 ![screenshot1final](https://github.com/Alex-Quayle/oxfam-giftaid-logger/assets/64762171/4a965318-5de3-4aaa-8644-e4a5468b8fad)
 
 
-# Page 1 - landing page 
+# Page 1 - landing page / logger
 
 This is the Landing page and displays the Oxfam heading and title
 
@@ -102,5 +101,5 @@ This page is similar to page 2 except it is a high-score table of users with the
 This page should differentiate between 1st, 2nd, and 3rd places, and also show the current users position.
 A motivational giff is placed at the top as part of the gamification process.
 
-- a link to page 1, possibly small and discrete as well 
+- a link to page 1 and 2, possibly small and discrete as well 
 - a link to page 2, also possibly small and discrete. 
