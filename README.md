@@ -29,8 +29,16 @@ APIS we are considering using are:
 - navigator.geolocation.API - to display where the user is based.
 - a giff APi - as part of the gamification element - 'happy pictures' on a gift aid sale
 - a sound API - as part of the gamification process.
+  
+  Technologies used
+
+- HTML
+- CSS
+- Javascript
 - Bootstrap
-- 
+- Figma
+- Github
+  
 
 Implementation of this solution is poised to enhance data input accuracy, encouraging a seamless and efficient Gift Aid process while providing valuable insights for management.
 
@@ -105,6 +113,13 @@ This should contain:
 
 - smaller logo, page description title, page header, username
 
+This page is similar to page 2 except it is a high-score table of users with the highest gift aid percentage per day at the top.
+This page should differentiate between 1st, 2nd, and 3rd places, and also show the current users position.
+A motivational giff is placed at the top as part of the gamification process.
+
+- a link to page 1 and 2, possibly small and discrete as well 
+- a link to page 2, also possibly small and discrete.
+
   ## Challenges
 
   Geolocation the first test went well, but some data didn't show well, alex and Cris sorted that out.
@@ -114,11 +129,5 @@ This should contain:
 
   ## Successes
 
-  Team worked really well together, we used kanban, team gelled well together, worked role
-
-This page is similar to page 2 except it is a high-score table of users with the highest gift aid percentage per day at the top.
-This page should differentiate between 1st, 2nd, and 3rd places, and also show the current users position.
-A motivational giff is placed at the top as part of the gamification process.
-
-- a link to page 1 and 2, possibly small and discrete as well 
-- a link to page 2, also possibly small and discrete. 
+Team worked really well together, we used kanban but found we didn't need it once we settled into roles well. we found being connected 
+on slack and zoom voice chat enough to complete most tasks. There is opportunity to expand on the work we've done.
