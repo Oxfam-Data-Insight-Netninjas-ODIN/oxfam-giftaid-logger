@@ -119,7 +119,7 @@ for (var i = 0; i < historyData.length; i++) {
     $('#currentUserPercentage').text(`${currentUserPerc}%`);
     // display a "congratulation" gif if user is in top3
     if (index <4) {
-      $('#gifClipID').empty();
+      $('#gifClipID2').empty();
       gifClip2();
     }
     // highlight the current user position inside the table
