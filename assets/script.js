@@ -8,19 +8,13 @@ localStorage.setItem("currentUserName", firstName);
 var userName = localStorage.getItem("currentUserName") || "anonymous";
 localStorage.setItem("currentUserName", userName);
 
-// Greet the cashier using their name 
-displayUser()
-
-// localStorage.setItem("currentUserName", "anonymous");
-// localStorage.setItem("currentUserCode", "anonymous");
-
-
 var totalGiftAidClicksToday = localStorage.getItem("giftAidClicksToday")|| 0;
 var totalClicksToday = localStorage.getItem("giftClicksToday") || 0;
-var totalPercentageDisplay = Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2))
+if ((totalGiftAidClicksToday || totalClicksToday) === 0) {var totalPercentage = 0}
+else {var totalPercentage = (totalGiftAidClicksToday / totalClicksToday) * 100};
 $('#ga-count').text(totalGiftAidClicksToday);
 $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
-$('#percent-count').text((Math.round(totalPercentageDisplay) || 0) + "%");
+$('#percent-count').text(Math.round((totalPercentage).toFixed(2)) + "%")
 
 
 // create a list of users
@@ -30,7 +24,6 @@ var cashiers = [
   { firstName: "George", user: "G8976" },
   { firstName: "anonymous", user: "anonymous" },
 ];
-t-count
 
 // create a drop down list with user names
 for (i = 0; i < cashiers.length; i++) {
@@ -39,7 +32,8 @@ for (i = 0; i < cashiers.length; i++) {
   $("#users").append(newButtonUser);
 }
 
-
+// dispplay current user message
+displayUser();
 // create a click event for the drop menu users to select the current user
 $(".dropdown-menu li").click(function () {
   userName = $(this).text();
@@ -57,9 +51,9 @@ $(".dropdown-menu li").click(function () {
         return false; // Exit the loop once a match is found
       }
     localDataWork()
+    displayUser();
     });
   }
-  displayUser()
 });
 
 console.log("default selected user is :" + userName);
@@ -111,7 +105,7 @@ function localDataWork() {
   //    as in check if the key date is present, if not add it with the value of new user
   if (`${currentDate}` in localdata) {
   } else {  
-    console.log(`all dates are different than ${currentDate} so a new date will be created`);
+
     var newDateLocaldata = {
       [currentDate] : {[userCode]: {
       user: userCode,
@@ -171,11 +165,11 @@ localDataWork()
 function incrementCounter(buttonType) {
   // create a variable referencing the curent date and change it to string
   var currentDate = dayjs().format("DD/MM/YYYY");
-  // create a variable for "clickData" stored in local storage  ; if no data then create an empty object
+  // create a variable for "clickData" stored in local storage  ; if no data then create an empty object for it
   let localdata = JSON.parse(localStorage.getItem("clickData"));
 
   userCode = localStorage.getItem("currentUserCode")
-
+  // increment the local data according with which button is pressed
   localdata[currentDate][userCode][buttonType]++;
  // save the updated data in local storage
   localStorage.setItem("clickData", JSON.stringify(localdata));
@@ -187,19 +181,20 @@ function incrementCounter(buttonType) {
   var totalClicksToday = 0;
   var totalGiftAidClicksToday = 0;
   for (const user in todayDataObj) {
-
-    // create a variable for the total number of both buttons pressed
+    // create a variable for the total number of both buttons pressed(per user and in total)
     var giftAidClick = todayDataObj[user].giftAid;
-
     var noGiftAidClick =  todayDataObj[user].not
     totalClicksPerUser = giftAidClick + noGiftAidClick;
-
     totalClicksToday = totalClicksToday + totalClicksPerUser;
     totalGiftAidClicksToday = totalGiftAidClicksToday + giftAidClick;
    }
+
+  // display the number of clicks and the percentage of giftAid clicks
   $('#ga-count').text(totalGiftAidClicksToday);
   $('#nga-count').text(totalClicksToday-totalGiftAidClicksToday);
-  $('#percent-count').text((Math.round(((totalGiftAidClicksToday / totalClicksToday) * 100).toFixed(2)) + "%") || 0);
+  if ((totalGiftAidClicksToday || totalClicksToday) === 0) {var totalPercentage = 0}
+  else {var totalPercentage = (totalGiftAidClicksToday / totalClicksToday) * 100};
+  $('#percent-count').text(Math.round((totalPercentage).toFixed(2)) + "%");
   localStorage.setItem("giftAidClicksToday", totalGiftAidClicksToday);
   localStorage.setItem("giftClicksToday", totalClicksToday);
   
@@ -236,10 +231,7 @@ function updateTable() {
     const total = giftAid + noGiftAid;
 
     // ternary operator is used to calculate the percentage value of giftAid button
-    if (total != 0) { 
-      var calculatedPercentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
-    } else { calculatedPercentage = 0};
-
+    const calculatedPercentage = total > 0 ? ((giftAid / total) * 100).toFixed(2) : 0;
     localdata[currentDate][userCode].percentage = calculatedPercentage
     // round a percentage to the nearest whole for display purpose
     const roundPercentage = Math.round(calculatedPercentage);
@@ -301,10 +293,7 @@ function success(position) {
     .then((data) => {
       // take the reverse geolocation from API and display the city
       var currentCity = data.features[0].properties.address.town || data.features[0].properties.address.village;
-      console.log("location object : " + JSON.stringify(data.features[0]));
-      console.log(data);
 
-      console.log("current location =" + currentCity);
 
       // currentCityElem.text(`${currentCity}  -dfse  ${data.main.temp} °C`);
       // Meant to fetch data but undefined
@@ -320,7 +309,7 @@ function success(position) {
 
   // display weather for default city - London and add weather icon - to be updated with lo
   var cityQueryURL = queryURL + coordinates + "&units=metric&appid=" + key;
-  // console.log(cityQueryURL);
+
   fetch(cityQueryURL)
     .then(function (response) {
       return response.json();
@@ -382,7 +371,7 @@ if (window.matchMedia("(max-width: 575px)").matches) {
 
 // 4th API to display a gif when GiftAidis pressed
 function gifClip () {
-  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=congratulation";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=AQMPU710JqQQFEDRjh4gbD9dEuYCXy2d&rating=pg&limit=10&q=happy dance";
 
   fetch(queryURL)
   .then(function(response) {
@@ -402,14 +391,14 @@ function gifClip () {
   });
 }
 
-
+// function to display current user name message
 function displayUser () {
   var userName = localStorage.getItem("currentUserName")
   console.log("username for title is :"+userName);
   if (userName === "anonymous") {
     console.log("username is anonymous in left top corner");
-    $('#username').text (`Welcome, Employee`);
+    $('#username').text (`Welcome, Volunteer`);
   } else {
     $('#username').text (`Welcome, ${userName}`);
   }
-}
+};

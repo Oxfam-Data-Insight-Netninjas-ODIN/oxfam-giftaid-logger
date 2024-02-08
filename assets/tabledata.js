@@ -119,7 +119,11 @@ for (var i = 0; i < historyData.length; i++) {
   if (historyData[i].user === currentUserCode && historyData[i].date === currentDate) {
     index = i+1;
     var currentUserPosition = index;
-    $('#currentUserPosition').text(`You are in ${index}th Place`);
+    if (index ===1) {$('#currentUserPosition').text(`You are in 1st Place`);}
+    else if (index === 2) {$('#currentUserPosition').text(`You are in 2nd Place`);}
+    else if (index === 3) {$('#currentUserPosition').text(`You are in 3rd Place`);}
+    else {$('#currentUserPosition').text(`You are in ${index}th Place`);}
+   
     var currentUserPerc = Math.round(historyData[i].percentage)
     $('#currentUserPercentage').text(`${currentUserPerc}%`);
     console.log("index of user is : "+index);
