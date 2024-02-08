@@ -38,9 +38,11 @@ This is the Landing page and displays the Oxfam heading and title
 
 The page will ask to confirm a user location, and display if allowed
 
-The page shows the current date and temperature
+The page shows the current date and temperature.
 
-The page shows a message saying welcome, and then the name of who is 'logged in' or just says 'volunteer'
+The page shows a message saying welcome, and then the name of who is 'logged in' or just says 'volunteer'.
+
+The page has a drop-down form that lets the user select their name if they are using the till.
 
 It has 2 x buttons, 1 for add gift aid, and one for not gift aid. These are large for the user to see and responsive (sound/visual cues)
 
