@@ -123,14 +123,4 @@ A motivational giff is placed at the top as part of the gamification process.
 - a link to pages 1 and 2, possibly small and discrete as well 
 - a link to page 2, also possibly small and discrete.
 
-  ## Challenges
 
-  Geolocation the first test went well, but some data didn't show well, alex and Cris sorted that out.
-  Change the mentality of working alone - you have to accommodate and adapt.
-  Originally overly enthusiastic, but we learned to focus on a minimum-viable product and leave other features for later.
-  local storage consists of 5 data types. uses interlocking storage.
-
-  ## Successes
-
-The team worked really well together, we used kanban but found we didn't need it once we settled into roles well. we found being connected 
-on Slack and Zoom voice chat enough to complete most tasks. There is an opportunity to expand on the work we've done.
