@@ -7,8 +7,9 @@
 - Demitri Nunziata - Figma, UX Design, CSS HTML (Frontend)
 - Terence Honeyford - Concept, Client liaison, Presentation, testing (Project Co-ordinator)
 
-- GitHub Page : https://github.com/Oxfam-Data-Insight-Netninjas-ODIN/oxfam-giftaid-logger.git
-- Deployed Application: https://oxfam-data-insight-netninjas-odin.github.io/oxfam-giftaid-logger
+GitHub Page : https://github.com/Oxfam-Data-Insight-Netninjas-ODIN/oxfam-giftaid-logger.git  
+
+Deployed Application: https://oxfam-data-insight-netninjas-odin.github.io/oxfam-giftaid-logger
 
 # Gift Aid Enhancement Strategy for Oxfam GB
 
