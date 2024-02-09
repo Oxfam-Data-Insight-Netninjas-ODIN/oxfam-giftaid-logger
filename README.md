@@ -2,7 +2,7 @@
 
 ## Collaborators
 
-- Cris Bogdan - Javascript and API's (Backend)
+- Cristian Bogdan - Javascript and API's (Backend)
 - Alex Qualye - Figma, UX Design, CSS HTML (Frontend)
 - Demitri Nunziata - Figma, UX Design, CSS HTML (Frontend)
 - Terence Honeyford - Concept, Client liaison, Presentation, testing (Project Co-ordinator)
